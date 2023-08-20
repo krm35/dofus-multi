@@ -1,0 +1,32 @@
+{
+  "name": "dofus-multi-back",
+  "version": "1.0.0",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "main": "index.js",
+  "bin": "./index.js",
+  "scripts": {
+    "dev": "node hot-reload.js",
+    "build-win32": "pkg package.json -t node14-win -o dist/win/renommez-moi-svp.exe",
+    "build-linux": "pkg package.json -t node14-linux dist/linux/renommez-moi-svp",
+    "build-mac": "pkg package.json -t node14-darwin dist/mac/renommez-moi-svp"
+  },
+  "dependencies": {
+    "frida": "^15.1.25",
+    "http-proxy-to-socks": "^1.1.2",
+    "node-machine-id": "^1.1.12",
+    "pkg": "^5.8.1",
+    "socks": "2.7.1",
+    "socks-proxy-agent": "6.0.0",
+    "uuid": "^8.3.2",
+    "ws": "^8.8.0"
+  },
+  "pkg": {
+    "outputPath": "dist",
+    "assets": [
+      "node_modules/**/*",
+      "build"
+    ]
+  }
+}
