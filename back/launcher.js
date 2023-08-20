@@ -133,9 +133,9 @@ function decimalToHex(d) {
 async function getGameToken(account, socket, game) {
     const queryPath = {game, certificate_id: "", certificate_hash: ""};
 
-    if (account['certificate'] || account['certificat']) {
-        queryPath['certificate_id'] = account['certificate'] ? account['certificate']['id'] : account['certificat']['id'];
-        queryPath['certificate_hash'] = generateHashFromCertif(account['hm1'], account['certificate'] || account['certificat']);
+    if (account['certificate']) {
+        queryPath['certificate_id'] = account['certificate']['id'];
+        queryPath['certificate_hash'] = generateHashFromCertif(account['hm1'], account['certificate']);
     }
 
     const agent = account['proxy'] ? new SocksProxyAgent(account['proxy']) : null;
@@ -161,7 +161,6 @@ async function getGameToken(account, socket, game) {
     }).then(function (json) {
         let buf;
         if (game === 1) {
-            console.log(json);
             buf = Buffer.from("8001000200000011617574685f67657447616d65546f6b656e000000000b000000000024" + Buffer.from(json[1]['token'], 'utf8').toString("hex") + "00", "hex");
         } else if (game === 101) {
             buf = "auth_getGameToken " + json[1]['token'] + "\x00";
