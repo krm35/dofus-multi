@@ -4,11 +4,9 @@ process.on('uncaughtException', function (err) {
 
 const http = require('http'),
     fs = require('fs'),
-    os = require('os'),
     path = require('path'),
     {execSync} = require('child_process'),
     router = require('./router'),
-    c = require('./constants'),
     accounts = require('./accounts'),
     {wss} = require('./wss');
 
@@ -44,19 +42,11 @@ wss['on']('connection', function connection(ws) {
             if (!router[action + '-' + resource]) return;
             router[action + '-' + resource]({
                 body, ws, cb: function (error, data, trigger) {
-                    try {
-                        ws.send(JSON.stringify({error, data, id, trigger}));
-                    } catch (e) {
-
-                    }
+                    ws.send(JSON.stringify({error, data, id, trigger}));
                 }
             }).catch((e) => {
                 console.log(e);
-                try {
-                    ws.send(JSON.stringify({error: true, id}));
-                } catch (e) {
-
-                }
+                ws.send(JSON.stringify({error: true, id}));
             });
         } catch (e) {
             console.log(e);
