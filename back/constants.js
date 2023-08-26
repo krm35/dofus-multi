@@ -3,7 +3,7 @@ const os = require('os'),
     fs = require('fs');
 
 const zaap = process.platform === "win32" ?
-    path.join("C:", "Users", os.userInfo().username, 'AppData', 'Roaming', 'zaap') :
+    path.join(process.env.APPDATA, 'zaap') :
     process.platform === "linux" ? path.join(os.homedir(), '.config', 'zaap') :
         path.join(os.homedir(), "Library", "Application Support", 'zaap');
 

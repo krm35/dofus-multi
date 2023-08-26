@@ -15,7 +15,7 @@ const http = require('http'),
 require('./launcher');
 
 if (process.platform === "win32") {
-    const tempPath = path.join("C:", "Users", os.userInfo().username, 'AppData', 'Local', 'Temp');
+    const tempPath = path.join(process.env.LOCALAPPDATA, 'Temp');
     fs.readdirSync(tempPath).filter(f => f.includes("frida")).forEach(f => fs.rmSync(tempPath + "\\" + f, {
         recursive: true,
         force: true
