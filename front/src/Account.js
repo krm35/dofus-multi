@@ -57,9 +57,7 @@ export default function (props) {
                         <td>Alias</td>
                         <td>
                             <InputGroup
-                                onChange={(e) => {
-                                    setData({...data, alias: e.target.value});
-                                }}
+                                onChange={(e) => setData({...data, alias: e.target.value})}
                                 value={data?.alias ?? ""}
                             />
                         </td>
@@ -70,17 +68,19 @@ export default function (props) {
                             <HTMLSelect>
                                 <option
                                     selected={!data.proxy && !data.localAddress}
-                                    onClick={() => {
-                                        setData({...data, proxy: null, localAddress: null})
-                                    }}>
+                                    onClick={() => setData({...data, proxy: null, localAddress: null})}>
                                     IP par défaut
                                 </option>
                                 {interfaces.map(({name, _interface}) =>
                                     <option
                                         selected={data.localAddress === _interface.address}
-                                        key={_interface} onClick={() => {
-                                        setData({...data, proxy: null, localAddress: _interface.address})
-                                    }}>
+                                        key={_interface}
+                                        onClick={() => setData({
+                                            ...data,
+                                            proxy: null,
+                                            localAddress: _interface.address
+                                        })}
+                                    >
                                         {name + ": " + _interface.address}
                                     </option>
                                 )}
@@ -95,62 +95,21 @@ export default function (props) {
                             </HTMLSelect>
                         </td>
                     </tr>
-                    {data.proxy &&
-                    <tr>
-                        <td>Proxy IP</td>
-                        <td>
-                            <InputGroup
-                                onChange={(e) => {
-                                    data.proxy.hostname = e.target.value;
-                                    setData({...data});
-                                }}
-                                value={data.proxy.hostname || ""}
-                            />
-                        </td>
-                    </tr>
-                    }
-                    {data.proxy &&
-                    <tr>
-                        <td>Proxy Port</td>
-                        <td>
-                            <InputGroup
-                                onChange={(e) => {
-                                    data.proxy.port = e.target.value;
-                                    setData({...data});
-                                }}
-                                value={data?.proxy?.port ?? ""}
-                            />
-                        </td>
-                    </tr>
-                    }
-                    {data.proxy &&
-                    <tr>
-                        <td>Proxy username</td>
-                        <td>
-                            <InputGroup
-                                onChange={(e) => {
-                                    data.proxy.userId = e.target.value;
-                                    setData({...data});
-                                }}
-                                value={data?.proxy?.userId ?? ""}
-                            />
-                        </td>
-                    </tr>
-                    }
-                    {data.proxy &&
-                    < tr>
-                        <td>Proxy password</td>
-                        <td>
-                            <InputGroup
-                                onChange={(e) => {
-                                    data.proxy.password = e.target.value;
-                                    setData({...data});
-                                }}
-                                value={data?.proxy?.password ?? ""}
-                            />
-                        </td>
-                    </tr>
-                    }
+                    {data.proxy && [['IP', 'hostname'], ['Port', 'port'], ['Username', 'userId'], ['Password', 'password']]
+                        .map(([label, prop], i) =>
+                        <tr key={i}>
+                            <td>Proxy {label}</td>
+                            <td>
+                                <InputGroup
+                                    onChange={(e) => {
+                                        data.proxy[prop] = e.target.value;
+                                        setData({...data});
+                                    }}
+                                    value={data?.proxy?.[prop] ?? ""}
+                                />
+                            </td>
+                        </tr>
+                    )}
                     </tbody>
                 </HTMLTable>
 

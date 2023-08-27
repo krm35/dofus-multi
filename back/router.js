@@ -33,7 +33,6 @@ function getInterfaces() {
         let alias = 0;
         if (name.toLowerCase().includes("vmware") || name.toLowerCase().includes("virtual") || name.toLowerCase().includes("qemu")) return;
         interfaces[name].forEach(function (_interface) {
-            if ('IPv4' !== _interface.family || _interface.internal !== false || _interface.address.startsWith("192.168")) return;
             if (!alias) {
                 res.push({name, _interface});
                 addresses.push(_interface.address);
