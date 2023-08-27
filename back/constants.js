@@ -15,5 +15,6 @@ module.exports = {
     isTest: process.argv.includes("dev=true"),
     logs: this.isTest || !fs.existsSync("./logs"),
     uid: fs.existsSync(uidPath) ? fs.readFileSync(uidPath).toString() : null,
+    language: JSON.parse("" + fs.readFileSync(path.join(zaap, "repositories", "production", "dofus", "main", "settings.json")))['language']['value'],
     zaap
 };

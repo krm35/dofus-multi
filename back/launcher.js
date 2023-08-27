@@ -2,6 +2,7 @@ const net = require('net'),
     querystring = require('querystring'),
     crypto = require('crypto'),
     SocksProxyAgent = require('socks-proxy-agent'),
+    c = require('./constants'),
     request = require('./request'),
     accounts = require('./accounts'),
     wss = require('./wss'),
@@ -21,7 +22,7 @@ server.on('connection', function (socket) {
                 if (str.includes("autoConnectType")) {
                     socket.write(Buffer.from("800100020000000c73657474696e67735f676574000000000b00000000000322322200", "hex"));
                 } else if (str.includes("language")) {
-                    socket.write(Buffer.from("800100020000000c73657474696e67735f676574000000000b0000000000042266722200", "hex"));
+                    socket.write(Buffer.from("800100020000000c73657474696e67735f676574000000000b00000000000422" + Buffer.from(c.language).toString('hex') + "2200", "hex"));
                 } else if (str.includes("connectionPort")) {
                     socket.write(Buffer.from("800100020000000c73657474696e67735f676574000000000b00000000000622353535352200", "hex"))
                 }
