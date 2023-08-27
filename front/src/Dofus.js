@@ -90,7 +90,6 @@ export default function Dofus(props) {
 
     function filterByColumns(obj) {
         const res = {};
-        console.log(hasOneColumnFilter(), obj);
         if (!hasOneColumnFilter()) return obj;
         for (let i in obj) {
             if (typeof obj[i] === "object") {
@@ -136,59 +135,52 @@ export default function Dofus(props) {
     }
 
     const columns = {
-        "Like": (key) => {
-            return <th key={key} width="1%" onClick={() => {
-                if (localStorage['like']) delete localStorage['like'];
-                else localStorage['like'] = true;
-                setLike(!like);
-            }} className="pointer" style={{position: "relative", fontSize: "10px"}}>
-                {/*<i style={{marginLeft: "2px"}} className={"fa fa-star " + (like ? "star-checked" : "")}/>*/}
-                <Icon style={{position: "absolute", bottom: "40%"}} icon={like ? "star" : "star-empty"}/></th>
-        },
-        "Nom de compte": (key) => {
-            return <th style={{position: "relative"}} key={key} width="10%">
-                <label style={{position: "absolute", bottom: "40%"}}>Nom de compte</label>
-            </th>
-        },
-        "Alias": (key) => {
-            return <th style={{position: "relative"}} key={key} width="10%">
-                <div style={{position: "absolute", bottom: "40%"}}>
-                    <Popover
-                        content={
-                            <ColumnFilter
-                                search={search}
-                                setSearch={setSearch}
-                                items={accounts}
-                                column={"alias"}
-                            />
-                        }
-                        enforceFocus={true}
-                        position={Position.BOTTOM}
-                        interactionKind={PopoverInteractionKind.HOVER}
-                    >
-                        <Icon intent={Object.keys(search?.[1]?.['alias'] ?? {}).length ? 'primary' : ''} size={17}
-                              icon="filter-list"/>
-                    </Popover>
-                </div>
+        "Like": (key) => <th key={key} width="1%" onClick={() => {
+            if (localStorage['like']) delete localStorage['like'];
+            else localStorage['like'] = true;
+            setLike(!like);
+        }} className="pointer" style={{position: "relative", fontSize: "10px"}}>
+            {/*<i style={{marginLeft: "2px"}} className={"fa fa-star " + (like ? "star-checked" : "")}/>*/}
+            <Icon style={{position: "absolute", bottom: "40%"}} icon={like ? "star" : "star-empty"}/></th>
+        ,
+        "Nom de compte": (key) => <th style={{position: "relative"}} key={key} width="10%">
+            <label style={{position: "absolute", bottom: "40%"}}>Nom de compte</label>
+        </th>
+        ,
+        "Alias": (key) => <th style={{position: "relative"}} key={key} width="10%">
+            <div style={{position: "absolute", bottom: "40%"}}>
+                <Popover
+                    content={
+                        <ColumnFilter
+                            search={search}
+                            setSearch={setSearch}
+                            items={accounts}
+                            column={"alias"}
+                        />
+                    }
+                    enforceFocus={true}
+                    position={Position.BOTTOM}
+                    interactionKind={PopoverInteractionKind.HOVER}
+                >
+                    <Icon intent={Object.keys(search?.[1]?.['alias'] ?? {}).length ? 'primary' : ''} size={17}
+                          icon="filter-list"/>
+                </Popover>
+            </div>
 
-                <label style={{position: "absolute", bottom: "40%", left: "35px"}}>Alias</label>
-            </th>
-        },
-        "IP": (key) => {
-            return <th style={{position: "relative"}} key={key} width="10%">
-                <label style={{position: "absolute", bottom: "40%"}}>IP</label>
-            </th>
-        },
-        "API Key": (key) => {
-            return <th style={{position: "relative"}} key={key} width="10%">
-                <label style={{position: "absolute", bottom: "40%"}}>API Key</label>
-            </th>
-        },
-        "Account ID": (key) => {
-            return <th style={{position: "relative"}} key={key} width="10%">
-                <label style={{position: "absolute", bottom: "40%"}}>Account ID</label>
-            </th>
-        },
+            <label style={{position: "absolute", bottom: "40%", left: "35px"}}>Alias</label>
+        </th>
+        ,
+        "IP": (key) => <th style={{position: "relative"}} key={key} width="10%">
+            <label style={{position: "absolute", bottom: "40%"}}>IP</label>
+        </th>
+        ,
+        "API Key": (key) => <th style={{position: "relative"}} key={key} width="10%">
+            <label style={{position: "absolute", bottom: "40%"}}>API Key</label>
+        </th>
+        ,
+        "Account ID": (key) => <th style={{position: "relative"}} key={key} width="10%">
+            <label style={{position: "absolute", bottom: "40%"}}>Account ID</label>
+        </th>
     };
 
     function classicRow(key, account, onClick, text) {
@@ -211,21 +203,11 @@ export default function Dofus(props) {
                 <Icon icon={liked[account['login'] + 'like'] ? "star" : "star-empty"}/>
             </td>;
         },
-        "Nom de compte": (key, account, onClick) => {
-            return classicRow(key, account, onClick, account['login']);
-        },
-        "Alias": (key, account, onClick) => {
-            return classicRow(key, account, onClick, account['alias']);
-        },
-        "IP": (key, account, onClick) => {
-            return classicRow(key, account, onClick, account['proxy'] ? account['proxy']['hostname'] : (account['localAddress'] || "ip par défaut"));
-        },
-        "API Key": (key, account, onClick) => {
-            return classicRow(key, account, onClick, account['key']);
-        },
-        "Account ID": (key, account, onClick) => {
-            return classicRow(key, account, onClick, account['accountId']);
-        },
+        "Nom de compte": (key, account, onClick) => classicRow(key, account, onClick, account['login']),
+        "Alias": (key, account, onClick) => classicRow(key, account, onClick, account['alias']),
+        "IP": (key, account, onClick) => classicRow(key, account, onClick, account['proxy'] ? account['proxy']['hostname'] : (account['localAddress'] || "ip par défaut")),
+        "API Key": (key, account, onClick) => classicRow(key, account, onClick, account['key']),
+        "Account ID": (key, account, onClick) => classicRow(key, account, onClick, account['accountId']),
     };
 
     return (
@@ -291,16 +273,12 @@ export default function Dofus(props) {
                 {Object.keys(filter(accounts)).map((login, i) => {
                     const account = shouldPrint(login);
                     if (!account) return;
-                    const onClick = () => {
-                        setAccount(account);
-                    };
+                    const onClick = () => setAccount(account);
                     return (
                         <tr key={i}>
-
                             {Object.keys(rows).map((column, i) => {
                                 if (search[1].column[column]) return rows[column](i, account, onClick);
                             })}
-
                             <td>
                                 &nbsp;
                                 <img
@@ -308,9 +286,7 @@ export default function Dofus(props) {
                                     src={"/img/retroicon.png"}
                                     style={{height: "30px", opacity: account['retroPort'] ? "0.5" : "1"}}
                                     alt={""}
-                                    onClick={() => {
-                                        dofusLogin(login, true);
-                                    }}
+                                    onClick={() => dofusLogin(login, true)}
                                 />
                                 &nbsp;&nbsp;&nbsp;&nbsp;
                                 <img
@@ -318,12 +294,10 @@ export default function Dofus(props) {
                                     src={"/img/dofusicon.png"}
                                     style={{height: "30px", opacity: account['d2Port'] ? "0.5" : "1"}}
                                     alt={""}
-                                    onClick={() => {
-                                        dofusLogin(login, false);
-                                    }}
+                                    onClick={() => dofusLogin(login, false)}
                                 />
                             </td>
-                            <td style={{boxShadow: " inset 0px 1px 0 0 rgba(255, 255, 255, 0.15)"}}/>
+                            <td/>
                         </tr>)
                 })}
                 </tbody>
