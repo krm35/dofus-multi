@@ -199,7 +199,6 @@ export default function Dofus(props) {
                 }
                 setLiked({...liked});
             }} style={{fontSize: "9px", textAlign: "left"}}>
-                {/*<i style={{marginLeft: "2px", marginBottom: "4px"}} className={"mobile_margin fa fa-star " + (liked[account['login'] + 'like'] ? "star-checked" : "")}/>*/}
                 <Icon icon={liked[account['login'] + 'like'] ? "star" : "star-empty"}/>
             </td>;
         },
@@ -211,7 +210,7 @@ export default function Dofus(props) {
     };
 
     return (
-        <div style={{padding: "10px"}}>
+        <div style={{paddingTop: "10px"}}>
             <div style={{display: "flex", justifyContent: "center"}}>
                 <Button text={"Ajouter un compte"} icon={"add"} onClick={() => {
                     Toaster.show({message: "Bientôt disponible", intent: "danger"});

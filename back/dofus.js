@@ -121,7 +121,7 @@ async function connectClient(socket, host, port, account) {
     });
 }
 
-function getSource(port, retro) {
+function getSource(port, retro, account) {
     return `
         try{
         const isRetro = ${retro};
@@ -155,6 +155,32 @@ function getSource(port, retro) {
                 socket_send(this.sockfd.toInt32(), buf_send, connect_request.length, 0);
             }
         });
+
+        if(isRetro){
+        
+            let pointer = {};
+        
+            function changeValue(method) {
+                for (let p in pointer) {
+                    try {
+                        pointer[p][method]("DESKTOP-"+"${account['refreshToken'].split('-')[0].substr(0, 7).toUpperCase()}" + String.fromCharCode(0));
+                        delete pointer[p];
+                    } catch (e) {
+                    }
+                }
+            }
+            
+            Interceptor.attach(Module.getExportByName(null, 'gethostname'), {
+                onEnter: (args) => pointer[args[0]] = ptr(args[0]),
+                onLeave: () => changeValue("writeAnsiString")
+            });
+
+            Interceptor.attach(Module.getExportByName(null, 'GetHostNameW'), {
+                onEnter: (args) => pointer = ptr(args[0]),
+                onLeave: () => changeValue("writeUtf16String")
+            });
+        
+        }
         }catch(e){
             console.log(e);
         }

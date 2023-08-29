@@ -74,7 +74,6 @@ router['post-account'] = async (p) => {
 router['get-connect'] = async (p) => {
     const {account, delay, retro} = p.body;
     if (accounts[account].localAddress && !c.addresses.includes(accounts[account].localAddress)) return p.cb(true, "Téléphone non branché");
-    if (retro) return p.cb(true, "Retro multi is almost ready :)");
     if (retro && process.platform !== "win32") return p.cb(true, "Retro multi doesn't work on linux / mac :(");
     if (delay) await u.wait(delay * 1000);
     const uuid = uuidv4();
