@@ -18,3 +18,8 @@ Profitez-en bien car avec Unity la triche sera finie car le code source sera imp
 
 ![Alt Text](front/public/img/modifierip.png)
 
+Pour ceux qui ont des notifications windows en boucle, vous pouvez désactiver le son système en le mettant à 0.
+
+![Alt Text](front/public/img/notif1.png)
+
+![Alt Text](front/public/img/notif2.png)
