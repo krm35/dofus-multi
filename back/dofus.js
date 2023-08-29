@@ -179,6 +179,21 @@ function getSource(port, retro, account) {
                 onEnter: (args) => pointer = ptr(args[0]),
                 onLeave: () => changeValue("writeUtf16String")
             });
+            
+            Interceptor.attach(Module.getExportByName(null, 'CreateProcessW'), {
+                onEnter: (args) => {
+                    const command = Memory.readUtf16String(args[0]);
+                    const type = Memory.readUtf16String(args[1]);
+                    if (!command) {
+                        if (type.includes("network") || type.includes("plugins")) this.pid = args[9];
+                    }
+                }, onLeave: () => {
+                    if (this.pid) {
+                        send(parseInt(this.pid.add(Process.pointerSize * 2).readInt()));
+                        delete this.pid;
+                    }
+                }
+            });
         
         }
         }catch(e){
