@@ -64,7 +64,7 @@ router['post-account'] = async (p) => {
         delete p.body['key'];
         delete p.body['refreshToken'];
     }
-    if (p.body.proxy) p.body.localAddress = undefined;
+    if (p.body.proxy) p.body.localAddress = null;
     accounts[accountId] = {...accounts[accountId], ...p.body};
     u.saveAccount(accountId);
     wss.broadcast({resource: "accounts", key: accountId, value: accounts[accountId]});

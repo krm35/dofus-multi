@@ -28,7 +28,6 @@ module.exports = async (account, uuid) => {
 };
 
 function getAgent(account) {
-    // noinspection JSValidateTypes
     return accounts[account]['proxy'] ? new SocksProxyAgent(accounts[account]['proxy']) : null;
 }
 
