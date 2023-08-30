@@ -13,7 +13,7 @@ module.exports = function request(options, body, hostname) {
         ...(options.headers || {})
     };
 
-    if (options.agent || (options.localAddress && !c.addresses.includes(options.localAddress))) delete options.localAddress;
+    if (options.localAddress) delete options.agent;
 
     if (body) {
         options.headers["content-length"] = body.length;
