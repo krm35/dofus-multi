@@ -72,7 +72,9 @@ fs.readdirSync(keydataPath).forEach(file => {
         accounts[accountId]['hm1'] = hm1;
         accounts[accountId]['hm2'] = hm1.split("").reverse().join("");
         if (fs.existsSync("./data/" + accountId)) {
-            accounts[accountId] = {...accounts[accountId], ...JSON.parse("" + fs.readFileSync("./data/" + accountId))}
+            const account = JSON.parse("" + fs.readFileSync("./data/" + accountId));
+            for (const p of ['key', 'refreshToken', 'certificate', 'hm1', 'hm2']) if (accounts[accountId][p]) delete account[p];
+            accounts[accountId] = {...accounts[accountId], ...account}
         } else {
             accounts[accountId].flashKey = flashKey();
             fs.writeFileSync("./data/" + accountId, JSON.stringify(accounts[accountId]));
