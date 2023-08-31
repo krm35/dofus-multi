@@ -65,51 +65,52 @@ export default function (props) {
                     <tr>
                         <td>Adresse IP</td>
                         <td>
-                            <HTMLSelect>
-                                <option
-                                    selected={!data.proxy && !data.localAddress}
-                                    onClick={() => setData({...data, proxy: null, localAddress: null})}>
-                                    IP par défaut
-                                </option>
+                            <HTMLSelect
+                                onChange={(event) => {
+                                    const value = event.currentTarget.value;
+                                    if ("IP par défaut" === value) {
+                                        setData({...data, proxy: null, localAddress: null})
+                                    } else if ("Proxy" === value) {
+                                        if (!data.proxy) data.proxy = {};
+                                        setData({...data})
+                                    } else {
+                                        setData({
+                                            ...data,
+                                            proxy: null,
+                                            localAddress: value
+                                        })
+                                    }
+                                }}
+                            >
+                                <option selected={!data.proxy && !data.localAddress}>IP par défaut</option>
                                 {interfaces.map(({name, _interface}) =>
                                     <option
                                         selected={data.localAddress === _interface.address}
-                                        key={_interface}
-                                        onClick={() => setData({
-                                            ...data,
-                                            proxy: null,
-                                            localAddress: _interface.address
-                                        })}
+                                        key={_interface.address}
+                                        value={_interface.address}
                                     >
                                         {name + ": " + _interface.address}
                                     </option>
                                 )}
-                                <option
-                                    selected={data.proxy}
-                                    onClick={() => {
-                                        if (!data.proxy) data.proxy = {};
-                                        setData({...data})
-                                    }}>
-                                    Proxy
-                                </option>
+                                <option selected={data.proxy}>Proxy</option>
                             </HTMLSelect>
                         </td>
                     </tr>
                     {data.proxy && [['IP', 'hostname'], ['Port', 'port'], ['Username', 'userId'], ['Password', 'password']]
                         .map(([label, prop], i) =>
-                        <tr key={i}>
-                            <td>Proxy {label}</td>
-                            <td>
-                                <InputGroup
-                                    onChange={(e) => {
-                                        data.proxy[prop] = e.target.value;
-                                        setData({...data});
-                                    }}
-                                    value={data?.proxy?.[prop] ?? ""}
-                                />
-                            </td>
-                        </tr>
-                    )}
+                            <tr key={i}>
+                                <td>Proxy {label}</td>
+                                <td>
+                                    <InputGroup
+                                        onChange={(e) => {
+                                            data.proxy[prop] = e.target.value;
+                                            setData({...data});
+                                        }}
+                                        value={data?.proxy?.[prop] ?? ""}
+                                    />
+                                </td>
+                            </tr>
+                        )}
                     </tbody>
                 </HTMLTable>
 
