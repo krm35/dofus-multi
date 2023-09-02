@@ -28,19 +28,13 @@ loadFiles(path.join(__dirname, './build'));
 
 function getInterfaces() {
     const interfaces = os.networkInterfaces();
-    const res = [], addresses = [];
+    const res = [];
     Object.keys(interfaces).forEach(function (name) {
-        let alias = 0;
         if (name.toLowerCase().includes("vmware") || name.toLowerCase().includes("virtual") || name.toLowerCase().includes("qemu")) return;
         interfaces[name].forEach(function (_interface) {
-            if (!alias) {
-                res.push({name, _interface});
-                addresses.push(_interface.address);
-            }
-            ++alias;
+            if (_interface.family === 'IPv4') res.push({name, _interface});
         });
     });
-    c.addresses = addresses;
     return res;
 }
 
