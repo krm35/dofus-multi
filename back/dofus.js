@@ -63,8 +63,12 @@ module.exports.start = async function (account, port, retro) {
 
             });
         });
-
-        const dofusPath = JSON.parse("" + fs.readFileSync(path.join(c.zaap, "repositories", "production", (retro ? "retro" : "dofus"), "main", "release.json")))['location'];
+        let dofusPath;
+        try {
+            dofusPath = JSON.parse("" + fs.readFileSync(path.join(c.zaap, "repositories", "production", (retro ? "retro" : "dofus"), "main", "release.json")))['location'];
+        } catch (e) {
+            dofusPath = path.join(process.env.LOCALAPPDATA, 'Ankama', (1 ? "Retro" : "Dofus"));
+        }
         const program = [path.join(dofusPath, (retro ? "Dofus Retro" : "Dofus") + ".exe")];
         if (!retro) {
             program.push("--port=26116");

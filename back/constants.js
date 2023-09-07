@@ -9,12 +9,20 @@ const zaap = process.platform === "win32" ?
 
 const uidPath = path.join(zaap.replace("zaap", "Dofus"), "uid.dat");
 
+let language;
+
+try {
+    language = JSON.parse("" + fs.readFileSync(path.join(zaap, "repositories", "production", "dofus", "main", "settings.json")))['language']['value'];
+} catch (e) {
+    language = 'fr'
+}
+
 module.exports = {
     port: 0,
     version: "3.11.5",
     isTest: process.argv.includes("dev=true"),
     logs: this.isTest || !fs.existsSync("./logs"),
     uid: fs.existsSync(uidPath) ? fs.readFileSync(uidPath).toString() : null,
-    language: JSON.parse("" + fs.readFileSync(path.join(zaap, "repositories", "production", "dofus", "main", "settings.json")))['language']['value'],
+    language,
     zaap
 };
