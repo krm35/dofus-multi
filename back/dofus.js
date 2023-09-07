@@ -66,6 +66,7 @@ module.exports.start = async function (account, port, retro) {
         let dofusPath;
         try {
             dofusPath = JSON.parse("" + fs.readFileSync(path.join(c.zaap, "repositories", "production", (retro ? "retro" : "dofus"), "main", "release.json")))['location'];
+            if (typeof dofusPath !== "string" || !fs.existsSync(dofusPath)) throw new Error("not a good path");
         } catch (e) {
             dofusPath = path.join(process.env.LOCALAPPDATA, 'Ankama', (1 ? "Retro" : "Dofus"));
         }
