@@ -82,9 +82,9 @@ router['get-connect'] = async (p) => {
             accounts[account][(type === 1 ? 'retro' : type === 2 ? 'd2' : 'wakfu') + 'Port'] = port;
             wss.broadcast({resource: "accounts", key: account, value: accounts[account]});
         }
-        p.cb(res !== undefined, res ? "Une erreur est survenue" : "");
+        p.cb(res !== undefined, res || "");
     }).catch((e) => {
         console.log(e);
-        p.cb(true);
+        p.cb(true, "Une erreur est survenue");
     });
 };
