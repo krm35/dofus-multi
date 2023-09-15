@@ -2,10 +2,14 @@ const fs = require('fs'),
     os = require('os'),
     path = require('path'),
     {v4: uuidv4} = require('uuid'),
+    {stringify} = require('querystring'),
+    SocksProxyAgent = require('socks-proxy-agent'),
     u = require('./utilities'),
     wss = require('./wss'),
-    fake = require('./fake'),
     accounts = require('./accounts'),
+    fake = require('./fake'),
+    request = require('./request'),
+    flashKey = require('./flashKey'),
     c = require('./constants'),
     dofus = require('./dofus'),
     router = {};
@@ -86,3 +90,82 @@ router['get-connect'] = async (p) => {
         p.cb(true);
     });
 };
+
+
+function makeid(length) {
+    let result = '';
+    const characters = 'abcdef0123456789';
+    const charactersLength = characters.length;
+    for (let i = 0; i < length; i++) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+}
+
+const addedAccounts = {};
+
+router['put-account'] = async (p) => {
+    const {login, password, proxy, localAddress} = p.body;
+    console.log(login, password);
+    const agent = proxy ? new SocksProxyAgent(proxy) : null;
+    const result = await request(
+        {
+            agent,
+            localAddress,
+            path: "/json/Ankama/v5/Api/CreateApiKey",
+            method: 'POST',
+            headers: {}
+        }, "login=" + login + "&password=" + password + "&game_id=102&long_life_token=true&shop_key=ZAAP&payment_mode=OK&lang=fr&certificate_id=&certificate_hash="
+    );
+    const [error, json] = result;
+    if (error === true) return p.cb(error);
+    if (!json['key']) return p.cb(error, "Nom de compte ou mot de passe incorrect");
+    if (!json.login) json.login = login;
+    const shield = json['data']['security_detail'] === 'CERTIFICATE_MISSING';
+    json.flashKey = flashKey();
+    if (shield) {
+        await request({
+            agent,
+            localAddress,
+            path: "/json/Ankama/v5/Shield/SecurityCode",
+            method: 'GET',
+            headers: {APIKEY: json['key']}
+        });
+        addedAccounts[json.accountId] = json;
+    } else {
+        accounts[login] = json;
+        wss.broadcast({resource: "accounts", key: login, value: accounts[login]});
+    }
+    p.cb(false, {shield})
+};
+
+router['post-2fa'] = async (p) => {
+    const {login} = p.body;
+    const {proxy, localAddress} = addedAccounts[login];
+    const agent = proxy ? new SocksProxyAgent(proxy) : null;
+    addedAccounts[login]['hm1'] = makeid(32);
+    addedAccounts[login]['hm2'] = addedAccounts[login]['hm1'].split("").reverse().join("");
+    const result = await request(
+        {
+            agent,
+            localAddress,
+            path: "/json/Ankama/v5/Shield/ValidateCode" + stringify({
+                game_id: "102",
+                code: "",
+                hm1: addedAccounts[login]['hm1'],
+                hm2: addedAccounts[login]['hm2'],
+                name: "launcher-" + login.replace('+', '').replace('@', '').replace('.', ''),
+            }),
+            method: 'GET',
+            headers: {APIKEY: addedAccounts[login]['key']}
+        }
+    );
+    const [error, json] = result;
+    if (error === true || !json['encodedCertificate']) return p.cb(error, 'Une erreur est survenue');
+    addedAccounts[login]['certificate'] = json;
+    addedAccounts[login]['added'] = true;
+    accounts[login] = addedAccounts[login];
+    u.saveAccount(login);
+    p.cb(false)
+};
+

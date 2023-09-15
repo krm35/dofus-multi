@@ -5,7 +5,6 @@ import {Position} from "@blueprintjs/core/lib/esnext/common/position";
 import {PopoverInteractionKind} from "@blueprintjs/core/lib/esm/components/popover/popover";
 import Account from "./Account";
 import {initWS} from "./utilities";
-import Toaster from "./Toaster";
 
 export default function Dofus(props) {
 
@@ -212,9 +211,7 @@ export default function Dofus(props) {
     return (
         <div style={{paddingTop: "10px"}}>
             <div style={{display: "flex", justifyContent: "center"}}>
-                <Button text={"Ajouter un compte"} icon={"add"} onClick={() => {
-                    Toaster.show({message: "Bientôt disponible", intent: "danger"});
-                }}/>
+                <Button text={"Ajouter un compte"} icon={"add"} onClick={() => setAccount({})}/>
                 <InputGroup
                     style={{width: "800px"}}
                     placeholder={"Recherche"}
