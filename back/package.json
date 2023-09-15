@@ -14,7 +14,6 @@
   },
   "dependencies": {
     "frida": "^15.1.25",
-    "http-proxy-to-socks": "^1.1.2",
     "node-machine-id": "^1.1.12",
     "pkg": "^5.8.1",
     "socks": "2.7.1",
