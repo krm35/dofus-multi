@@ -38,7 +38,7 @@ function checkError(result) {
 }
 
 async function SignOnWithApiKey(key, localAddress, agent) {
-    return await request(
+    return request(
         {
             agent,
             localAddress,
@@ -50,7 +50,7 @@ async function SignOnWithApiKey(key, localAddress, agent) {
 }
 
 async function ListWithApiKey(key, localAddress, agent) {
-    return await request(
+    return request(
         {
             agent,
             localAddress,
@@ -62,7 +62,7 @@ async function ListWithApiKey(key, localAddress, agent) {
 }
 
 async function RefreshApiKey(key, token, localAddress, agent) {
-    return await request(
+    return request(
         {
             agent,
             localAddress,
@@ -74,7 +74,7 @@ async function RefreshApiKey(key, token, localAddress, agent) {
 }
 
 async function CreateToken(key, localAddress, agent) {
-    return await request(
+    return request(
         {
             agent,
             localAddress,
