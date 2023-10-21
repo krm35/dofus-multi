@@ -57,7 +57,7 @@ export default function Dofus(props) {
 
     function logAll(type) {
         const delay = 3;
-        Object.keys(filter(accounts)).map((login, i) => {
+        filter(accounts).map((login, i) => {
             const account = shouldPrint(login);
             if (account) {
                 if (type === 1 && account['retroPort']) return;
@@ -72,8 +72,6 @@ export default function Dofus(props) {
     function shouldPrint(login) {
         if (login.startsWith("uuid") && login.length === 40) return;
         const account = accounts[login];
-        if (props.retro && !account.retro) return;
-        if (!props.retro && account.retro) return;
         if (like && !localStorage[account['login'] + 'like']) return;
         return account;
     }
@@ -82,7 +80,7 @@ export default function Dofus(props) {
 
     function hasOneColumnFilter() {
         for (let key in search[1]) {
-            if (key === "column") continue;
+            if (key === "column" || key === "sort") continue;
             if (Object.keys(search[1][key]).length) {
                 return true;
             }
@@ -132,8 +130,22 @@ export default function Dofus(props) {
     }
 
     function filter(obj) {
-        return filterBySearch(filterByColumns(obj));
+        const accountsFiltered = filterBySearch(filterByColumns(obj));
+        const accountsToSort = [];
+        for (let accountId in accountsFiltered) accountsToSort.push(accounts[accountId]);
+        const {sort} = search[1];
+        return (sort ? accountsToSort.sort((a, b) => (a[sort]?.toString() ?? "").localeCompare(b[sort]?.toString() ?? "")) : accountsToSort).map(({accountId}) => "" + accountId);
     }
+
+    const sort = (prop) =>
+        <Icon
+            icon={search[1].sort === prop ? "caret-down" : "double-caret-vertical"}
+            onClick={() => {
+                if (search[1].sort === prop) delete search[1].sort;
+                else search[1].sort = prop;
+                setSearch([...search]);
+            }}
+        />;
 
     const columns = {
         "Like": (key) => <th key={key} width="1%" onClick={() => {
@@ -141,11 +153,10 @@ export default function Dofus(props) {
             else localStorage['like'] = true;
             setLike(!like);
         }} className="pointer" style={{position: "relative", fontSize: "10px"}}>
-            {/*<i style={{marginLeft: "2px"}} className={"fa fa-star " + (like ? "star-checked" : "")}/>*/}
             <Icon style={{position: "absolute", bottom: "40%"}} icon={like ? "star" : "star-empty"}/></th>
         ,
         "Nom de compte": (key) => <th style={{position: "relative"}} key={key} width="10%">
-            <label style={{position: "absolute", bottom: "40%"}}>Nom de compte</label>
+            <label style={{position: "absolute", bottom: "40%"}}>{sort('login')} Nom de compte</label>
         </th>
         ,
         "Alias": (key) => <th style={{position: "relative"}} key={key} width="10%">
@@ -168,7 +179,7 @@ export default function Dofus(props) {
                 </Popover>
             </div>
 
-            <label style={{position: "absolute", bottom: "40%", left: "35px"}}>Alias</label>
+            <label style={{position: "absolute", bottom: "40%", left: "35px"}}>{sort('alias')} Alias</label>
         </th>
         ,
         "IP": (key) => <th style={{position: "relative"}} key={key} width="10%">
@@ -176,11 +187,11 @@ export default function Dofus(props) {
         </th>
         ,
         "API Key": (key) => <th style={{position: "relative"}} key={key} width="10%">
-            <label style={{position: "absolute", bottom: "40%"}}>API Key</label>
+            <label style={{position: "absolute", bottom: "40%"}}>{sort('key')} API Key</label>
         </th>
         ,
         "Account ID": (key) => <th style={{position: "relative"}} key={key} width="10%">
-            <label style={{position: "absolute", bottom: "40%"}}>Account ID</label>
+            <label style={{position: "absolute", bottom: "40%"}}>{sort('accountId')} Account ID</label>
         </th>
     };
 
@@ -273,7 +284,7 @@ export default function Dofus(props) {
                 </tr>
                 </thead>
                 <tbody>
-                {Object.keys(filter(accounts)).map((login, i) => {
+                {filter(accounts).map((login, i) => {
                     const account = shouldPrint(login);
                     if (!account) return;
                     const onClick = () => setAccount(account);
