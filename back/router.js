@@ -66,8 +66,9 @@ router['post-account'] = async (p) => {
 };
 
 router['get-connect'] = async (p) => {
-    const {account, delay, retro} = p.body;
-    if (retro && process.platform !== "win32") return p.cb(true, "Retro multi doesn't work yet on linux / mac :(");
+    const {account, delay, type} = p.body;
+    if (type === 1 && process.platform !== "win32") return p.cb(true, "Retro multi doesn't work yet on linux / mac :(");
+    if (type === 3 && process.platform !== "win32") return p.cb(true, "Wakfu multi will soon work on linux / mac :)");
     if (delay) await u.wait(delay * 1000);
     const uuid = uuidv4();
     accounts[account].uuid = uuid;
@@ -76,8 +77,8 @@ router['get-connect'] = async (p) => {
         if (!res) {
             c.port++;
             const port = 8101 + c.port;
-            await dofus.start(accounts[account], port, retro);
-            accounts[account][retro ? 'retroPort' : 'd2Port'] = port;
+            await dofus.start(accounts[account], port, type);
+            accounts[account][(type === 1 ? 'retro' : type === 2 ? 'd2' : 'wakfu') + 'Port'] = port;
             wss.broadcast({resource: "accounts", key: account, value: accounts[account]});
         }
         p.cb(res !== undefined, res ? "Une erreur est survenue" : "");

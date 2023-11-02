@@ -10,13 +10,16 @@ const net = require('net'),
     serverRetro = new net.Server().listen(26617);
 
 server.on('connection', function (socket) {
+    let wakfu;
     socket.on('data', async function (data) {
         try {
             const str = data.toString();
-            if (str.includes("connect") && str.includes("dofus")) {
+            if (str.includes("connect") && (str.includes("dofus") || str.includes("wakfu"))) {
+                wakfu = str.includes("wakfu");
                 const uuid = str.substring(str.lastIndexOf("$"));
                 const token = Buffer.from(uuid, 'utf8').toString('hex');
-                socket.write(Buffer.from("8001000200000007636f6e6e656374000000000b0000000000" + token, "hex"));
+                if (wakfu) socket.write(Buffer.from("8001000200000007636f6e6e656374000000010b0000000000" + token, "hex"));
+                else socket.write(Buffer.from("8001000200000007636f6e6e656374000000000b0000000000" + token, "hex"));
                 socket['accountId'] = accounts["uuid" + uuid.substring(1, uuid.length - 1)];
             } else if (str.includes("settings_get")) {
                 if (str.includes("autoConnectType")) {
@@ -63,7 +66,7 @@ server.on('connection', function (socket) {
                 let buf = Buffer.from("800100020000000c75736572496e666f5f676574000000000b00000000" + decimalToHex(json.length) + Buffer.from(json, 'utf8').toString('hex') + "00", "hex");
                 socket.write(buf)
             } else if (str.includes("auth_getGameToken")) {
-                await getGameToken(accounts[socket['accountId']], socket, 1);
+                await getGameToken(accounts[socket['accountId']], socket, wakfu ? 3 : 1);
             } else if (str.includes("zaapMustUpdate_get")) {
                 socket.write(Buffer.from("80010002000000127a6161704d7573745570646174655f676574000000000200000000", "hex"))
             }
@@ -72,7 +75,7 @@ server.on('connection', function (socket) {
         }
     });
 
-    deletePort(socket, "d2Port");
+    deletePort(socket, (wakfu ? "wakfu" : "d2") + "Port");
 });
 
 server.on('error', function (err) {
@@ -163,6 +166,8 @@ async function getGameToken(account, socket, game) {
         let buf;
         if (game === 1) {
             buf = Buffer.from("8001000200000011617574685f67657447616d65546f6b656e000000000b000000000024" + Buffer.from(json[1]['token'], 'utf8').toString("hex") + "00", "hex");
+        } else if (game === 3) {
+            buf = Buffer.from("8001000200000011617574685f67657447616d65546f6b656e000000020b000000000024" + Buffer.from(json[1]['token'], 'utf8').toString("hex") + "00", "hex");
         } else if (game === 101) {
             buf = "auth_getGameToken " + json[1]['token'] + "\x00";
         }

@@ -42,27 +42,28 @@ export default function Dofus(props) {
         localStorage['mySearch'] = JSON.stringify(search);
     }, [search]);
 
-    function dofusLogin(login, retro, delay) {
+    function dofusLogin(login, type, delay) {
         const id = Date.now() + login;
-        const button = document.getElementById("button_login_" + login + (retro ? "retro" : ""));
+        const button = document.getElementById("button_login_" + login + type);
         if (!button || button.style.opacity === "0.5") return;
         button.style.opacity = "0.5";
         window.ws.send(JSON.stringify({
             id,
-            body: {account: login, delay, retro},
+            body: {account: login, delay, type},
             action: "get",
             resource: "connect"
         }));
     }
 
-    function logAll(retro) {
+    function logAll(type) {
         const delay = 3;
         Object.keys(filter(accounts)).map((login, i) => {
             const account = shouldPrint(login);
             if (account) {
-                if (retro && account['retroPort']) return;
-                if (!retro && account['d2Port']) return;
-                dofusLogin(login, retro, delay * i);
+                if (type === 1 && account['retroPort']) return;
+                if (type === 2 && account['d2Port']) return;
+                if (type === 3 && account['wakfuPort']) return;
+                dofusLogin(login, type, delay * i);
                 i++;
             }
         });
@@ -238,10 +239,13 @@ export default function Dofus(props) {
                     })}
                     <th width="10%">
                         <div style={{display: "flex"}}>
-                            <img onClick={() => logAll(true)} src={"/img/retroicon.png"} style={{height: "40px"}}
+                            <img onClick={() => logAll(1)} src={"/img/retroicon.png"} style={{height: "40px"}}
                                  alt={""}/>
                             &nbsp;
-                            <img onClick={() => logAll()} src={"/img/dofusicon.png"} style={{height: "40px"}}
+                            <img onClick={() => logAll(2)} src={"/img/dofusicon.png"} style={{height: "40px"}}
+                                 alt={""}/>
+                            &nbsp;
+                            <img onClick={() => logAll(3)} src={"/img/wakfuicon.png"} style={{height: "40px"}}
                                  alt={""}/>
                             &nbsp;
                         </div>
@@ -281,19 +285,27 @@ export default function Dofus(props) {
                             <td>
                                 &nbsp;
                                 <img
-                                    id={"button_login_" + login + "retro"}
+                                    id={"button_login_" + login + "1"}
                                     src={"/img/retroicon.png"}
                                     style={{height: "30px", opacity: account['retroPort'] ? "0.5" : "1"}}
                                     alt={""}
-                                    onClick={() => dofusLogin(login, true)}
+                                    onClick={() => dofusLogin(login, 1)}
                                 />
                                 &nbsp;&nbsp;&nbsp;&nbsp;
                                 <img
-                                    id={"button_login_" + login}
+                                    id={"button_login_" + login + "2"}
                                     src={"/img/dofusicon.png"}
                                     style={{height: "30px", opacity: account['d2Port'] ? "0.5" : "1"}}
                                     alt={""}
-                                    onClick={() => dofusLogin(login, false)}
+                                    onClick={() => dofusLogin(login, 2)}
+                                />
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                <img
+                                    id={"button_login_" + login + "3"}
+                                    src={"/img/wakfuicon.png"}
+                                    style={{height: "30px", opacity: account['wakfuPort'] ? "0.5" : "1"}}
+                                    alt={""}
+                                    onClick={() => dofusLogin(login, 3)}
                                 />
                             </td>
                             <td/>
