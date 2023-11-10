@@ -15,5 +15,5 @@ module.exports.logs = function (...log) {
 };
 
 module.exports.saveAccount = function (account) {
-    fs.writeFileSync("./data/" + account, JSON.stringify(accounts[account]));
+    fs.writeFileSync("./data/" + account, JSON.stringify(accounts[account], null, 4));
 };
