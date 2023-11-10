@@ -68,7 +68,8 @@ router['post-account'] = async (p) => {
 router['get-connect'] = async (p) => {
     const {account, delay, type} = p.body;
     if (type === 1 && process.platform !== "win32") return p.cb(true, "Retro multi doesn't work yet on linux / mac :(");
-    if (type === 3) return p.cb(true, "Wakfu multi will soon work :)");
+    if (type === 3 && process.platform !== "win32") return p.cb(true, "Wakfu multi will soon work on linux / mac :)");
+    if (type === 3 && !accounts[account].wakfuInterface) return p.cb(true, "Need to choose a network interface");
     if (delay) await u.wait(delay * 1000);
     const uuid = uuidv4();
     accounts[account].uuid = uuid;

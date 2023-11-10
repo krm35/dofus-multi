@@ -153,7 +153,7 @@ async function connectClient(socket, host, port, account) {
     await commons.connectClient(socket, host, port, account);
 
     socket['clientSocket'].on('data', function (data) {
-        u.logs("from", host + ':' + port, data.toString());
+        // u.logs("from", host + ':' + port, data.toString());
         socket.write(data);
     });
 
@@ -190,11 +190,7 @@ function getSource(port, type, account) {
                     if (i < 3) this.addr += '.';
                 }
                 if(isRetro && this.port === 80) return;
-                if(isWakfu){
-                    if(this.port !== 26116) {
-                        if(this.port < 5000 || this.port > 10000) return;
-                    }
-                }
+                if(isWakfu && this.port > 40000) return;
                 var newport = ${port};
                 sockaddr_p.add(2).writeByteArray([Math.floor(newport / 256), newport % 256]);
                 sockaddr_p.add(4).writeByteArray([127, 0, 0, 1]);
@@ -206,8 +202,25 @@ function getSource(port, type, account) {
                 this.shouldSend && socket_send(this.sockfd.toInt32(), buf_send, connect_request.length, 0);
             }
         });
+        
+        if(isWakfu){
+            const getMacAddrPtr = Module.getExportByName(null, 'Java_java_net_NetworkInterface_getMacAddr0');
+            const array =  ['pointer', 'pointer', 'pointer', 'pointer', 'pointer'];
+            const getMacAddr = new NativeFunction(getMacAddrPtr, 'pointer', array);
+            Interceptor.replace(getMacAddrPtr, new NativeCallback((_env, _class, _addrArray, _name, _index) => {
+              let result, good = 0;
+              for(let i = 0; i < 100; i++){
+                 result = getMacAddr(_env, _class, _addrArray, _name, ptr("0x"+i));
+                 if(result != 0x0){
+                    good++;
+                    if(good == ${account['wakfuInterface']}) break;
+                 }
+              }
+              return result;
+            }, 'pointer', array));
+        }
 
-        if(isRetro){
+        if(isRetro || isWakfu){
         
             let pointer = {};
         
@@ -227,7 +240,7 @@ function getSource(port, type, account) {
             });
 
             Interceptor.attach(Module.getExportByName(null, 'GetHostNameW'), {
-                onEnter: (args) => pointer = ptr(args[0]),
+                onEnter: (args) => pointer[args[0]] = ptr(args[0]),
                 onLeave: () => changeValue("writeUtf16String")
             });
             

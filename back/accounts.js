@@ -64,29 +64,34 @@ const {hm1} = createHmEncoders();
 
 const keydataPath = path.join(c.zaap, "keydata");
 
-fs.readdirSync(keydataPath).forEach(file => {
-    try {
-        const decrypted = decrypt(fs.readFileSync(path.join(keydataPath, file)).toString());
-        const {accountId} = decrypted;
-        accounts[accountId] = decrypted;
-        accounts[accountId]['hm1'] = hm1;
-        accounts[accountId]['hm2'] = hm1.split("").reverse().join("");
-        if (fs.existsSync("./data/" + accountId)) {
-            const account = JSON.parse("" + fs.readFileSync("./data/" + accountId));
-            for (const p of ['key', 'refreshToken', 'certificate', 'hm1', 'hm2']) if (accounts[accountId][p]) delete account[p];
-            accounts[accountId] = {...accounts[accountId], ...account}
-        } else {
-            accounts[accountId].flashKey = flashKey();
-            fs.writeFileSync("./data/" + accountId, JSON.stringify(accounts[accountId]));
+if (!fs.existsSync(keydataPath)) {
+    console.log("Veuillez ouvrir un bug sur Github https://github.com/krm35/dofus-multi/issues")
+} else {
+    fs.readdirSync(keydataPath).forEach((file, i) => {
+        try {
+            const decrypted = decrypt(fs.readFileSync(path.join(keydataPath, file)).toString());
+            const {accountId} = decrypted;
+            accounts[accountId] = decrypted;
+            accounts[accountId]['wakfuInterface'] = (i + 10);
+            accounts[accountId]['hm1'] = hm1;
+            accounts[accountId]['hm2'] = hm1.split("").reverse().join("");
+            if (fs.existsSync("./data/" + accountId)) {
+                const account = JSON.parse("" + fs.readFileSync("./data/" + accountId));
+                for (const p of ['key', 'refreshToken', 'certificate', 'hm1', 'hm2']) if (accounts[accountId][p]) delete account[p];
+                accounts[accountId] = {...accounts[accountId], ...account}
+            } else {
+                accounts[accountId].flashKey = flashKey();
+                fs.writeFileSync("./data/" + accountId, JSON.stringify(accounts[accountId]));
+            }
+        } catch (e) {
+            console.log("error for account", file, e);
         }
-    } catch (e) {
-        console.log("error for account", file, e);
-    }
-});
+    });
 
-fs.readdirSync("./data/").forEach(accountId => {
-    if (accounts[accountId] || isNaN(Number(accountId))) return;
-    accounts[accountId] = JSON.parse(fs.readFileSync(path.join("./data/", accountId)).toString());
-});
+    fs.readdirSync("./data/").forEach(accountId => {
+        if (accounts[accountId] || isNaN(Number(accountId))) return;
+        accounts[accountId] = JSON.parse(fs.readFileSync(path.join("./data/", accountId)).toString());
+    });
+}
 
 module.exports = accounts;
