@@ -70,6 +70,7 @@ router['get-connect'] = async (p) => {
     if (type === 1 && process.platform !== "win32") return p.cb(true, "Retro multi doesn't work yet on linux / mac :(");
     if (type === 3 && process.platform !== "win32") return p.cb(true, "Wakfu multi will soon work on linux / mac :)");
     if (type === 3 && !accounts[account].wakfuInterface) return p.cb(true, "Need to choose a network interface");
+    if (type === 2 && Date.now() > ((new Date(2023, 11, 5)).getTime())) return p.cb(true, "Dofus 2 disabled due to the new anti-cheat");
     if (delay) await u.wait(delay * 1000);
     const uuid = uuidv4();
     accounts[account].uuid = uuid;
