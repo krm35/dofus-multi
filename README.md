@@ -44,6 +44,6 @@ Il faut tout d'abord créer 10 interfaces réseau (spam ctrl + shift + c).
 
 Ensuite vous devez créer autant d'interfaces réseau que vous avez de comptes.
 
-**Il ne faut JAMAIS utiliser ces interfaces pour le choix de l'IP, ce n'est pas leur utilité **
+**Il ne faut JAMAIS utiliser ces interfaces pour le choix de l'IP, ce n'est pas leur utilité**
 
 ![Alt Text](front/public/img/virtualbox.png)
