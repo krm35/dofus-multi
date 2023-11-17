@@ -2,8 +2,6 @@
 
 # **/!\\ RISQUE DE BANNISSEMENT /!\\**
 
-# **/!\\ NE PLUS UTILISER A PARTIR DE DECEMBRE 2023 POUR DOFUS 2 LE NOUVEL ANTI-CHEAT DETECTERA LES HOOK ET BANNIRA VOS COMPTES /!\\**
-
 - [Pour Wakfu](#Wakfu)
 
 **Pour les utilisateurs de windows, vous pouvez télécharger la dernière version avec ce lien :**
