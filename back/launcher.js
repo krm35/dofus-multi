@@ -21,6 +21,7 @@ server.on('connection', function (socket) {
                 if (wakfu) socket.write(Buffer.from("8001000200000007636f6e6e656374000000010b0000000000" + token, "hex"));
                 else socket.write(Buffer.from("8001000200000007636f6e6e656374000000000b0000000000" + token, "hex"));
                 socket['accountId'] = accounts["uuid" + uuid.substring(1, uuid.length - 1)];
+                deletePort(socket, (wakfu ? "wakfu" : "d2") + "Port");
             } else if (str.includes("settings_get")) {
                 if (str.includes("autoConnectType")) {
                     socket.write(Buffer.from("800100020000000c73657474696e67735f676574000000000b00000000000322322200", "hex"));
@@ -75,7 +76,6 @@ server.on('connection', function (socket) {
         }
     });
 
-    deletePort(socket, (wakfu ? "wakfu" : "d2") + "Port");
 });
 
 server.on('error', function (err) {
