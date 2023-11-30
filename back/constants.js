@@ -14,6 +14,7 @@ let language;
 try {
     language = JSON.parse("" + fs.readFileSync(path.join(zaap, "repositories", "production", "dofus", "main", "settings.json")))['language']['value'];
 } catch (e) {
+    console.log("there is a problem to get the game language, so it defaults to fr, can lead to a bug");
     language = 'fr'
 }
 
