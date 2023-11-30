@@ -19,5 +19,6 @@ module.exports.saveAccount = function (account) {
     delete toSave['wakfuPort'];
     delete toSave['d2Port'];
     delete toSave['retroPort'];
+    delete toSave['certificate'];
     fs.writeFileSync("./data/" + account, JSON.stringify(toSave, null, 4));
 };
