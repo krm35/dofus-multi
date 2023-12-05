@@ -68,6 +68,17 @@ module.exports.start = async function (account, port, type) {
         } catch (e) {
             dofusPath = path.join(process.env.LOCALAPPDATA, 'Ankama', (type === 1 ? "Retro" : type === 2 ? "Dofus" : "Wakfu"));
         }
+
+        const files = fs.readdirSync(dofusPath);
+        files.forEach(f => {
+            if ([
+                "start_protected_game.exe",
+                "EOSSDK-Win64-Shipping.dll",
+                "EasyAntiCheat"
+            ].includes(f)) {
+                throw "EAC";
+            }
+        });
         //C:\Windows\system32\cmd.exe /c zaap-start.bat fr 2G 2G "-XX:+UnlockExperimentalVMOptions -XX:+UseG1GC -XX:G1NewSizePercent=20 -XX:G1ReservePercent=20 -Djava.net.preferIPv4Stack=true -Dsun.awt.noerasebackground=true -Dsun.java2d.noddraw=true -Djogl.disable.openglarbcontext" default natives/ NUL false
         const program = [type === 3 ? path.join('C:', 'Windows', 'system32', 'cmd.exe') : path.join(dofusPath, (type === 1 ? "Dofus Retro" : "Dofus") + ".exe")];
         if (type === 2) {
