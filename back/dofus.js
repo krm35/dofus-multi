@@ -8,130 +8,126 @@ const net = require('net'),
     c = require("./constants");
 
 module.exports.start = async function (account, port, type) {
-    try {
-        const server = new net.Server().listen(port);
+    const server = new net.Server().listen(port);
 
-        server.on('connection', function (socket) {
+    server.on('connection', function (socket) {
 
-            let host, port;
-            if (!socket['myQueue']) socket['myQueue'] = [];
+        let host, port;
+        if (!socket['myQueue']) socket['myQueue'] = [];
 
-            socket.on('data', async function (data) {
-                try {
-                    const s = data.toString();
-                    if (s.startsWith('CONNECT')) {
-                        const split = s.split(' ')[1].split(':');
-                        host = split[0];
-                        if (host === "0.0.0.0") host = "127.0.0.1";
-                        port = split[1] * 1;
-                        if (port === 26117) port = 26617;
-                        if (port === 26116) port = 26616;
-                        await connectClient(socket, host, port, account);
-                    } else {
-                        if (!socket.ClientKeyMessage && type === 2 && port === 5555 && s.endsWith("#01")) {
-                            let uid = "";
-                            for (let i = s.length - 4; i > 0 && uid.length < 18; i--) uid += s.charAt(i);
-                            uid = uid.split("").reverse().join("");
-                            if (c.uid.includes(uid)) {
-                                socket.ClientKeyMessage = true;
-                                // noinspection JSCheckFunctionSignatures
-                                data = Buffer.from(data.toString('hex').replace(
-                                    Buffer.from(uid).toString('hex'),
-                                    Buffer.from(account.flashKey).toString('hex')
-                                ), 'hex');
-                            }
+        socket.on('data', async function (data) {
+            try {
+                const s = data.toString();
+                if (s.startsWith('CONNECT')) {
+                    const split = s.split(' ')[1].split(':');
+                    host = split[0];
+                    if (host === "0.0.0.0") host = "127.0.0.1";
+                    port = split[1] * 1;
+                    if (port === 26117) port = 26617;
+                    if (port === 26116) port = 26616;
+                    await connectClient(socket, host, port, account);
+                } else {
+                    if (!socket.ClientKeyMessage && type === 2 && port === 5555 && s.endsWith("#01")) {
+                        let uid = "";
+                        for (let i = s.length - 4; i > 0 && uid.length < 18; i--) uid += s.charAt(i);
+                        uid = uid.split("").reverse().join("");
+                        if (c.uid.includes(uid)) {
+                            socket.ClientKeyMessage = true;
+                            // noinspection JSCheckFunctionSignatures
+                            data = Buffer.from(data.toString('hex').replace(
+                                Buffer.from(uid).toString('hex'),
+                                Buffer.from(account.flashKey).toString('hex')
+                            ), 'hex');
                         }
-                        if (socket['clientSocket']?.['connected']) socket['clientSocket'].write(data);
-                        else socket['myQueue'].push(data);
                     }
-                } catch (e) {
-                    u.logs(e);
+                    if (socket['clientSocket']?.['connected']) socket['clientSocket'].write(data);
+                    else socket['myQueue'].push(data);
                 }
-            });
-
-            socket.on('end', function () {
-                try {
-                    socket['clientSocket'].destroy();
-                } catch (e) {
-
-                }
-            });
-
-            socket.on('error', function (err) {
-
-            });
-        });
-        let dofusPath;
-        try {
-            dofusPath = JSON.parse("" + fs.readFileSync(path.join(c.zaap, "repositories", "production", (type === 1 ? "retro" : type === 2 ? "dofus" : "wakfu"), "main", "release.json")))['location'];
-            if (typeof dofusPath !== "string" || !fs.existsSync(dofusPath)) throw new Error("not a good path");
-        } catch (e) {
-            dofusPath = path.join(process.env.LOCALAPPDATA, 'Ankama', (type === 1 ? "Retro" : type === 2 ? "Dofus" : "Wakfu"));
-        }
-
-        const files = fs.readdirSync(dofusPath);
-        files.forEach(f => {
-            if ([
-                "start_protected_game.exe",
-                "EOSSDK-Win64-Shipping.dll",
-                "EasyAntiCheat"
-            ].includes(f)) {
-                throw "EAC";
+            } catch (e) {
+                u.logs(e);
             }
         });
-        //C:\Windows\system32\cmd.exe /c zaap-start.bat fr 2G 2G "-XX:+UnlockExperimentalVMOptions -XX:+UseG1GC -XX:G1NewSizePercent=20 -XX:G1ReservePercent=20 -Djava.net.preferIPv4Stack=true -Dsun.awt.noerasebackground=true -Dsun.java2d.noddraw=true -Djogl.disable.openglarbcontext" default natives/ NUL false
-        const program = [type === 3 ? path.join('C:', 'Windows', 'system32', 'cmd.exe') : path.join(dofusPath, (type === 1 ? "Dofus Retro" : "Dofus") + ".exe")];
-        if (type === 2) {
-            program.push("--port=26116");
-            program.push("--gameName=dofus");
-            program.push("--gameRelease=main");
-            program.push("--instanceId=1");
-            program.push("--hash=" + account.uuid);
-            program.push("--canLogin=true");
-        } else if (type === 3) {
-            program.length = 0;
-            program.push("/c");
-            program.push(path.join(dofusPath, "zaap-start.bat"));
-            program.push("fr");
-            program.push("2G");
-            program.push("4G");
-            program.push("-XX:+UnlockExperimentalVMOptions -XX:+UseG1GC -XX:G1NewSizePercent=20 -XX:G1ReservePercent=20 -Djava.net.preferIPv4Stack=true -Dsun.awt.noerasebackground=true -Dsun.java2d.noddraw=true -Djogl.disable.openglarbcontext");
-            program.push("default");
-            program.push("natives/");
-            program.push("NUL");
-            program.push("false");
-            const pp = spawn(path.join('C:', 'Windows', 'system32', 'cmd.exe'), program, {
-                cwd: dofusPath,
-                env: {
-                    ZAAP_CAN_AUTH: true,
-                    ZAAP_GAME: "wakfu",
-                    ZAAP_HASH: account.uuid,
-                    ZAAP_LOGS_PATH: path.join(c.zaap, "gamesLogs", "wakfu"),
-                    ZAAP_INSTANCE_ID: "1",
-                    ZAAP_RELEASE: "main"
-                }
-            });
-            let pid;
-            while (isNaN(Number(pid))) {
-                pid = await hookWakfu(pp.pid);
-                await u.wait(1000);
+
+        socket.on('end', function () {
+            try {
+                socket['clientSocket'].destroy();
+            } catch (e) {
+
             }
-            return await loadScript(pid, port, type, account);
+        });
+
+        socket.on('error', function (err) {
+
+        });
+    });
+    let dofusPath;
+    try {
+        dofusPath = JSON.parse("" + fs.readFileSync(path.join(c.zaap, "repositories", "production", (type === 1 ? "retro" : type === 2 ? "dofus" : "wakfu"), "main", "release.json")))['location'];
+        if (typeof dofusPath !== "string" || !fs.existsSync(dofusPath)) throw new Error("not a good path");
+    } catch (e) {
+        dofusPath = path.join(process.env.LOCALAPPDATA, 'Ankama', (type === 1 ? "Retro" : type === 2 ? "Dofus" : "Wakfu"));
+    }
+
+    const files = fs.readdirSync(dofusPath);
+    files.forEach(f => {
+        if ([
+            "start_protected_game.exe",
+            "EOSSDK-Win64-Shipping.dll",
+            "EasyAntiCheat"
+        ].includes(f)) {
+            throw "EAC";
         }
-        const pid = await frida.spawn(program, {
-            env: type === 1 ? {
+    });
+    //C:\Windows\system32\cmd.exe /c zaap-start.bat fr 2G 2G "-XX:+UnlockExperimentalVMOptions -XX:+UseG1GC -XX:G1NewSizePercent=20 -XX:G1ReservePercent=20 -Djava.net.preferIPv4Stack=true -Dsun.awt.noerasebackground=true -Dsun.java2d.noddraw=true -Djogl.disable.openglarbcontext" default natives/ NUL false
+    const program = [type === 3 ? path.join('C:', 'Windows', 'system32', 'cmd.exe') : path.join(dofusPath, (type === 1 ? "Dofus Retro" : "Dofus") + ".exe")];
+    if (type === 2) {
+        program.push("--port=26116");
+        program.push("--gameName=dofus");
+        program.push("--gameRelease=main");
+        program.push("--instanceId=1");
+        program.push("--hash=" + account.uuid);
+        program.push("--canLogin=true");
+    } else if (type === 3) {
+        program.length = 0;
+        program.push("/c");
+        program.push(path.join(dofusPath, "zaap-start.bat"));
+        program.push("fr");
+        program.push("2G");
+        program.push("4G");
+        program.push("-XX:+UnlockExperimentalVMOptions -XX:+UseG1GC -XX:G1NewSizePercent=20 -XX:G1ReservePercent=20 -Djava.net.preferIPv4Stack=true -Dsun.awt.noerasebackground=true -Dsun.java2d.noddraw=true -Djogl.disable.openglarbcontext");
+        program.push("default");
+        program.push("natives/");
+        program.push("NUL");
+        program.push("false");
+        const pp = spawn(path.join('C:', 'Windows', 'system32', 'cmd.exe'), program, {
+            cwd: dofusPath,
+            env: {
                 ZAAP_CAN_AUTH: true,
-                ZAAP_GAME: "retro",
+                ZAAP_GAME: "wakfu",
                 ZAAP_HASH: account.uuid,
-                ZAAP_LOGS_PATH: path.join(c.zaap, "retro"),
+                ZAAP_LOGS_PATH: path.join(c.zaap, "gamesLogs", "wakfu"),
                 ZAAP_INSTANCE_ID: "1",
                 ZAAP_RELEASE: "main"
-            } : {}
+            }
         });
-        await loadScript(pid, port, type, account, true);
-    } catch (e) {
-        console.log(e);
+        let pid;
+        while (isNaN(Number(pid))) {
+            pid = await hookWakfu(pp.pid);
+            await u.wait(1000);
+        }
+        return await loadScript(pid, port, type, account);
     }
+    const pid = await frida.spawn(program, {
+        env: type === 1 ? {
+            ZAAP_CAN_AUTH: true,
+            ZAAP_GAME: "retro",
+            ZAAP_HASH: account.uuid,
+            ZAAP_LOGS_PATH: path.join(c.zaap, "retro"),
+            ZAAP_INSTANCE_ID: "1",
+            ZAAP_RELEASE: "main"
+        } : {}
+    });
+    await loadScript(pid, port, type, account, true);
 };
 
 function hookWakfu(pid) {
