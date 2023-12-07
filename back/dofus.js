@@ -94,7 +94,7 @@ module.exports.start = async function (account, port, type) {
             program.push(path.join(dofusPath, "zaap-start.bat"));
             program.push("fr");
             program.push("2G");
-            program.push("2G");
+            program.push("4G");
             program.push("-XX:+UnlockExperimentalVMOptions -XX:+UseG1GC -XX:G1NewSizePercent=20 -XX:G1ReservePercent=20 -Djava.net.preferIPv4Stack=true -Dsun.awt.noerasebackground=true -Dsun.java2d.noddraw=true -Djogl.disable.openglarbcontext");
             program.push("default");
             program.push("natives/");
