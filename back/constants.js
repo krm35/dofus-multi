@@ -20,7 +20,7 @@ try {
 
 module.exports = {
     port: 0,
-    version: "3.12.1",
+    version: "3.12.2",
     isTest: process.argv.includes("dev=true"),
     logs: this.isTest || !fs.existsSync("./logs"),
     uid: fs.existsSync(uidPath) ? fs.readFileSync(uidPath).toString() : null,
