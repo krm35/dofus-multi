@@ -7,7 +7,7 @@ import Account from "./Account";
 import {initWS} from "./utilities";
 import Toaster from "./Toaster";
 
-export default function Dofus(props) {
+export default function Dofus() {
 
     const [accounts, setAccounts] = useState({});
     const [account, setAccount] = useState(null);
