@@ -12,7 +12,7 @@ const uidPath = path.join(zaap.replace("zaap", "Dofus"), "uid.dat");
 let language;
 
 try {
-    language = JSON.parse("" + fs.readFileSync(path.join(zaap, "repositories", "production", "dofus", "main", "settings.json")))['language']['valu'];
+    language = JSON.parse("" + fs.readFileSync(path.join(zaap, "repositories", "production", "dofus", "main", "settings.json")))['language']['value'];
 } catch (e) {
     language = 'fr'
 }
