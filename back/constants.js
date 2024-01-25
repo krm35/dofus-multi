@@ -12,11 +12,23 @@ const uidPath = path.join(zaap.replace("zaap", "Dofus"), "uid.dat");
 let language;
 
 try {
-    language = JSON.parse("" + fs.readFileSync(path.join(zaap, "repositories", "production", "dofus", "main", "settings.json")))['language']['value'];
+    language = JSON.parse("" + fs.readFileSync(path.join(zaap, "repositories", "production", "dofus", "main", "settings.json")))['language']['valu'];
 } catch (e) {
-    console.log("there is a problem to get the game language, so it defaults to fr, can lead to a bug");
     language = 'fr'
 }
+
+const languages = ['en', 'fr', 'es', 'it', 'de', 'pt'];
+
+const langError = () => {
+    console.log("there is a problem to get the game language, in the data folder you must create a file lang.txt");
+    console.log("in this file please enter the language of the game, it can be: " + languages.join(" or "));
+};
+
+if (fs.existsSync("./data/lang.txt")) {
+    language = fs.readFileSync("./data/lang.txt").toString().split('\n')[0].split(' ')[0];
+}
+
+if (!languages.includes(language)) langError();
 
 module.exports = {
     port: 0,
