@@ -26,8 +26,6 @@ export function initWS() {
                 } else if (json.id) {
                     window.map[json.id]?.(json.data)
                 }
-            } else {
-                window.map["version"] = json["version"];
             }
         } catch (e) {
             console.log(e);
