@@ -5,7 +5,6 @@ export function initWS() {
     const ws = new WebSocket('ws://localhost:8080/');
 
     ws.onopen = function () {
-        console.log("open");
     };
 
     ws.onmessage = function (e) {
@@ -27,6 +26,8 @@ export function initWS() {
                 } else if (json.id) {
                     window.map[json.id]?.(json.data)
                 }
+            } else {
+                window.map["version"] = json["version"];
             }
         } catch (e) {
             console.log(e);

@@ -6,8 +6,11 @@ const http = require('http'),
     fs = require('fs'),
     path = require('path'),
     {execSync} = require('child_process'),
+    {v4: uuidv4} = require('uuid'),
     router = require('./router'),
     accounts = require('./accounts'),
+    request = require('./request'),
+    constants = require('./constants'),
     {wss} = require('./wss');
 
 require('./launcher');
@@ -34,7 +37,31 @@ server.on('upgrade', function upgrade(request, socket, head) {
     });
 });
 
+let newVersion = null;
+
+(async () => {
+    const [, version] = await request(
+        {
+            path: "/installers/production/latest.yml?noCache=" + Date.now().toString(32),
+            method: 'GET',
+            headers: {
+                'accept': '*/*',
+                'accept-encoding': 'gzip, deflate, br',
+                'accept-language': 'fr',
+                'cache-control': 'no-cache',
+                'connection': 'keep-alive',
+                'sec-fetch-mode': 'no-cors',
+                'sec-fetch-site': 'none',
+                'user-agent': 'electron-builder',
+                'x-user-staging-id': uuidv4()
+            }
+        }, null, "launcher.cdn.ankama.com"
+    );
+    newVersion = version['split']('\n')[0].split(' ')[1];
+})();
+
 wss['on']('connection', function connection(ws) {
+    ws.send(JSON.stringify({id: "version", data: constants.version !== newVersion}));
     ws.on('message', async function message(message) {
         try {
             const json = JSON.parse(message);

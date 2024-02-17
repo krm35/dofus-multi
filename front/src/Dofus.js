@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Button, HTMLTable, Icon, InputGroup, Popover} from "@blueprintjs/core";
+import {Button, Callout, HTMLTable, Icon, InputGroup, Popover} from "@blueprintjs/core";
 import ColumnFilter from "./ColumnFilter";
 import {Position} from "@blueprintjs/core/lib/esnext/common/position";
 import {PopoverInteractionKind} from "@blueprintjs/core/lib/esm/components/popover/popover";
@@ -11,6 +11,7 @@ export default function Dofus() {
 
     const [accounts, setAccounts] = useState({});
     const [account, setAccount] = useState(null);
+    const [version, setVersion] = useState(null);
     const [like, setLike] = useState(localStorage['like']);
     const [liked, setLiked] = useState({});
     const [search, setSearch] = useState(
@@ -35,6 +36,7 @@ export default function Dofus() {
 
     window.accounts = accounts;
     window.setAccounts = setAccounts;
+    window.map["version"] = (a) => setVersion(a);
     useEffect(() => initWS(), []);
 
 
@@ -223,6 +225,10 @@ export default function Dofus() {
 
     return (
         <div style={{paddingTop: "10px"}}>
+            {version &&
+            <Callout style={{margin: "5px"}} intent={"primary"}>Une nouvelle version est disponible sur <a
+                target={"_blank"}
+                href={"https://github.com/krm35/dofus-multi/releases"}>https://github.com/krm35/dofus-multi/releases</a></Callout>}
             <div style={{display: "flex", justifyContent: "center"}}>
                 <Button text={"Ajouter un compte"} icon={"add"} onClick={() => {
                     Toaster.show({message: "Bientôt disponible", intent: "danger"});
