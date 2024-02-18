@@ -17,7 +17,7 @@ module.exports = function request(options, body, hostname) {
 
     if (body) {
         options.headers["content-length"] = body.length;
-        options.headers["content-type"] = "text/plain;charset=UTF-8";
+        if (!options.headers["content-type"]) options.headers["content-type"] = "text/plain;charset=UTF-8";
     }
 
     return new Promise((resolve) => {
