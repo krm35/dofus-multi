@@ -59,7 +59,8 @@ export default function Dofus() {
 
     function logAll(type) {
         const delay = 3;
-        filter(accounts).map((login, i) => {
+        let i = 0;
+        filter(accounts).map(login => {
             const account = shouldPrint(login);
             if (account) {
                 if (type === 1 && account['retroPort']) return;
@@ -74,6 +75,7 @@ export default function Dofus() {
     function shouldPrint(login) {
         if (login.startsWith("uuid") && login.length === 40) return;
         const account = accounts[login];
+        if (!account) return;
         if (like && !localStorage[account['login'] + 'like']) return;
         return account;
     }
@@ -139,15 +141,13 @@ export default function Dofus() {
         return (sort ? accountsToSort.sort((a, b) => (a[sort]?.toString() ?? "").localeCompare(b[sort]?.toString() ?? "")) : accountsToSort).map(({accountId}) => "" + accountId);
     }
 
-    const sort = (prop) =>
-        <Icon
-            icon={search[1].sort === prop ? "caret-down" : "double-caret-vertical"}
-            onClick={() => {
-                if (search[1].sort === prop) delete search[1].sort;
-                else search[1].sort = prop;
-                setSearch([...search]);
-            }}
-        />;
+    const sort = (prop) => <Icon
+        icon={search[1].sort === prop ? "caret-down" : "double-caret-vertical"}
+        onClick={() => {
+            if (search[1].sort === prop) delete search[1].sort;
+            else search[1].sort = prop;
+            setSearch([...search]);
+        }}/>;
 
     const columns = {
         "Like": (key) => <th key={key} width="1%" onClick={() => {
@@ -226,9 +226,15 @@ export default function Dofus() {
     return (
         <div style={{paddingTop: "10px"}}>
             {version &&
-            <Callout style={{margin: "5px"}} intent={"primary"}>Une nouvelle version est disponible sur <a
-                target={"_blank"}
-                href={"https://github.com/krm35/dofus-multi/releases"}>https://github.com/krm35/dofus-multi/releases</a></Callout>}
+            <>
+                <Callout
+                    intent={"primary"}>
+                    Une nouvelle version est disponible sur <a
+                    target={"_blank"}
+                    href={"https://github.com/krm35/dofus-multi/releases"}>https://github.com/krm35/dofus-multi/releases</a>
+                </Callout>
+                <br/>
+            </>}
             <div style={{display: "flex", justifyContent: "center"}}>
                 <Button text={"Ajouter un compte"} icon={"add"} onClick={() => {
                     Toaster.show({message: "Bientôt disponible", intent: "danger"});
