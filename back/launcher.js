@@ -164,6 +164,11 @@ async function getGameToken(account, socket, game) {
         headers: {APIKEY}
     }).then(function (json) {
         let buf;
+        if (!json?.[1]?.['token']) {
+            console.log("impossible de créer le token", json);
+            console.log(json);
+            return;
+        }
         if (game === 1) {
             buf = Buffer.from("8001000200000011617574685f67657447616d65546f6b656e000000000b000000000024" + Buffer.from(json[1]['token'], 'utf8').toString("hex") + "00", "hex");
         } else if (game === 3) {
