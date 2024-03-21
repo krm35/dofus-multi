@@ -1,7 +1,7 @@
 const {SocksClient} = require('socks');
 
 module.exports.connectClient = async function connectClient(socket, host, port, account) {
-    if ((host === "127.0.0.1" || host === "0.0.0.0") && (port === 26616 || port === 26617 || port === 4444)) {
+    if (host === "127.0.0.1" || host === "0.0.0.0") {
         socket['clientSocket'].connect({host, port});
     } else {
         if (account.proxy) {
