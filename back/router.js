@@ -133,7 +133,7 @@ const headers = {
 };
 
 router['put-account'] = async (p) => {
-
+    if (p.body.proxy) p.body.localAddress = null;
     const {login, password, proxy, localAddress, alias} = p.body;
     const agent = proxy ? new SocksProxyAgent(proxy) : null;
     const codeVerifier = generateCodeVerifier();
@@ -232,6 +232,7 @@ router['put-account'] = async (p) => {
 };
 
 router['post-shield'] = async (p) => {
+    if (p.body.proxy) p.body.localAddress = null;
     const {login, code, proxy, localAddress} = p.body;
     const agent = proxy ? new SocksProxyAgent(proxy) : null;
     const hm1 = makeid(32);
