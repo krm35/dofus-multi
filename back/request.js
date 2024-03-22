@@ -42,7 +42,7 @@ module.exports = function request(options, body, hostname) {
                     } catch (e) {
                         // console.log(e);
                     }
-                    resolve([false, json || buffer.join("")]);
+                    resolve([false, json || buffer.join(""), res.headers]);
                 }).on('error', () => {
                     resolve([true]);
                 })
@@ -52,9 +52,9 @@ module.exports = function request(options, body, hostname) {
                 }));
                 res.on('end', () => {
                     try {
-                        resolve([false, JSON.parse(data)]);
+                        resolve([false, JSON.parse(data), res.headers]);
                     } catch (e) {
-                        resolve([false, data.toString()]);
+                        resolve([false, data.toString(), res.headers]);
                     }
                 });
                 res.on('error', () => {

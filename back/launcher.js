@@ -165,7 +165,7 @@ async function getGameToken(account, socket, game) {
     }).then(function (json) {
         let buf;
         if (!json?.[1]?.['token']) {
-            console.log("impossible de créer le token", json);
+            console.log("impossible de créer le token");
             console.log(json);
             return;
         }

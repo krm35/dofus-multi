@@ -15,10 +15,9 @@ module.exports.logs = function (...log) {
 };
 
 module.exports.saveAccount = function (account) {
-    const toSave = accounts[account];
+    const toSave = JSON.parse(JSON.stringify(accounts[account]));
     delete toSave['wakfuPort'];
     delete toSave['d2Port'];
     delete toSave['retroPort'];
-    delete toSave['certificate'];
     fs.writeFileSync("./data/" + account, JSON.stringify(toSave, null, 4));
 };

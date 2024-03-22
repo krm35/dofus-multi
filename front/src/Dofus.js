@@ -5,7 +5,6 @@ import {Position} from "@blueprintjs/core/lib/esnext/common/position";
 import {PopoverInteractionKind} from "@blueprintjs/core/lib/esm/components/popover/popover";
 import Account from "./Account";
 import {initWS} from "./utilities";
-import Toaster from "./Toaster";
 
 export default function Dofus() {
 
@@ -58,7 +57,7 @@ export default function Dofus() {
     }
 
     function logAll(type) {
-        const delay = 3;
+        const delay = type === 1 ? 6 : 3;
         let i = 0;
         filter(accounts).map(login => {
             const account = shouldPrint(login);
@@ -234,11 +233,15 @@ export default function Dofus() {
                     href={"https://github.com/krm35/dofus-multi/releases"}>https://github.com/krm35/dofus-multi/releases</a>
                 </Callout>
                 <br/>
+                {!localStorage['hide_account'] && <><Callout id={"hide_account"} onClick={() => {
+                    localStorage['hide_account'] = true;
+                    document.getElementById("hide_account").style.display = "none";
+                }} intent={"success"}>Vous pouvez ajouter des comptes</Callout>
+                    <br/>
+                </>}
             </>}
             <div style={{display: "flex", justifyContent: "center"}}>
-                <Button text={"Ajouter un compte"} icon={"add"} onClick={() => {
-                    Toaster.show({message: "Bientôt disponible", intent: "danger"});
-                }}/>
+                <Button intent={"success"} text={"Ajouter un compte"} icon={"add"} onClick={() => setAccount({})}/>
                 <InputGroup
                     style={{width: "800px"}}
                     placeholder={"Recherche"}
@@ -248,7 +251,7 @@ export default function Dofus() {
                     }}
                     value={search[0]}
                 />
-                <Button text={"Vider le cache"} icon={"trash"} onClick={() => {
+                <Button intent={"danger"} text={"Vider le cache"} icon={"trash"} onClick={() => {
                     for (let i in localStorage) delete localStorage[i];
                     window.location = window.location.href;
                 }}/>

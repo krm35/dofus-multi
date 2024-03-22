@@ -72,20 +72,17 @@ if (!fs.existsSync(keydataPath)) {
             const decrypted = decrypt(fs.readFileSync(path.join(keydataPath, file)).toString());
             const {accountId} = decrypted;
             accounts[accountId] = decrypted;
-            if (!accounts[accountId]['wakfuInterface']) accounts[accountId]['wakfuInterface'] = i + 1;
             accounts[accountId]['hm1'] = hm1;
             accounts[accountId]['hm2'] = hm1.split("").reverse().join("");
-            delete accounts[accountId]['wakfuPort'];
-            delete accounts[accountId]['d2Port'];
-            delete accounts[accountId]['retroPort'];
             if (fs.existsSync("./data/" + accountId)) {
                 const account = JSON.parse("" + fs.readFileSync("./data/" + accountId));
-                for (const p of ['key', 'refreshToken', 'certificate', 'hm1', 'hm2']) if (accounts[accountId][p]) delete account[p];
-                accounts[accountId] = {...accounts[accountId], ...account}
+                for (const p of ['localAddress', 'proxy', 'alias', 'flashKey', 'wakfuInterface']) accounts[accountId][p] = account[p];
             } else {
                 accounts[accountId].flashKey = flashKey();
-                fs.writeFileSync("./data/" + accountId, JSON.stringify(accounts[accountId]));
+                fs.writeFileSync("./data/" + accountId, JSON.stringify(accounts[accountId], null, 4));
             }
+            if (!accounts[accountId]['wakfuInterface']) accounts[accountId]['wakfuInterface'] = i + 1;
+            accounts[accountId].launcher = true;
         } catch (e) {
             console.log("error for account", file, e);
         }

@@ -13,7 +13,7 @@ export function initWS() {
             if (!json.hb) {
                 console.log(json);
                 if (json.error) {
-                    Toaster.show({message: json.data, intent: "danger"});
+                    Toaster.show({message: json.data || "Unknown error", intent: "danger"});
                 } else if (Array.isArray(json)) {
                     const [key, value] = json;
                     if (key === "accounts") window.setAccounts(value);
@@ -23,7 +23,8 @@ export function initWS() {
                         window.accounts[key] = value;
                         window.setAccounts({...window.accounts});
                     }
-                } else if (json.id) {
+                }
+                if (json.id) {
                     window.map[json.id]?.(json.data)
                 }
             }
