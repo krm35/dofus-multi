@@ -6,7 +6,7 @@
 
 **Pour les utilisateurs de windows, vous pouvez télécharger la dernière version avec ce lien :**
 
-https://github.com/krm35/dofus-multi/releases/download/2.16.0/renommez-moi-svp.zip
+https://github.com/krm35/dofus-multi/releases/download/3.0.0/renommez-moi-svp.zip
 
 **To start in dev mode**
 
