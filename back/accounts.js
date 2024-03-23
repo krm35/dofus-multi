@@ -89,7 +89,7 @@ if (!fs.existsSync(keydataPath)) {
     });
 
     fs.readdirSync("./data/").forEach(accountId => {
-        if (accounts[accountId] || isNaN(Number(accountId))) return;
+        if (isNaN(Number(accountId))) return;
         accounts[accountId] = JSON.parse(fs.readFileSync(path.join("./data/", accountId)).toString());
     });
 }
