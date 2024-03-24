@@ -86,6 +86,7 @@ router['get-connect'] = async (p) => {
             try {
                 await dofus.start(accounts[account], port, type);
             } catch (e) {
+                console.log(e);
                 return p.cb(true, e === "EAC" ? "Easy anti-cheat not handled yet" : "Une erreur est survenue");
             }
             accounts[account][(type === 1 ? 'retro' : type === 2 ? 'd2' : 'wakfu') + 'Port'] = port;
