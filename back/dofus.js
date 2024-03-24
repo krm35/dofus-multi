@@ -147,7 +147,11 @@ async function loadScript(pid, port, type, account, resume) {
     const script = await session.createScript(getSource(port, type, account));
     await script.load();
     if (resume) {
-        type === 1 && script.message.connect(message => loadScript(message.payload, port, type, account));
+        type === 1 && script.message.connect(message => {
+            setTimeout(function () {
+                loadScript(message.payload, port, type, account)
+            }, 1000);
+        });
         await frida.resume(pid);
     }
 }
@@ -160,7 +164,6 @@ async function connectClient(socket, host, port, account) {
     await commons.connectClient(socket, host, port, account);
 
     socket['clientSocket'].on('data', function (data) {
-        // u.logs("from", host + ':' + port, data.toString());
         socket.write(data);
     });
 
