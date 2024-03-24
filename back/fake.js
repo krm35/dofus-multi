@@ -14,7 +14,7 @@ module.exports = async (account, uuid) => {
     if (checkError(result)) return result[1];
     const subscription = result[1][0] || {};
     if (checkError(result)) return result[1];
-    await RefreshApiKey(key, accounts[account]['refresh_token'], localAddress, getAgent(account));
+    await RefreshApiKey(key, accounts[account]['refreshToken'], localAddress, getAgent(account));
     result = await CreateToken(key, localAddress, getAgent(account));
     if (checkError(result)) return result[1];
     accounts[account] = {

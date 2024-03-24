@@ -192,7 +192,7 @@ router['put-account'] = async (p) => {
 
     if (!result?.[1]?.['access_token']) return p.cb(true);
 
-    const APIKEY = result[1]['access_token'];
+    const APIKEY = result[1]['access_token'], refreshToken = result[1]['refresh_token'];
 
     result = await request(
         {
@@ -208,6 +208,7 @@ router['put-account'] = async (p) => {
     if (error || !json?.['id']) return p.cb(true);
     const {id} = json;
     json.key = APIKEY;
+    json.refreshToken = refreshToken;
     json.flashKey = flashKey();
     json.proxy = proxy;
     json.localAddress = localAddress;
