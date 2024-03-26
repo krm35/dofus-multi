@@ -9,6 +9,7 @@ const net = require('net'),
     c = require("./constants");
 
 const start = async function (account, port, type) {
+
     const server = new net.Server().listen(port);
 
     server.on('connection', function (socket) {
