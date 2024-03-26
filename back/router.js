@@ -4,6 +4,7 @@ const fs = require('fs'),
     crypto = require('crypto'),
     {v4: uuidv4} = require('uuid'),
     {stringify} = require('querystring'),
+    child_process = require('child_process'),
     SocksProxyAgent = require('socks-proxy-agent'),
     u = require('./utilities'),
     wss = require('./wss'),
@@ -12,7 +13,6 @@ const fs = require('fs'),
     request = require('./request'),
     flashKey = require('./flashKey'),
     c = require('./constants'),
-    dofus = require('./dofus'),
     router = {};
 
 module.exports = router;
@@ -84,7 +84,14 @@ router['get-connect'] = async (p) => {
             c.port++;
             const port = 8101 + c.port;
             try {
-                await dofus.start(accounts[account], port, type);
+                let dofusProcess;
+                dofusProcess = child_process.spawn(process.argv[0], [process.argv[1], "launchAccount", stringify({
+                    account: JSON.stringify(accounts[account]),
+                    port,
+                    type
+                })]);
+                dofusProcess.stdout.on('data', (data) => console.log(data.toString()));
+                dofusProcess.stderr.on('data', (data) => console.log(data.toString()));
             } catch (e) {
                 console.log(e);
                 return p.cb(true, e === "EAC" ? "Easy anti-cheat not handled yet" : "Une erreur est survenue");

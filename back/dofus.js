@@ -1,13 +1,14 @@
 const net = require('net'),
     fs = require('fs'),
     path = require('path'),
+    querystring = require('querystring'),
     {spawn} = require('child_process'),
     frida = require('frida'),
     commons = require('./commons'),
     u = require("./utilities"),
     c = require("./constants");
 
-module.exports.start = async function (account, port, type) {
+const start = async function (account, port, type) {
     const server = new net.Server().listen(port);
 
     server.on('connection', function (socket) {
@@ -130,6 +131,8 @@ module.exports.start = async function (account, port, type) {
     await loadScript(pid, port, type, account, true);
 };
 
+module.exports.start = start;
+
 function hookWakfu(pid) {
     return new Promise(resolve => {
         const dofusProcess = require("child_process").spawn(
@@ -153,14 +156,12 @@ async function loadScript(pid, port, type, account, resume) {
 }
 
 async function connectClient(socket, host, port, account) {
-    u.logs("connection", host + ":" + port);
 
     socket['clientSocket'] = new net.Socket();
 
     await commons.connectClient(socket, host, port, account);
 
     socket['clientSocket'].on('data', function (data) {
-        // u.logs("from", host + ':' + port, data.toString());
         socket.write(data);
     });
 
@@ -272,3 +273,13 @@ function getSource(port, type, account) {
         }
 `;
 }
+
+
+(async () => {
+    if (!c.isTest && process.argv.includes("launchAccount")) {
+        const body = querystring.parse(process.argv[process.argv.length - 1]);
+        const {port, type} = body;
+        const account = JSON.parse(body.account);
+        await start(account, port, Number(type));
+    }
+})();

@@ -57,7 +57,7 @@ export default function Dofus() {
     }
 
     function logAll(type) {
-        const delay = type === 1 ? 6 : 3;
+        const delay = 3;
         let i = 0;
         filter(accounts).map(login => {
             const account = shouldPrint(login);

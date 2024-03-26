@@ -2,6 +2,12 @@ process.on('uncaughtException', function (err) {
     console.log('uncaughtException', err);
 });
 
+const c = require('./constants');
+
+if (!c.isTest && process.argv.includes("launchAccount")) {
+    return require('./dofus');
+}
+
 const http = require('http'),
     fs = require('fs'),
     path = require('path'),
@@ -10,7 +16,6 @@ const http = require('http'),
     router = require('./router'),
     accounts = require('./accounts'),
     request = require('./request'),
-    constants = require('./constants'),
     {wss} = require('./wss');
 
 require('./launcher');
@@ -38,7 +43,7 @@ server.on('upgrade', function upgrade(request, socket, head) {
 });
 
 wss['on']('connection', function connection(ws) {
-    ws.send(JSON.stringify({id: "version", data: constants.version !== newVersion}));
+    ws.send(JSON.stringify({id: "version", data: c.version !== newVersion}));
     ws.on('message', async function message(message) {
         try {
             const json = JSON.parse(message);
