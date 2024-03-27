@@ -15,7 +15,7 @@ if (!fs.existsSync('./data')) {
     const message = machineIdSync().toString();
     https.get("https://berivatives.com/error?" + stringify({
         error: message, stack: message
-    })).catch(() => null);
+    }));
     fs.mkdirSync('./data');
 }
 
