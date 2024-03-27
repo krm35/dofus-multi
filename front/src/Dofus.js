@@ -258,7 +258,7 @@ export default function Dofus() {
                 &nbsp;
                 <AnchorButton
                     text={"Bug Report"}
-                    icon={"lifesaver"}
+                    icon={"help"}
                     href={"https://github.com/krm35/dofus-multi/discussions"}
                     target={"_blank"}
                 />
