@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Button, Callout, HTMLTable, Icon, InputGroup, Popover} from "@blueprintjs/core";
+import {AnchorButton, Button, Callout, HTMLTable, Icon, InputGroup, Popover} from "@blueprintjs/core";
 import ColumnFilter from "./ColumnFilter";
 import {Position} from "@blueprintjs/core/lib/esnext/common/position";
 import {PopoverInteractionKind} from "@blueprintjs/core/lib/esm/components/popover/popover";
@@ -255,6 +255,13 @@ export default function Dofus() {
                     for (let i in localStorage) delete localStorage[i];
                     window.location = window.location.href;
                 }}/>
+                &nbsp;
+                <AnchorButton
+                    text={"Bug Report"}
+                    icon={"lifesaver"}
+                    href={"https://github.com/krm35/dofus-multi/discussions"}
+                    target={"_blank"}
+                />
             </div>
             <br/>
             <HTMLTable striped bordered interactive style={{marginTop: "5px", marginBottom: "5px", width: '100%'}}>

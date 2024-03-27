@@ -73,7 +73,7 @@ const {hm1} = createHmEncoders();
 const keydataPath = path.join(c.zaap, "keydata");
 
 if (!fs.existsSync(keydataPath)) {
-    console.log("Veuillez ouvrir un bug sur Github https://github.com/krm35/dofus-multi/issues")
+    console.log("Veuillez ouvrir une discussion sur Github https://github.com/krm35/dofus-multi/discussions")
 } else {
     fs.readdirSync(keydataPath).forEach((file, i) => {
         try {
