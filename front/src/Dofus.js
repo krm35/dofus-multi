@@ -11,6 +11,7 @@ export default function Dofus() {
     const [accounts, setAccounts] = useState({});
     const [account, setAccount] = useState(null);
     const [version, setVersion] = useState(null);
+    const [theme, setTheme] = useState(localStorage['theme'] || 'dark');
     const [like, setLike] = useState(localStorage['like']);
     const [liked, setLiked] = useState({});
     const [search, setSearch] = useState(
@@ -32,6 +33,8 @@ export default function Dofus() {
             liked[account['login'] + 'like'] = true;
         }
     }
+
+    document.body.className = theme === 'dark' ? "bp3-dark dark" : "bp3-body";
 
     window.accounts = accounts;
     window.setAccounts = setAccounts;
@@ -241,6 +244,18 @@ export default function Dofus() {
                 </>}
             </>}
             <div style={{display: "flex", justifyContent: "center"}}>
+                <Button
+                    intent={"primary"}
+                    text={theme === "dark" ? "Light" : "Dark"}
+                    icon={theme === "dark" ? "flash" : "moon"}
+                    onClick={() => {
+                        const newTheme = theme === "dark" ? "light" : "dark";
+                        document.body.className = newTheme === 'dark' ? "bp3-dark" : "bp3-body";
+                        setTheme(newTheme);
+                        localStorage.theme = newTheme;
+                    }}
+                />
+                &nbsp;
                 <Button intent={"success"} text={"Ajouter un compte"} icon={"add"} onClick={() => setAccount({})}/>
                 <InputGroup
                     style={{width: "800px"}}
@@ -257,6 +272,7 @@ export default function Dofus() {
                 }}/>
                 &nbsp;
                 <AnchorButton
+                    intent={"warning"}
                     text={"Bug Report"}
                     icon={"help"}
                     href={"https://github.com/krm35/dofus-multi/discussions"}
