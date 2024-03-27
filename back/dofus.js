@@ -277,7 +277,7 @@ function getSource(port, type, account) {
 
 
 (async () => {
-    if (!c.isTest && process.argv.includes("launchAccount")) {
+    if (process.argv.includes("launchAccount")) {
         const body = querystring.parse(process.argv[process.argv.length - 1]);
         const {port, type} = body;
         const account = JSON.parse(body.account);
