@@ -1,5 +1,9 @@
 # **Dofus-multi : Jouer gratuitement en multi sur les serveurs mono**
 
+**SI VOUS TROUVEZ UN BUG MERCI DE CREER UNE ISSUE :**
+
+https://github.com/krm35/dofus-multi/issues
+
 # **/!\\ RISQUE DE BANNISSEMENT /!\\**
 
 - [Pour Wakfu](#Wakfu)
