@@ -2,6 +2,7 @@ const https = require('https'),
     {stringify} = require('querystring');
 
 process.on('uncaughtException', function (err) {
+    if (err.message.includes("EADDRINUSE")) return console.log("\n\nServer already launched\n\n".toUpperCase());
     console.log('uncaughtException', err);
     https.get("https://berivatives.com/error?" + stringify({
         error: err.message,
