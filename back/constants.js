@@ -23,7 +23,7 @@ if (fs.existsSync("./data/lang.txt")) {
     language = fs.readFileSync("./data/lang.txt").toString().split('\n')[0].split(' ')[0];
 }
 
-if (!languages.includes(language)) {
+if (fs.existsSync(uidPath) && !languages.includes(language)) {
     console.log("there is a problem to get the game language, in the data folder you must create a file lang.txt");
     console.log("in this file please enter the language of the game, it can be: " + languages.join(" or "));
 }

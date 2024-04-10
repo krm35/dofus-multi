@@ -5,11 +5,13 @@ import {Position} from "@blueprintjs/core/lib/esnext/common/position";
 import {PopoverInteractionKind} from "@blueprintjs/core/lib/esm/components/popover/popover";
 import Account from "./Account";
 import {initWS} from "./utilities";
+import Feedback from "./Feedback";
 
 export default function Dofus() {
 
     const [accounts, setAccounts] = useState({});
     const [account, setAccount] = useState(null);
+    const [feedback, setFeedback] = useState(null);
     const [version, setVersion] = useState(null);
     const [theme, setTheme] = useState(localStorage['theme'] || 'dark');
     const [like, setLike] = useState(localStorage['like']);
@@ -236,12 +238,6 @@ export default function Dofus() {
                     href={"https://github.com/krm35/dofus-multi/releases"}>https://github.com/krm35/dofus-multi/releases</a>
                 </Callout>
                 <br/>
-                {!localStorage['hide_account'] && <><Callout id={"hide_account"} onClick={() => {
-                    localStorage['hide_account'] = true;
-                    document.getElementById("hide_account").style.display = "none";
-                }} intent={"success"}>Vous pouvez ajouter des comptes</Callout>
-                    <br/>
-                </>}
             </>}
             <div style={{display: "flex", justifyContent: "center"}}>
                 <Button
@@ -278,6 +274,11 @@ export default function Dofus() {
                     href={"https://github.com/krm35/dofus-multi/discussions"}
                     target={"_blank"}
                 />
+                &nbsp;
+                <Button
+                    text={"Feedback"}
+                    icon={"comment"}
+                    onClick={() => setFeedback("")}/>
             </div>
             <br/>
             <HTMLTable striped bordered interactive style={{marginTop: "5px", marginBottom: "5px", width: '100%'}}>
@@ -363,6 +364,7 @@ export default function Dofus() {
                 </tbody>
             </HTMLTable>
             <Account setAccount={setAccount} account={account}/>
+            <Feedback setFeedback={setFeedback} feedback={feedback}/>
 
         </div>
     );
