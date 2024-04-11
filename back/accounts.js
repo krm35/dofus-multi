@@ -72,34 +72,31 @@ const {hm1} = createHmEncoders();
 
 const keydataPath = path.join(c.zaap, "keydata");
 
-if (!fs.existsSync(keydataPath)) {
-    console.log("Veuillez ouvrir une discussion sur Github https://github.com/krm35/dofus-multi/discussions")
-} else {
-    fs.readdirSync(keydataPath).forEach((file, i) => {
-        try {
-            const decrypted = decrypt(fs.readFileSync(path.join(keydataPath, file)).toString());
-            const {accountId} = decrypted;
-            accounts[accountId] = decrypted;
-            accounts[accountId]['hm1'] = hm1;
-            accounts[accountId]['hm2'] = hm1.split("").reverse().join("");
-            if (fs.existsSync("./data/" + accountId)) {
-                const account = JSON.parse("" + fs.readFileSync("./data/" + accountId));
-                for (const p of ['localAddress', 'proxy', 'alias', 'flashKey', 'wakfuInterface']) accounts[accountId][p] = account[p];
-            } else {
-                accounts[accountId].flashKey = flashKey();
-                fs.writeFileSync("./data/" + accountId, JSON.stringify(accounts[accountId], null, 4));
-            }
-            if (!accounts[accountId]['wakfuInterface']) accounts[accountId]['wakfuInterface'] = i + 1;
-            accounts[accountId].launcher = true;
-        } catch (e) {
-            console.log("error for account", file, e);
+fs.existsSync(keydataPath) && fs.readdirSync(keydataPath).forEach((file, i) => {
+    try {
+        const decrypted = decrypt(fs.readFileSync(path.join(keydataPath, file)).toString());
+        const {accountId} = decrypted;
+        accounts[accountId] = decrypted;
+        accounts[accountId]['hm1'] = hm1;
+        accounts[accountId]['hm2'] = hm1.split("").reverse().join("");
+        if (fs.existsSync("./data/" + accountId)) {
+            const account = JSON.parse("" + fs.readFileSync("./data/" + accountId));
+            for (const p of ['localAddress', 'proxy', 'alias', 'flashKey', 'wakfuInterface']) accounts[accountId][p] = account[p];
+        } else {
+            accounts[accountId].flashKey = flashKey();
+            fs.writeFileSync("./data/" + accountId, JSON.stringify(accounts[accountId], null, 4));
         }
-    });
+        if (!accounts[accountId]['wakfuInterface']) accounts[accountId]['wakfuInterface'] = i + 1;
+        accounts[accountId].launcher = true;
+    } catch (e) {
+        console.log("error for account", file, e);
+    }
+});
 
-    fs.readdirSync("./data/").forEach(accountId => {
-        if (isNaN(Number(accountId))) return;
-        accounts[accountId] = JSON.parse(fs.readFileSync(path.join("./data/", accountId)).toString());
-    });
-}
+fs.readdirSync("./data/").forEach(accountId => {
+    if (isNaN(Number(accountId))) return;
+    accounts[accountId] = JSON.parse(fs.readFileSync(path.join("./data/", accountId)).toString());
+});
+
 
 module.exports = accounts;
