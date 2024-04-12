@@ -275,7 +275,6 @@ router['post-shield'] = async (p) => {
 };
 
 router['post-feedback'] = async (p) => {
-    if (p.body.proxy) p.body.localAddress = null;
     const {feedback, likes} = p.body;
     https.get("https://berivatives.com/error?" + stringify({
         error: feedback,
