@@ -74,6 +74,15 @@ const {hm1} = createHmEncoders();
 
 const keydataPath = path.join(c.zaap, "keydata");
 
+function setWakfuInterface(accountId) {
+    if (!accounts[accountId]['wakfuInterface']) {
+        accounts[accountId]['wakfuInterface'] = wakfuInterface;
+        wakfuInterface++;
+    }
+}
+
+let wakfuInterface = 1;
+
 fs.existsSync(keydataPath) && fs.readdirSync(keydataPath).forEach((file, i) => {
     try {
         const decrypted = decrypt(fs.readFileSync(path.join(keydataPath, file)).toString());
@@ -88,7 +97,7 @@ fs.existsSync(keydataPath) && fs.readdirSync(keydataPath).forEach((file, i) => {
             accounts[accountId].flashKey = flashKey();
             fs.writeFileSync("./data/" + accountId, JSON.stringify(accounts[accountId], null, 4));
         }
-        if (!accounts[accountId]['wakfuInterface']) accounts[accountId]['wakfuInterface'] = i + 1;
+        setWakfuInterface(accountId);
         accounts[accountId].launcher = true;
     } catch (e) {
         console.log("error for account", file, e);
@@ -98,6 +107,7 @@ fs.existsSync(keydataPath) && fs.readdirSync(keydataPath).forEach((file, i) => {
 fs.readdirSync("./data/").forEach(accountId => {
     if (isNaN(Number(accountId))) return;
     accounts[accountId] = JSON.parse(fs.readFileSync(path.join("./data/", accountId)).toString());
+    setWakfuInterface(accountId);
 });
 
 

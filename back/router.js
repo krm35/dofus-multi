@@ -223,6 +223,7 @@ router['put-account'] = async (p) => {
     json.alias = alias;
     json.accountId = id;
     json.added = true;
+    json.wakfuInterface = Object.keys(accounts).length;
     const shield = json['security']?.includes("SHIELD");
     if (shield) {
         await request({
