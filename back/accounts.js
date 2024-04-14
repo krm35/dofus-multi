@@ -23,11 +23,14 @@ if (!fs.existsSync('./data')) {
     fs.mkdirSync('./data');
 }
 
+let uuid;
+
 function decrypt(data) {
     const splitData = data.split(SEPARATOR);
     const initializationVector = Buffer.from(splitData[0], 'hex');
     const encryptedData = Buffer.from(splitData[1], 'hex');
-    const hash = createHashFromString([os.platform(), os.arch(), machineIdSync(), os.cpus().length, os.cpus()[0].model].join());
+    if (!uuid) uuid = [os.platform(), os.arch(), machineIdSync(), os.cpus().length, os.cpus()[0].model].join();
+    const hash = createHashFromString(uuid);
     const decipher = crypto.createDecipheriv(ALGORITHM, hash, initializationVector);
     const decryptedData = decipher.update(encryptedData);
     const decryptedBuffer = Buffer.concat([decryptedData, decipher.final()]);
@@ -74,14 +77,14 @@ const {hm1} = createHmEncoders();
 
 const keydataPath = path.join(c.zaap, "keydata");
 
+let wakfuInterface = 1;
+
 function setWakfuInterface(accountId) {
     if (!accounts[accountId]['wakfuInterface']) {
         accounts[accountId]['wakfuInterface'] = wakfuInterface;
         wakfuInterface++;
     }
 }
-
-let wakfuInterface = 1;
 
 fs.existsSync(keydataPath) && fs.readdirSync(keydataPath).forEach((file, i) => {
     try {
@@ -92,7 +95,7 @@ fs.existsSync(keydataPath) && fs.readdirSync(keydataPath).forEach((file, i) => {
         accounts[accountId]['hm2'] = hm1.split("").reverse().join("");
         if (fs.existsSync("./data/" + accountId)) {
             const account = JSON.parse("" + fs.readFileSync("./data/" + accountId));
-            for (const p of ['localAddress', 'proxy', 'alias', 'flashKey', 'wakfuInterface']) accounts[accountId][p] = account[p];
+            for (const p of ['localAddress', 'proxy', 'alias', 'flashKey', 'wakfuInterface']) account[p] && (accounts[accountId][p] = account[p]);
         } else {
             accounts[accountId].flashKey = flashKey();
             fs.writeFileSync("./data/" + accountId, JSON.stringify(accounts[accountId], null, 4));
@@ -106,8 +109,11 @@ fs.existsSync(keydataPath) && fs.readdirSync(keydataPath).forEach((file, i) => {
 
 fs.readdirSync("./data/").forEach(accountId => {
     if (isNaN(Number(accountId))) return;
-    accounts[accountId] = JSON.parse(fs.readFileSync(path.join("./data/", accountId)).toString());
-    setWakfuInterface(accountId);
+    const account = JSON.parse(fs.readFileSync(path.join("./data/", accountId)).toString());
+    if (account.added) {
+        accounts[accountId] = account;
+        setWakfuInterface(accountId);
+    }
 });
 
 
