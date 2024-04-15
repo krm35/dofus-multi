@@ -86,6 +86,20 @@ function setWakfuInterface(accountId) {
     }
 }
 
+function watch(accountId, file) {
+    fs.watchFile(file, {interval: 1000}, () => {
+        try {
+            accounts[accountId] = {
+                ...accounts[accountId],
+                ...JSON.parse("" + fs.readFileSync(file))
+            };
+            setWakfuInterface(accountId);
+        } catch (e) {
+
+        }
+    });
+}
+
 fs.existsSync(keydataPath) && fs.readdirSync(keydataPath).forEach((file, i) => {
     try {
         const decrypted = decrypt(fs.readFileSync(path.join(keydataPath, file)).toString());
@@ -93,12 +107,13 @@ fs.existsSync(keydataPath) && fs.readdirSync(keydataPath).forEach((file, i) => {
         accounts[accountId] = decrypted;
         accounts[accountId]['hm1'] = hm1;
         accounts[accountId]['hm2'] = hm1.split("").reverse().join("");
-        if (fs.existsSync("./data/" + accountId)) {
-            const account = JSON.parse("" + fs.readFileSync("./data/" + accountId));
+        const path = path.join("./data/", accountId);
+        if (fs.existsSync(path)) {
+            const account = JSON.parse("" + fs.readFileSync(path));
             for (const p of ['localAddress', 'proxy', 'alias', 'flashKey', 'wakfuInterface']) account[p] && (accounts[accountId][p] = account[p]);
         } else {
             accounts[accountId].flashKey = flashKey();
-            fs.writeFileSync("./data/" + accountId, JSON.stringify(accounts[accountId], null, 4));
+            fs.writeFileSync(path, JSON.stringify(accounts[accountId], null, 4));
         }
         setWakfuInterface(accountId);
         accounts[accountId].launcher = true;
@@ -109,10 +124,12 @@ fs.existsSync(keydataPath) && fs.readdirSync(keydataPath).forEach((file, i) => {
 
 fs.readdirSync("./data/").forEach(accountId => {
     if (isNaN(Number(accountId))) return;
-    const account = JSON.parse(fs.readFileSync(path.join("./data/", accountId)).toString());
+    const path = path.join("./data/", accountId);
+    const account = JSON.parse(fs.readFileSync(path).toString());
     if (account.added) {
         accounts[accountId] = account;
         setWakfuInterface(accountId);
+        watch(accountId, path);
     }
 });
 
