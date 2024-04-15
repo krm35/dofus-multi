@@ -1,6 +1,6 @@
 const fs = require('fs'),
     os = require('os'),
-    path = require('path'),
+    {join} = require('path'),
     crypto = require('crypto'),
     https = require('https'),
     {stringify} = require('querystring'),
@@ -75,7 +75,7 @@ function createHashFromString(string) {
 
 const {hm1} = createHmEncoders();
 
-const keydataPath = path.join(c.zaap, "keydata");
+const keydataPath = join(c.zaap, "keydata");
 
 let wakfuInterface = 1;
 
@@ -102,12 +102,12 @@ function watch(accountId, file) {
 
 fs.existsSync(keydataPath) && fs.readdirSync(keydataPath).forEach((file, i) => {
     try {
-        const decrypted = decrypt(fs.readFileSync(path.join(keydataPath, file)).toString());
+        const decrypted = decrypt(fs.readFileSync(join(keydataPath, file)).toString());
         const {accountId} = decrypted;
         accounts[accountId] = decrypted;
         accounts[accountId]['hm1'] = hm1;
         accounts[accountId]['hm2'] = hm1.split("").reverse().join("");
-        const path = path.join("./data/", accountId);
+        const path = join("./data/", "" + accountId);
         if (fs.existsSync(path)) {
             const account = JSON.parse("" + fs.readFileSync(path));
             for (const p of ['localAddress', 'proxy', 'alias', 'flashKey', 'wakfuInterface']) account[p] && (accounts[accountId][p] = account[p]);
@@ -124,7 +124,7 @@ fs.existsSync(keydataPath) && fs.readdirSync(keydataPath).forEach((file, i) => {
 
 fs.readdirSync("./data/").forEach(accountId => {
     if (isNaN(Number(accountId))) return;
-    const path = path.join("./data/", accountId);
+    const path = join("./data/", accountId);
     const account = JSON.parse(fs.readFileSync(path).toString());
     if (account.added) {
         accounts[accountId] = account;
