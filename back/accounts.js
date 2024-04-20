@@ -100,7 +100,7 @@ function watch(accountId, file) {
     });
 }
 
-fs.existsSync(keydataPath) && fs.readdirSync(keydataPath).forEach((file, i) => {
+fs.existsSync(keydataPath) && fs.readdirSync(keydataPath).forEach(file => {
     try {
         const decrypted = decrypt(fs.readFileSync(join(keydataPath, file)).toString());
         const {accountId} = decrypted;
