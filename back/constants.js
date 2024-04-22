@@ -30,7 +30,7 @@ if (fs.existsSync(uidPath) && !languages.includes(language)) {
 
 module.exports = {
     port: 0,
-    version: "3.12.10",
+    version: "3.12.11",
     isTest: process.argv.includes("dev=true"),
     logs: this.isTest || !fs.existsSync("./logs"),
     uid: fs.existsSync(uidPath) ? fs.readFileSync(uidPath).toString() : null,

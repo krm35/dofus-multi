@@ -233,7 +233,7 @@ export default function Dofus() {
             <>
                 <Callout
                     intent={"primary"}>
-                    Une nouvelle version est disponible sur <a
+                    Une nouvelle version sera bientôt disponible sur <a
                     target={"_blank"}
                     href={"https://github.com/krm35/dofus-multi/releases"}>https://github.com/krm35/dofus-multi/releases</a>
                 </Callout>
