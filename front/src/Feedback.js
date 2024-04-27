@@ -11,7 +11,7 @@ export default function ({feedback, setFeedback}) {
             icon="comment"
             title={"Feedback"}
             isOpen={feedback !== null}
-            onClose={() => close()}
+            onClose={() => setFeedback(null)}
         >
             <div className={Classes.DIALOG_BODY}>
                 <div style={{display: "flex", justifyContent: "center"}}>
