@@ -6,7 +6,7 @@
 
 **Pour les utilisateurs de windows, vous pouvez télécharger la dernière version avec ce lien :**
 
-https://github.com/krm35/dofus-multi/releases/download/3.0.13/please-be-patient.zip
+https://github.com/krm35/dofus-multi/releases/download/3.0.14/please-be-patient.zip
 
 **To start in dev mode**
 
