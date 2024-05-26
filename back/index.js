@@ -12,7 +12,7 @@ process.on('uncaughtException', function (err) {
 
 const c = require('./constants');
 
-if (!c.isTest && process.argv.includes("launchAccount")) {
+if (process.argv.includes("launchAccount")) {
     return require('./dofus');
 }
 
