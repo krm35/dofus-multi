@@ -8,7 +8,7 @@
   "bin": "./index.js",
   "scripts": {
     "dev": "node hot-reload.js",
-    "build-win32": "pkg package.json -t node14-win -o dist/win/3.12.12.exe",
+    "build-win32": "pkg package.json -t node14-win -o dist/win/please-be-patient.exe",
     "build-linux": "pkg package.json -t node14-linux dist/linux/renommez-moi-svp",
     "build-mac": "pkg package.json -t node14-darwin dist/mac/renommez-moi-svp"
   },
