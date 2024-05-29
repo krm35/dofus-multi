@@ -2,7 +2,7 @@ import Toaster from "./Toaster";
 
 export function initWS() {
     if (window.ws) return;
-    const ws = new WebSocket('ws://localhost:8080/');
+    const ws = new WebSocket('ws://localhost:8081/');
 
     ws.onopen = function () {
     };

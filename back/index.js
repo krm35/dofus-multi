@@ -39,7 +39,7 @@ const server = http.createServer(
               res) {
         const fileName = path.basename(req.url).split('?')[0] || "index.html";
         res.end(router['files'][fileName] || router['files']["index.html"]);
-    }).listen(8080);
+    }).listen(8081);
 
 server.on('upgrade', function upgrade(request, socket, head) {
     wss['handleUpgrade'](request, socket, head, function done(ws) {
@@ -91,6 +91,6 @@ if (!c.isTest) {
             }, null, "launcher.cdn.ankama.com"
         );
         newVersion = version['split']('\n')[0].split(' ')[1];
-        process.platform === "win32" && execSync('start "" http://localhost:8080');
+        process.platform === "win32" && execSync('start "" http://localhost:8081');
     })();
 }
