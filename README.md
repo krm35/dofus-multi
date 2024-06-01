@@ -8,6 +8,8 @@
 
 https://github.com/krm35/dofus-multi/releases/download/3.0.16/please-be-patient.zip
 
+![Alt Text](front/public/img/telemetry.svg)
+
 **To start in dev mode**
 
 _Start the back_ `cd back && npm install && npm run dev`
