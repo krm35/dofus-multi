@@ -8,7 +8,7 @@
 
 https://github.com/krm35/dofus-multi/releases/download/3.0.16/please-be-patient.zip
 
-![Alt Text](front/public/img/telemetry.svg)
+![Alt Text](front/public/img/users.png)
 
 **To start in dev mode**
 
