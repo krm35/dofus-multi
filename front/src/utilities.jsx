@@ -33,7 +33,7 @@ export function initWS() {
         }
     };
 
-    ws.onerror = function (e) {
+    ws.onerror = function () {
     };
 
     ws.onclose = function () {

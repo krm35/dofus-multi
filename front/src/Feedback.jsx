@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {Button, Dialog, EditableText, Icon} from "@blueprintjs/core";
 import * as Classes from "@blueprintjs/core/lib/cjs/common/classes";
 
-export default function ({feedback, setFeedback}) {
+export default function Feedback({feedback, setFeedback}) {
 
     const [likes, setLikes] = useState([false, false, false, false, false]);
 

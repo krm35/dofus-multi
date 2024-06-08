@@ -1,6 +1,8 @@
-import {Position, Toaster} from "@blueprintjs/core";
+import {Position} from "@blueprintjs/core";
 
-export default Toaster.create({
-    className: "recipe-toaster",
-    position: Position.TOP_RIGHT,
-});
+export default function Toaster() {
+    Toaster.create({
+        className: "recipe-toaster",
+        position: Position.TOP_RIGHT,
+    })
+}

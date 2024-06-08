@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {Alert, Button, Dialog, FormGroup, HTMLSelect, HTMLTable, InputGroup} from "@blueprintjs/core";
 import * as Classes from "@blueprintjs/core/lib/cjs/common/classes";
 
-export default function (props) {
+export default function Account(props) {
 
     const [interfaces, setInterfaces] = useState([]);
     const [data, setData] = useState({});
@@ -77,8 +77,8 @@ export default function (props) {
                         </thead>
                         <tbody>
                         {(!props.account?.['accountId'] ? [['Login', 'login'], ['Password', 'password'], ['Alias', 'alias']] : [['Alias', 'alias']])
-                            .map(([label, prop]) =>
-                                <tr>
+                            .map(([label, prop], i) =>
+                                <tr key={i}>
                                     <td>{label}</td>
                                     <td>
                                         <InputGroup
