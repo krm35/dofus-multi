@@ -1,7 +1,5 @@
 # **Dofus-multi : Jouer gratuitement en multi sur les serveurs mono**
 
-# **/!\\ RISQUE DE BANNISSEMENT /!\\**
-
 - [Pour Wakfu](#Wakfu)
 
 **Pour les utilisateurs de windows, vous pouvez télécharger la dernière version avec ce lien :**
