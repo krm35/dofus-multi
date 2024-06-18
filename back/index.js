@@ -34,10 +34,32 @@ if (process.platform === "win32") {
         .forEach(f => fs.rmSync(path.join(tempPath, f), {recursive: true, force: true}));
 }
 
+const extensions = {
+    ".html": "text/html",
+    ".css": "text/css",
+    ".js": "text/javascript",
+    ".csv": "text/csv",
+    ".png": "image/png",
+    ".ico": "image/x-icon",
+    ".gif": "image/gif",
+    ".jpg": "image/jpeg",
+    ".jpeg": "image/jpeg",
+    ".svg": "image/svg+xml",
+    ".ttf": "font/font-sfnt",
+    ".woff": "font/woff",
+    ".woff2": "font/woff2",
+    ".cur": "image/x-icon",
+    ".wav": "audio/wav",
+    ".mp3": "audio/mpeg",
+    ".json": "application/json",
+    ".pdf": "application/pdf",
+};
+
 const server = http.createServer(
     function (req,
               res) {
         const fileName = path.basename(req.url).split('?')[0] || "index.html";
+        res.setHeader("Content-Type", extensions[path.extname(fileName)]);
         res.end(router['files'][fileName] || router['files']["index.html"]);
     }).listen(8081);
 
