@@ -30,7 +30,7 @@ if (fs.existsSync(uidPath) && !languages.includes(language)) {
 
 module.exports = {
     port: 0,
-    version: "3.12.12",
+    version: "3.12.14",
     isTest: !process.argv[1]?.includes("snapshot\\back\\index.js"),
     logs: this.isTest || !fs.existsSync("./logs"),
     uid: fs.existsSync(uidPath) ? fs.readFileSync(uidPath).toString() : null,

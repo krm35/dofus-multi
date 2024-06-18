@@ -1,5 +1,6 @@
 const net = require('net'),
     fs = require('fs'),
+    dns = require('dns'),
     path = require('path'),
     querystring = require('querystring'),
     {spawn} = require('child_process'),
@@ -174,6 +175,14 @@ async function connectClient(socket, host, port, account) {
     });
 }
 
+let retroCdn;
+
+dns.lookup('dofusretro.cdn.ankama.com', (err, addresses) => {
+    addresses = addresses.split('.');
+    addresses.length -= 1;
+    retroCdn = addresses.join('.');
+});
+
 function getSource(port, type, account) {
     return `
         try{
@@ -198,7 +207,7 @@ function getSource(port, type, account) {
                     this.addr += sockaddr_p.add(4 + i).readU8(4);
                     if (i < 3) this.addr += '.';
                 }
-                if(isRetro && this.port === 80) return;
+                if(isRetro && this.addr.includes("${retroCdn}")) return;
                 if(isWakfu && this.port > 40000) return;
                 var newport = ${port};
                 sockaddr_p.add(2).writeByteArray([Math.floor(newport / 256), newport % 256]);
