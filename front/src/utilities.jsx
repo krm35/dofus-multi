@@ -1,4 +1,4 @@
-import Toaster from "./Toaster";
+import Toast from "./Toast";
 
 export function initWS() {
     if (window.ws) return;
@@ -13,7 +13,7 @@ export function initWS() {
             if (!json.hb) {
                 console.log(json);
                 if (json.error) {
-                    Toaster.show({message: json.data || "Unknown error", intent: "danger"});
+                    Toast.show({message: json.data || "Unknown error", intent: "danger"});
                 } else if (Array.isArray(json)) {
                     const [key, value] = json;
                     if (key === "accounts") window.setAccounts(value);
