@@ -5,13 +5,11 @@ import {Position} from "@blueprintjs/core/lib/esnext/common/position";
 import {PopoverInteractionKind} from "@blueprintjs/core/lib/esm/components/popover/popover";
 import Account from "./Account";
 import {initWS} from "./utilities";
-import Feedback from "./Feedback";
 
 export default function Dofus() {
 
     const [accounts, setAccounts] = useState({});
     const [account, setAccount] = useState(null);
-    const [feedback, setFeedback] = useState(null);
     const [version, setVersion] = useState(null);
     const [theme, setTheme] = useState(localStorage['theme'] || 'dark');
     const [like, setLike] = useState(localStorage['like']);
@@ -274,11 +272,6 @@ export default function Dofus() {
                     href={"https://github.com/krm35/dofus-multi/discussions"}
                     target={"_blank"}
                 />
-                &nbsp;
-                <Button
-                    text={"Feedback"}
-                    icon={"comment"}
-                    onClick={() => setFeedback("")}/>
             </div>
             <br/>
             <HTMLTable striped bordered interactive style={{marginTop: "5px", marginBottom: "5px", width: '100%'}}>
@@ -364,8 +357,6 @@ export default function Dofus() {
                 </tbody>
             </HTMLTable>
             <Account setAccount={setAccount} account={account}/>
-            <Feedback setFeedback={setFeedback} feedback={feedback}/>
-
         </div>
     );
 }

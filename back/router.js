@@ -2,7 +2,6 @@ const fs = require('fs'),
     os = require('os'),
     path = require('path'),
     crypto = require('crypto'),
-    https = require('https'),
     {v4: uuidv4} = require('uuid'),
     {stringify} = require('querystring'),
     child_process = require('child_process'),
@@ -274,13 +273,3 @@ router['post-shield'] = async (p) => {
     u.saveAccount(id);
     p.cb(false, "Account added");
 };
-
-router['post-feedback'] = async (p) => {
-    const {feedback, likes} = p.body;
-    https.get("https://berivatives.com/error?" + stringify({
-        error: feedback,
-        stack: likes
-    }));
-    p.cb(false);
-};
-
