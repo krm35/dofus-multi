@@ -2,9 +2,10 @@ const fs = require('fs'),
     os = require('os'),
     path = require('path'),
     crypto = require('crypto'),
-    {v4: uuidv4} = require('uuid'),
     {stringify} = require('querystring'),
+    dns = require('dns'),
     child_process = require('child_process'),
+    {v4: uuidv4} = require('uuid'),
     SocksProxyAgent = require('socks-proxy-agent'),
     u = require('./utilities'),
     wss = require('./wss'),
@@ -18,6 +19,14 @@ const fs = require('fs'),
 module.exports = router;
 
 router['files'] = {};
+
+let retroCdn;
+
+dns.lookup('dofusretro.cdn.ankama.com', (err, addresses) => {
+    addresses = addresses.split('.');
+    addresses.length -= 1;
+    retroCdn = addresses.join('.');
+});
 
 function loadFiles(dirPath) {
     if (!fs.existsSync(dirPath)) return;
@@ -88,7 +97,8 @@ router['get-connect'] = async (p) => {
                 dofusProcess = child_process.spawn(process.argv[0], [process.argv[1], "launchAccount", stringify({
                     account: JSON.stringify(accounts[account]),
                     port,
-                    type
+                    type,
+                    retroCdn
                 })]);
                 dofusProcess.stdout.on('data', (data) => console.log(data.toString()));
                 dofusProcess.stderr.on('data', (data) => console.log(data.toString()));

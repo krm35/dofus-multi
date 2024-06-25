@@ -1,6 +1,5 @@
 const net = require('net'),
     fs = require('fs'),
-    dns = require('dns'),
     path = require('path'),
     querystring = require('querystring'),
     {spawn} = require('child_process'),
@@ -175,13 +174,6 @@ async function connectClient(socket, host, port, account) {
     });
 }
 
-let retroCdn;
-
-dns.lookup('dofusretro.cdn.ankama.com', (err, addresses) => {
-    addresses = addresses.split('.');
-    addresses.length -= 1;
-    retroCdn = addresses.join('.');
-});
 
 function getSource(port, type, account) {
     return `
@@ -284,12 +276,14 @@ function getSource(port, type, account) {
 `;
 }
 
+let retroCdn;
 
 (async () => {
     if (process.argv.includes("launchAccount")) {
         const body = querystring.parse(process.argv[process.argv.length - 1]);
         const {port, type} = body;
         const account = JSON.parse(body.account);
+        retroCdn = body.retroCdn;
         await start(account, port, Number(type));
     }
 })();
