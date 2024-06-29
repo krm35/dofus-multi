@@ -122,9 +122,11 @@ fs.existsSync(keydataPath) && fs.readdirSync(keydataPath).forEach(file => {
     }
 });
 
-fs.readdirSync("./data/").forEach(accountId => {
+const dataPath = "./data/";
+
+fs.existsSync(dataPath) && fs.readdirSync(dataPath).forEach(accountId => {
     if (isNaN(Number(accountId))) return;
-    const path = join("./data/", accountId);
+    const path = join(dataPath, accountId);
     const account = JSON.parse(fs.readFileSync(path).toString());
     if (account.added) {
         accounts[accountId] = account;
