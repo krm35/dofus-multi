@@ -1,6 +1,7 @@
-const request = require('./request');
-const accounts = require('./accounts');
-const SocksProxyAgent = require('socks-proxy-agent');
+const SocksProxyAgent = require('socks-proxy-agent'),
+    request = require('./request'),
+    u = require('./utilities'),
+    accounts = require('./accounts');
 
 module.exports = async (account, uuid) => {
     const localAddress = accounts[account]['localAddress'] || null;
@@ -9,7 +10,10 @@ module.exports = async (account, uuid) => {
     result = await SignOnWithApiKey(key, localAddress, getAgent(account));
     if (checkError(result)) return result[1];
     const session = result[1];
-    if (!session['account']) return "need to refresh the api key";
+    if (!session['account']) {
+        u.deleteAccount(account);
+        return "account expired";
+    }
     result = await ListWithApiKey(key, localAddress, getAgent(account));
     if (checkError(result)) return result[1];
     const subscription = result[1][0] || {};

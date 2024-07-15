@@ -77,7 +77,7 @@ export default function Dofus() {
     function shouldPrint(login) {
         if (login.startsWith("uuid") && login.length === 40) return;
         const account = accounts[login];
-        if (!account) return;
+        if (!account || account.deleted) return;
         if (like && !localStorage[account['login'] + 'like']) return;
         return account;
     }
@@ -351,7 +351,13 @@ export default function Dofus() {
                                     onClick={() => dofusLogin(login, 3)}
                                 />
                             </td>
-                            <td/>
+                            <td><Button outlined={true} icon={"cross"} onClick={() => {
+                                window.ws.send(JSON.stringify({
+                                    body: {account: login},
+                                    action: "delete",
+                                    resource: "account"
+                                }))
+                            }}/></td>
                         </tr>)
                 })}
                 </tbody>

@@ -8,7 +8,6 @@ const fs = require('fs'),
     {v4: uuidv4} = require('uuid'),
     SocksProxyAgent = require('socks-proxy-agent'),
     u = require('./utilities'),
-    wss = require('./wss'),
     accounts = require('./accounts'),
     fake = require('./fake'),
     request = require('./request'),
@@ -66,6 +65,12 @@ router['get-accounts'] = async (p) => {
     p.cb(false, accounts)
 };
 
+router['delete-account'] = async (p) => {
+    const {account} = p.body;
+    u.deleteAccount(account);
+    u.broadcast(account);
+};
+
 router['post-account'] = async (p) => {
     const {accountId} = p.body;
     if (!accounts[accountId].added) {
@@ -75,7 +80,7 @@ router['post-account'] = async (p) => {
     if (p.body.proxy) p.body.localAddress = null;
     accounts[accountId] = {...accounts[accountId], ...p.body};
     u.saveAccount(accountId);
-    wss.broadcast({resource: "accounts", key: accountId, value: accounts[accountId]});
+    u.broadcast(accountId);
     p.cb(false)
 };
 
@@ -107,8 +112,8 @@ router['get-connect'] = async (p) => {
                 return p.cb(true, e === "EAC" ? "Easy anti-cheat not handled yet" : "Une erreur est survenue");
             }
             accounts[account][(type === 1 ? 'retro' : type === 2 ? 'd2' : 'wakfu') + 'Port'] = port;
-            wss.broadcast({resource: "accounts", key: account, value: accounts[account]});
         }
+        u.broadcast(account);
         p.cb(res !== undefined, res || "");
     }).catch((e) => {
         console.log(e);
@@ -245,7 +250,7 @@ router['put-account'] = async (p) => {
         addedAccounts[login] = json;
     } else {
         accounts[id] = json;
-        wss.broadcast({resource: "accounts", key: id, value: accounts[id]});
+        u.broadcast(id);
         u.saveAccount(id);
     }
     p.cb(false, {shield})
@@ -279,7 +284,7 @@ router['post-shield'] = async (p) => {
     addedAccounts[login].certificate = json;
     const {id} = addedAccounts[login];
     accounts[id] = addedAccounts[login];
-    wss.broadcast({resource: "accounts", key: id, value: accounts[id]});
+    u.broadcast(id);
     u.saveAccount(id);
     p.cb(false, "Account added");
 };

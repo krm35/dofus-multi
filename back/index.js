@@ -51,9 +51,10 @@ const extensions = {
 const server = http.createServer(
     function (req,
               res) {
-        const fileName = path.basename(req.url).split('?')[0] || "index.html";
+        let fileName = path.basename(req.url).split('?')[0] || "index.html";
+        if (!extensions[path.extname(fileName)]) fileName = "index.html";
         res.setHeader("Content-Type", extensions[path.extname(fileName)]);
-        res.end(router['files'][fileName] || router['files']["index.html"]);
+        res.end(router['files'][fileName]);
     }).listen(8081);
 
 server.on('upgrade', function upgrade(request, socket, head) {
