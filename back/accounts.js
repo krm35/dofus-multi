@@ -128,6 +128,7 @@ fs.existsSync(dataPath) && fs.readdirSync(dataPath).forEach(accountId => {
     if (isNaN(Number(accountId))) return;
     const path = join(dataPath, accountId);
     const account = JSON.parse(fs.readFileSync(path).toString());
+    if (account.deleted) return accounts[accountId];
     if (account.added) {
         accounts[accountId] = account;
         setWakfuInterface(accountId);

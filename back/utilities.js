@@ -7,7 +7,7 @@ module.exports.wait = (time) => new Promise(resolve => setTimeout(resolve, time 
 
 module.exports.logs = (...log) => c.logs && console.log(...log);
 
-module.exports.saveAccount = function (account) {
+const saveAccount = function (account) {
     const toSave = JSON.parse(JSON.stringify(accounts[account]));
     delete toSave['wakfuPort'];
     delete toSave['d2Port'];
@@ -15,8 +15,11 @@ module.exports.saveAccount = function (account) {
     fs.writeFileSync("./data/" + account, JSON.stringify(toSave, null, 4));
 };
 
+module.exports.saveAccount = saveAccount;
+
 module.exports.deleteAccount = function (account) {
     accounts[account].deleted = true;
+    saveAccount(account);
 };
 
 module.exports.broadcast = function (account) {
