@@ -1,5 +1,10 @@
 # **Dofus-multi : Jouer gratuitement en multi sur les serveurs mono**
 
+La prochaine fois qu'un taré m'accuse de hack alors que je ne joue pas à ce jeu de merde, j'arrête tout
+
+![Alt Text](front/public/img/tare.png)
+
+
 - [Pour Wakfu](#Wakfu)
 
 **Pour les utilisateurs de windows, vous pouvez télécharger la dernière version avec ce lien :**
