@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {Alert, Button, Dialog, FormGroup, HTMLSelect, HTMLTable, InputGroup} from "@blueprintjs/core";
+import {Alert, Button, Callout, Dialog, FormGroup, HTMLSelect, HTMLTable, InputGroup} from "@blueprintjs/core";
 import * as Classes from "@blueprintjs/core/lib/cjs/common/classes";
 
 export default function Account(props) {
@@ -68,6 +68,11 @@ export default function Account(props) {
             >
                 <div className={Classes.DIALOG_BODY}>
 
+                    {!props?.account?.['accountId'] && <>
+                        <Callout intent={"danger"}>L'ajout de compte est temporairement désactivé car Ankama a mit une
+                            sécurité (Aucun délai à donner pour fix)</Callout>
+                        <br/>
+                    </>}
                     <HTMLTable condensed bordered style={{marginTop: "5px", marginBottom: "5px", width: '100%'}}>
                         <thead>
                         <tr>
@@ -145,6 +150,7 @@ export default function Account(props) {
                 <div className={Classes.DIALOG_FOOTER}>
                     <div className={Classes.DIALOG_FOOTER_ACTIONS}>
                         <Button
+                            disabled={!props?.account?.['accountId']}
                             loading={loading}
                             intent="primary"
                             text="Sauvegarder les changements"
