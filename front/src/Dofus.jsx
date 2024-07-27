@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {AnchorButton, Button, Callout, HTMLTable, Icon, InputGroup, Popover} from "@blueprintjs/core";
+import {AnchorButton, Button, Callout, HTMLTable, Icon, InputGroup, Popover, Switch} from "@blueprintjs/core";
 import ColumnFilter from "./ColumnFilter";
 import {Position} from "@blueprintjs/core/lib/esnext/common/position";
 import {PopoverInteractionKind} from "@blueprintjs/core/lib/esm/components/popover/popover";
@@ -12,6 +12,7 @@ export default function Dofus() {
     const [account, setAccount] = useState(null);
     const [version, setVersion] = useState(null);
     const [theme, setTheme] = useState(localStorage['theme'] || 'dark');
+    const [launcher, setLauncher] = useState(localStorage['launcher']);
     const [like, setLike] = useState(localStorage['like']);
     const [liked, setLiked] = useState({});
     const [search, setSearch] = useState(
@@ -79,6 +80,7 @@ export default function Dofus() {
         const account = accounts[login];
         if (!account || account.deleted) return;
         if (like && !localStorage[account['login'] + 'like']) return;
+        if (!launcher && !account.added) return;
         return account;
     }
 
@@ -274,6 +276,15 @@ export default function Dofus() {
                 />
             </div>
             <br/>
+            <Switch
+                labelElement={<strong>Afficher les comptes présents sur le vrai launcher Ankama Games</strong>}
+                checked={launcher}
+                onChange={() => {
+                    if (launcher) delete localStorage['launcher'];
+                    else localStorage['launcher'] = true;
+                    setLauncher(!launcher);
+                }}
+            />
             <HTMLTable striped bordered interactive style={{marginTop: "5px", marginBottom: "5px", width: '100%'}}>
                 <thead>
                 <tr>
