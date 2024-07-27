@@ -1,8 +1,8 @@
 const net = require('net'),
     querystring = require('querystring'),
-    crypto = require('crypto'),
     SocksProxyAgent = require('socks-proxy-agent'),
     c = require('./constants'),
+    u = require('./utilities'),
     request = require('./request'),
     accounts = require('./accounts'),
     wss = require('./wss'),
@@ -128,13 +128,6 @@ function deletePort(socket, port) {
     });
 }
 
-function generateHashFromCertif(hm1, certif) {
-    const hm2 = hm1.split("").reverse().join("");
-    const i = crypto.createDecipheriv("aes-256-ecb", hm2, ""),
-        r = Buffer.concat([i.update(certif['encodedCertificate'], "base64"), i.final()]);
-    return crypto.createHash("sha256").update(hm1 + r.toString()).digest("hex")
-}
-
 function decimalToHex(d) {
     let hex = Number(d).toString(16);
     while (hex.length < 4) hex = "0" + hex;
@@ -146,7 +139,7 @@ async function getGameToken(account, socket, game) {
 
     if (account['certificate']) {
         queryPath['certificate_id'] = account['certificate']['id'];
-        queryPath['certificate_hash'] = generateHashFromCertif(account['hm1'], account['certificate']);
+        queryPath['certificate_hash'] = u.generateHashFromCertif(account['hm1'], account['certificate']);
     }
 
     const agent = account['proxy'] ? new SocksProxyAgent(account['proxy']) : null;

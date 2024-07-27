@@ -1,4 +1,5 @@
 const fs = require('fs'),
+    crypto = require('crypto'),
     c = require('./constants'),
     wss = require('./wss'),
     accounts = require('./accounts');
@@ -24,4 +25,11 @@ module.exports.deleteAccount = function (account) {
 
 module.exports.broadcast = function (account) {
     wss.broadcast({resource: "accounts", key: account, value: accounts[account]});
+};
+
+module.exports.generateHashFromCertif = function (hm1, certif) {
+    const hm2 = hm1.split("").reverse().join("");
+    const i = crypto.createDecipheriv("aes-256-ecb", hm2, ""),
+        r = Buffer.concat([i.update(certif['encodedCertificate'], "base64"), i.final()]);
+    return crypto.createHash("sha256").update(hm1 + r.toString()).digest("hex")
 };

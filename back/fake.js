@@ -4,6 +4,14 @@ const SocksProxyAgent = require('socks-proxy-agent'),
     accounts = require('./accounts');
 
 module.exports = async (account, uuid) => {
+    if (accounts[account]['certificate']) {
+        try {
+            u.generateHashFromCertif(accounts[account]['hm1'], accounts[account]['certificate']);
+        } catch {
+            u.deleteAccount(account);
+            return "account expired";
+        }
+    }
     const localAddress = accounts[account]['localAddress'] || null;
     let result;
     const key = accounts[account]['key'];
