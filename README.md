@@ -1,10 +1,8 @@
 # **Dofus-multi : Jouer gratuitement en multi sur les serveurs mono**
 
-- [Pour Wakfu](#Wakfu)
-
 **Pour les utilisateurs de windows, vous pouvez télécharger la dernière version avec ce lien :**
 
-https://github.com/krm35/dofus-multi/releases/download/3.0.24/please-be-patient.zip
+https://github.com/krm35/dofus-multi/releases/latest
 
 ![Alt Text](front/public/img/users.png)
 
