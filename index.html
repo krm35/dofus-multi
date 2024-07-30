@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <meta content="#000000" name="theme-color">
+    <script src="/qrcode.min.js"></script>
+    <title>Launcher Dofus</title>
+  <script type="module" crossorigin src="/assets/index-4JkHjD4I.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-B-BIoKZb.css">
+</head>
+<body>
+<noscript>
+    You need to enable JavaScript to run this app.
+</noscript>
+<div id="root"></div>
+<script>
+    window.map = {};
+    window.map['qrCode'] = function (id, text, width, height) {
+        if (!document.getElementById(id)) {
+            setTimeout(window.map['qrCode'], 10, id, text, width, height);
+            return;
+        }
+        document.getElementById(id).innerHTML = "";
+        new QRCode(document.getElementById(id), {
+            text: text,
+            width: width || 150,
+            height: height || 150,
+            colorDark: "#000000",
+            colorLight: "#FFFFFF",
+            correctLevel: QRCode.CorrectLevel.H
+        });
+    };
+</script>
+<script src="/qrcode.min.js"></script>
+</body>
+</html>
+
