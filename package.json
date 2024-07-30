@@ -1,0 +1,39 @@
+{
+  "name": "dofus-multi-back",
+  "version": "1.0.0",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "main": "index.js",
+  "bin": "./index.js",
+  "scripts": {
+    "dev": "node hot-reload.js",
+    "bundle": "node bundle.js"
+  },
+  "dependencies": {
+    "bytearray-node": "^3.3.5",
+    "bytenode": "^1.5.6",
+    "http-proxy-to-socks": "^1.1.2",
+    "node-machine-id": "^1.1.12",
+    "puppeteer": "^22.14.0",
+    "puppeteer-extra": "^3.3.6",
+    "socks": "2.7.1",
+    "socks-proxy-agent": "6.0.0",
+    "uuid": "^8.3.2",
+    "ws": "^8.8.0"
+  },
+  "pkg": {
+    "outputPath": "dist",
+    "assets": [
+      "node_modules/**/*",
+      "build",
+      "**/*.jsc"
+    ]
+  },
+  "devDependencies": {
+    "fs-extra": "^11.2.0",
+    "@vercel/ncc": "^0.38.1",
+    "frida": "^15.1.25",
+    "javascript-obfuscator": "^4.1.1"
+  }
+}
