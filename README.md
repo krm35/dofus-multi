@@ -1,4 +1,4 @@
-# **Dofus-multi : Jouer gratuitement en multi sur les serveurs mono**
+# **Dofus-multi : Jouer en multi sur les serveurs mono avec le no-anim**
 
 **Pour les utilisateurs de windows, vous pouvez télécharger la dernière version avec ce lien :**
 
