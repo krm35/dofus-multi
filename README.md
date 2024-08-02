@@ -4,8 +4,6 @@
 
 https://github.com/krm35/dofus-multi/releases/latest
 
-![Alt Text](front/public/img/users.png)
-
 **To start in dev mode**
 
 _Start the back_ `cd back && npm install && npm run dev`
