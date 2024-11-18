@@ -13,6 +13,7 @@
     "build-mac": "pkg package.json -t node14-darwin dist/mac/renommez-moi-svp"
   },
   "dependencies": {
+    "bytearray-node": "^3.3.5",
     "frida": "^15.1.25",
     "node-machine-id": "^1.1.12",
     "pkg": "^5.8.1",

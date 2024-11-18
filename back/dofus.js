@@ -5,6 +5,8 @@ const net = require('net'),
     querystring = require('querystring'),
     {spawn} = require('child_process'),
     frida = require('frida'),
+    ByteArray = require('bytearray-node'),
+    payloadWriter = require('./payloadWriter'),
     commons = require('./commons'),
     u = require("./utilities"),
     c = require("./constants");
@@ -30,18 +32,15 @@ const start = async function (account, port, type) {
                     if (port === 26116) port = 26616;
                     await connectClient(socket, host, port, account);
                 } else {
-                    if (!socket.ClientKeyMessage && type === 2 && port === 5555 && s.endsWith("#01")) {
-                        let uid = "";
-                        for (let i = s.length - 4; i > 0 && uid.length < 18; i--) uid += s.charAt(i);
-                        uid = uid.split("").reverse().join("");
-                        if (c.uid.includes(uid)) {
-                            socket.ClientKeyMessage = true;
-                            // noinspection JSCheckFunctionSignatures
-                            data = Buffer.from(data.toString('hex').replace(
-                                Buffer.from(uid).toString('hex'),
-                                Buffer.from(account.flashKey).toString('hex')
-                            ), 'hex');
-                        }
+                    const msgId = data.readUInt16BE(0) >> 2;
+                    if (type === 2 && port === 5555 && msgId === 7975) {
+                        const buff = new ByteArray(Buffer.from(data.toString('hex'), "hex"));
+                        buff.position = 0;
+                        buff.readShort();
+                        const packetCounter = buff.readUnsignedInt();
+                        const ClientKeyMessage = new ByteArray();
+                        ClientKeyMessage.writeUTF(account.flashKey + "#01");
+                        data = Buffer.from(payloadWriter(new ByteArray(), msgId, ClientKeyMessage, packetCounter).toString('hex'), 'hex');
                     }
                     if (socket['clientSocket']?.['connected']) socket['clientSocket'].write(data);
                     else socket['myQueue'].push(data);
