@@ -1,3 +1,7 @@
+# **Discord : https://discord.gg/tFFbhcYkhu**
+
+![Alt Text](img/discord.png)
+
 # **Dofus-multi : Jouer en multi sur les serveurs mono avec le no-anim**
 
 **Pour les utilisateurs de windows, vous pouvez télécharger la dernière version avec ce lien :**
