@@ -1,6 +1,6 @@
 # **Discord : https://discord.gg/tFFbhcYkhu**
 
-![Alt Text](img/discord.png)
+[<img src="img/discord.png">](https://discord.gg/tFFbhcYkhu)
 
 # **Dofus-multi : Jouer en multi sur les serveurs mono avec le no-anim**
 
