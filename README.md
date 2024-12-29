@@ -6,7 +6,7 @@
 
 **Pour les utilisateurs de windows, vous pouvez télécharger la dernière version avec ce lien :**
 
-https://github.com/krm35/dofus-multi/releases/latest
+https://github.com/krm35/dofus-multi/releases/download/1.0.0/release.zip
 
 **To start in dev mode**
 
