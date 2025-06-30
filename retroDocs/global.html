@@ -205,7 +205,7 @@
     
 
     
-    <h4 class="name" id="cell"><span class="type-signature"></span>cell<span class="signature">(id)</span><span class="type-signature"> &rarr; {number}</span></h4>
+    <h4 class="name" id="cell"><span class="type-signature"></span>cell<span class="signature">(args<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {number}</span></h4>
     
 
     
@@ -213,7 +213,7 @@
 
 
 <div class="description">
-    Get the cell of a character
+    Get the cell position of a character on the map
 </div>
 
 
@@ -237,6 +237,70 @@
         <th>Type</th>
 
         
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>args</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    {}
+                
+                </td>
+            
+
+            <td class="description last">The function arguments (optional)
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
 
         
 
@@ -254,13 +318,35 @@
 
             <td class="type">
             
+                
+<span class="param-type">number</span>
+
+
+            
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
 
             
 
-            <td class="description last">Optional: The character id. If not provided then it will default on your own character id and return your cell</td>
+            <td class="description last">Character ID to get cell for. If not provided, uses your own character ID</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
         </tr>
 
     
@@ -324,6 +410,10 @@
 <h5>Returns:</h5>
 
         
+<div class="param-desc">
+    The cell number where the character is located
+</div>
+
 
 
 <dl>
@@ -341,6 +431,28 @@
     
 
 
+
+
+    <h5>Examples</h5>
+    
+    <pre class="prettyprint"><code>// Get your own character's cell position
+const myPosition = cell({});
+// or simply
+const myPosition = cell();</code></pre>
+
+    <pre class="prettyprint"><code>// Get another character's cell position
+const allyPosition = cell({id: 12345});</code></pre>
+
+    <pre class="prettyprint"><code>// Check if characters are on the same cell
+const myCell = cell({});
+const allyCell = cell({id: 67890});
+if (myCell === allyCell) {
+    console.log("We're on the same cell!");
+}</code></pre>
+
+    <pre class="prettyprint"><code>// Use with other movement functions
+const targetCell = cell({id: 54321});
+await moveToCell({cell: targetCell});</code></pre>
 
 
 
@@ -668,6 +780,242 @@ const mobs = getMobs();
 mobs.forEach(mob => {
     console.log(`Mob at cell: ${mob.cell}`);
 });</code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="isCellUsed"><span class="type-signature"></span>isCellUsed<span class="signature">(args)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Check if any character is present on the specified cell
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>args</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The function arguments
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>cell</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The cell number to check for character presence</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    True if someone is on the cell, false if the cell is empty
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+    <h5>Examples</h5>
+    
+    <pre class="prettyprint"><code>// Check if a cell is occupied before moving there
+if (!isCellUsed({cell: 123})) {
+    await moveToCell({cell: 123});
+} else {
+    console.log("Cell 123 is occupied");
+}</code></pre>
+
+    <pre class="prettyprint"><code>// Find an empty cell around your position
+const adjacentCells = [120, 121, 122, 123, 124];
+const emptyCells = adjacentCells.filter(cell => !isCellUsed({cell}));
+if (emptyCells.length > 0) {
+    await moveToCell({cell: emptyCells[0]});
+}</code></pre>
+
+    <pre class="prettyprint"><code>// Check before casting area spells to avoid friendly fire
+const targetCell = 456;
+if (isCellUsed({cell: targetCell})) {
+    console.log("Someone is on target cell, choosing different spell");
+    await spell({id: singleTargetSpellId, cell: targetCell});
+} else {
+    await spell({id: aoeSpellId, cell: targetCell});
+}</code></pre>
+
+    <pre class="prettyprint"><code>// Validate positioning before group actions
+const gatherPoint = 789;
+if (isCellUsed({cell: gatherPoint})) {
+    console.log("Gather point is occupied, waiting...");
+    await new Promise(resolve => setTimeout(resolve, 1000));
+}</code></pre>
 
 
 
@@ -2475,6 +2823,10 @@ try {
 <h5>Returns:</h5>
 
         
+<div class="param-desc">
+    The cell number where your character is located
+</div>
+
 
 
 <dl>
@@ -2773,7 +3125,7 @@ await quickEquip(1); // Gathering equipment (set 2)</code></pre>
     
 
     
-    <h4 class="name" id="sameMap"><span class="type-signature"></span>sameMap<span class="signature">(mapId)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
+    <h4 class="name" id="sameMap"><span class="type-signature"></span>sameMap<span class="signature">(args)</span><span class="type-signature"> &rarr; {boolean}</span></h4>
     
 
     
@@ -2781,7 +3133,7 @@ await quickEquip(1); // Gathering equipment (set 2)</code></pre>
 
 
 <div class="description">
-    Check if we're still on the same map
+    Check if the character is still on the specified map
 </div>
 
 
@@ -2817,10 +3169,15 @@ await quickEquip(1); // Gathering equipment (set 2)</code></pre>
 
         <tr>
             
-                <td class="name"><code>mapId</code></td>
+                <td class="name"><code>args</code></td>
             
 
             <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
             
             </td>
 
@@ -2828,7 +3185,56 @@ await quickEquip(1); // Gathering equipment (set 2)</code></pre>
 
             
 
-            <td class="description last">The map id</td>
+            <td class="description last">The function arguments
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>mapId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The map ID to compare against current location</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
         </tr>
 
     
@@ -2892,6 +3298,10 @@ await quickEquip(1); // Gathering equipment (set 2)</code></pre>
 <h5>Returns:</h5>
 
         
+<div class="param-desc">
+    True if currently on the specified map, false otherwise
+</div>
+
 
 
 <dl>
@@ -3063,7 +3473,7 @@ await quickEquip(1); // Gathering equipment (set 2)</code></pre>
     
 
     
-    <h4 class="name" id="speakToNpc"><span class="type-signature">(async) </span>speakToNpc<span class="signature">(dialogs:, id, cell)</span><span class="type-signature"> &rarr; {Promise.&lt;void>}</span></h4>
+    <h4 class="name" id="speakToNpc"><span class="type-signature">(async) </span>speakToNpc<span class="signature">(args)</span><span class="type-signature"> &rarr; {Promise.&lt;void>}</span></h4>
     
 
     
@@ -3071,7 +3481,7 @@ await quickEquip(1); // Gathering equipment (set 2)</code></pre>
 
 
 <div class="description">
-    Speak to the NPC on the map
+    Speak to an NPC on the map and navigate through dialog options
 </div>
 
 
@@ -3107,10 +3517,15 @@ await quickEquip(1); // Gathering equipment (set 2)</code></pre>
 
         <tr>
             
-                <td class="name"><code>dialogs:</code></td>
+                <td class="name"><code>args</code></td>
             
 
             <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
             
             </td>
 
@@ -3118,7 +3533,65 @@ await quickEquip(1); // Gathering equipment (set 2)</code></pre>
 
             
 
-            <td class="description last">The dialogs array for example [1,1,1]</td>
+            <td class="description last">The function arguments
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>dialogs</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;number></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">Array of dialog choice indices to select in sequence (e.g., [1,1,1])</td>
         </tr>
 
     
@@ -3130,13 +3603,34 @@ await quickEquip(1); // Gathering equipment (set 2)</code></pre>
 
             <td class="type">
             
+                
+<span class="param-type">number</span>
+
+
+            
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last">Optional: id of the NPC, it not provided, default to 1</td>
+            
+                <td class="default">
+                
+                    1
+                
+                </td>
+            
+
+            <td class="description last">NPC ID to speak with (optional, defaults to 1)</td>
         </tr>
 
     
@@ -3148,13 +3642,39 @@ await quickEquip(1); // Gathering equipment (set 2)</code></pre>
 
             <td class="type">
             
+                
+<span class="param-type">number</span>
+
+
+            
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last">Optional: Cell of the NPC.</td>
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">Cell number where the NPC is located (optional)</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
         </tr>
 
     
@@ -3218,6 +3738,10 @@ await quickEquip(1); // Gathering equipment (set 2)</code></pre>
 <h5>Returns:</h5>
 
         
+<div class="param-desc">
+    Promise that resolves when the dialog sequence is complete
+</div>
+
 
 
 <dl>
@@ -3237,6 +3761,31 @@ await quickEquip(1); // Gathering equipment (set 2)</code></pre>
 
 
 
+    <h5>Examples</h5>
+    
+    <pre class="prettyprint"><code>// Speak to the first NPC on the map, selecting dialog options 1, 2, 1
+await speakToNpc({dialogs: [1, 2, 1]});</code></pre>
+
+    <pre class="prettyprint"><code>// Speak to a specific NPC by ID
+await speakToNpc({
+    id: 42,
+    dialogs: [1, 1, 1]
+});</code></pre>
+
+    <pre class="prettyprint"><code>// Speak to NPC at a specific cell location
+await speakToNpc({
+    cell: 123,
+    dialogs: [2, 1, 3, 1]
+});</code></pre>
+
+    <pre class="prettyprint"><code>// Complete example with all parameters
+await speakToNpc({
+    id: 15,
+    cell: 456,
+    dialogs: [1, 1, 2, 1] // Navigate through 4 dialog choices
+});</code></pre>
+
+
 
         
             
@@ -3244,7 +3793,7 @@ await quickEquip(1); // Gathering equipment (set 2)</code></pre>
     
 
     
-    <h4 class="name" id="spell"><span class="type-signature">(async) </span>spell<span class="signature">(id, cell, t, retry)</span><span class="type-signature"> &rarr; {Promise.&lt;void>}</span></h4>
+    <h4 class="name" id="spell"><span class="type-signature">(async) </span>spell<span class="signature">(args)</span><span class="type-signature"> &rarr; {Promise.&lt;void>}</span></h4>
     
 
     
@@ -3252,7 +3801,7 @@ await quickEquip(1); // Gathering equipment (set 2)</code></pre>
 
 
 <div class="description">
-    Spell to launch
+    Cast a spell
 </div>
 
 
@@ -3288,10 +3837,15 @@ await quickEquip(1); // Gathering equipment (set 2)</code></pre>
 
         <tr>
             
-                <td class="name"><code>id</code></td>
+                <td class="name"><code>args</code></td>
             
 
             <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
             
             </td>
 
@@ -3299,7 +3853,65 @@ await quickEquip(1); // Gathering equipment (set 2)</code></pre>
 
             
 
-            <td class="description last">Spell id</td>
+            <td class="description last">The function arguments
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">The spell ID to cast - See http://localhost:8081/spellsRetro</td>
         </tr>
 
     
@@ -3311,13 +3923,32 @@ await quickEquip(1); // Gathering equipment (set 2)</code></pre>
 
             <td class="type">
             
+                
+<span class="param-type">number</span>
+
+
+            
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last">Optional: Cell to launch. If not provided then it will launch on your own cell</td>
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">Target cell to cast the spell on. If not provided, casts on your own cell</td>
         </tr>
 
     
@@ -3329,13 +3960,32 @@ await quickEquip(1); // Gathering equipment (set 2)</code></pre>
 
             <td class="type">
             
+                
+<span class="param-type">number</span>
+
+
+            
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last">Optional: The time to wait before launching is ms</td>
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">Time to wait before casting the spell in milliseconds (optional)</td>
         </tr>
 
     
@@ -3347,13 +3997,41 @@ await quickEquip(1); // Gathering equipment (set 2)</code></pre>
 
             <td class="type">
             
+                
+<span class="param-type">boolean</span>
+
+
+            
             </td>
 
             
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
 
+                
+
+                
+                </td>
             
 
-            <td class="description last">Optional: Should retry if critical failure</td>
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last">Whether to retry the spell if it fails critically (optional)</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
         </tr>
 
     
@@ -3417,6 +4095,10 @@ await quickEquip(1); // Gathering equipment (set 2)</code></pre>
 <h5>Returns:</h5>
 
         
+<div class="param-desc">
+    Promise that resolves when the spell is cast
+</div>
+
 
 
 <dl>
@@ -3434,6 +4116,33 @@ await quickEquip(1); // Gathering equipment (set 2)</code></pre>
     
 
 
+
+
+    <h5>Examples</h5>
+    
+    <pre class="prettyprint"><code>// Cast a spell on your own position
+await spell({id: 123});</code></pre>
+
+    <pre class="prettyprint"><code>// Cast a spell on a specific target cell
+await spell({id: 456, cell: 234});</code></pre>
+
+    <pre class="prettyprint"><code>// Cast a spell with a delay (useful for timing in combat)
+await spell({id: 789, cell: 345, t: 1000}); // Wait 1 second before casting</code></pre>
+
+    <pre class="prettyprint"><code>// Cast a spell with retry on critical failure
+await spell({id: 111, cell: 222, retry: true});</code></pre>
+
+    <pre class="prettyprint"><code>// Complete example with all parameters
+await spell({
+    id: 999,        // Spell ID
+    cell: 567,      // Target cell
+    t: 500,         // 500ms delay
+    retry: true     // Retry on critical failure
+});</code></pre>
+
+    <pre class="prettyprint"><code>// Common combat sequence with timing
+await spell({id: 123, cell: enemyCell, t: 200});
+await spell({id: 456, cell: allyCell, t: 300, retry: true});</code></pre>
 
 
 
@@ -3866,13 +4575,13 @@ await useObject({id: 528, max: true}); // Use all bread</code></pre>
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#abandon">abandon</a></li><li><a href="global.html#cell">cell</a></li><li><a href="global.html#distance">distance</a></li><li><a href="global.html#getMobs">getMobs</a></li><li><a href="global.html#isCra">isCra</a></li><li><a href="global.html#isEca">isEca</a></li><li><a href="global.html#isEni">isEni</a></li><li><a href="global.html#isEnu">isEnu</a></li><li><a href="global.html#isFeca">isFeca</a></li><li><a href="global.html#isGroupLeader">isGroupLeader</a></li><li><a href="global.html#isIop">isIop</a></li><li><a href="global.html#isOsa">isOsa</a></li><li><a href="global.html#isPanda">isPanda</a></li><li><a href="global.html#isSacri">isSacri</a></li><li><a href="global.html#isSadi">isSadi</a></li><li><a href="global.html#isSram">isSram</a></li><li><a href="global.html#isXel">isXel</a></li><li><a href="global.html#joinSpouse">joinSpouse</a></li><li><a href="global.html#moveToCell">moveToCell</a></li><li><a href="global.html#myCell">myCell</a></li><li><a href="global.html#quickEquip">quickEquip</a></li><li><a href="global.html#rideMule">rideMule</a></li><li><a href="global.html#sameMap">sameMap</a></li><li><a href="global.html#someoneOnCell">someoneOnCell</a></li><li><a href="global.html#speakToNpc">speakToNpc</a></li><li><a href="global.html#spell">spell</a></li><li><a href="global.html#useObject">useObject</a></li><li><a href="global.html#waitGroup">waitGroup</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#abandon">abandon</a></li><li><a href="global.html#cell">cell</a></li><li><a href="global.html#distance">distance</a></li><li><a href="global.html#getMobs">getMobs</a></li><li><a href="global.html#isCellUsed">isCellUsed</a></li><li><a href="global.html#isCra">isCra</a></li><li><a href="global.html#isEca">isEca</a></li><li><a href="global.html#isEni">isEni</a></li><li><a href="global.html#isEnu">isEnu</a></li><li><a href="global.html#isFeca">isFeca</a></li><li><a href="global.html#isGroupLeader">isGroupLeader</a></li><li><a href="global.html#isIop">isIop</a></li><li><a href="global.html#isOsa">isOsa</a></li><li><a href="global.html#isPanda">isPanda</a></li><li><a href="global.html#isSacri">isSacri</a></li><li><a href="global.html#isSadi">isSadi</a></li><li><a href="global.html#isSram">isSram</a></li><li><a href="global.html#isXel">isXel</a></li><li><a href="global.html#joinSpouse">joinSpouse</a></li><li><a href="global.html#moveToCell">moveToCell</a></li><li><a href="global.html#myCell">myCell</a></li><li><a href="global.html#quickEquip">quickEquip</a></li><li><a href="global.html#rideMule">rideMule</a></li><li><a href="global.html#sameMap">sameMap</a></li><li><a href="global.html#someoneOnCell">someoneOnCell</a></li><li><a href="global.html#speakToNpc">speakToNpc</a></li><li><a href="global.html#spell">spell</a></li><li><a href="global.html#useObject">useObject</a></li><li><a href="global.html#waitGroup">waitGroup</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Sun Jun 22 2025 23:36:26 GMT+0200 (heure d’été d’Europe centrale)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Mon Jun 30 2025 22:28:52 GMT+0200 (heure d’été d’Europe centrale)
 </footer>
 
 <script> prettyPrint(); </script>
