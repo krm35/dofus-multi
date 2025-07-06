@@ -1,6 +1,6 @@
-# **Discord : https://discord.gg/kmFruFFDKq**
+# **Discord : https://discord.gg/sryM37aQV3**
 
-[<img src="img/discord.png">](https://discord.gg/kmFruFFDKq)
+[<img src="img/discord.png">](https://discord.gg/sryM37aQV3)
 
 # **Dofus-multi : Jouer en multi sur les serveurs mono avec le no-anim, bot chasse, bot hdv**
 
