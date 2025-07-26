@@ -3011,6 +3011,12 @@ await quickEquip(1);</code></pre>
     <pre class="prettyprint"><code>// Equip the third equipment set (Equipment 3)
 await quickEquip(2);</code></pre>
 
+    <pre class="prettyprint"><code>if (turn == 0) { // phase de préparation
+   await quickEquip(1);
+} else if (!mapIdFight) { // hors combat
+   await quickEquip(0);
+ }</code></pre>
+
     <pre class="prettyprint"><code>// Common usage - switching between combat and gathering gear
 await quickEquip(0); // Combat equipment (set 1)
 // ... do combat activities ...
@@ -4152,7 +4158,215 @@ await spell({id: 456, cell: allyCell, t: 300, retry: true});</code></pre>
     
 
     
-    <h4 class="name" id="useObject"><span class="type-signature">(async) </span>useObject<span class="signature">(args)</span><span class="type-signature"> &rarr; {Promise.&lt;void>}</span></h4>
+    <h4 class="name" id="takeZaapi"><span class="type-signature">(async) </span>takeZaapi<span class="signature">(args)</span><span class="type-signature"> &rarr; {Promise.&lt;void>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Take a zaapi
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>args</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The function arguments
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>mapId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The map to go</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;void></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+    <h5>Examples</h5>
+    
+    <pre class="prettyprint"><code>// Go to bonta arene
+await takeZaapi({mapId: 8478});</code></pre>
+
+    <pre class="prettyprint"><code>// Go to bonta bank
+await takeZaapi({mapId: 4308});</code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="useObject"><span class="type-signature">(async) </span>useObject<span class="signature">(args)</span><span class="type-signature"> &rarr; {Promise.&lt;Boolean>}</span></h4>
     
 
     
@@ -4429,7 +4643,7 @@ await spell({id: 456, cell: allyCell, t: 300, retry: true});</code></pre>
     </dt>
     <dd>
         
-<span class="param-type">Promise.&lt;void></span>
+<span class="param-type">Promise.&lt;Boolean></span>
 
 
     </dd>
@@ -4575,13 +4789,13 @@ await useObject({id: 528, max: true}); // Use all bread</code></pre>
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#abandon">abandon</a></li><li><a href="global.html#cell">cell</a></li><li><a href="global.html#distance">distance</a></li><li><a href="global.html#getMobs">getMobs</a></li><li><a href="global.html#isCellUsed">isCellUsed</a></li><li><a href="global.html#isCra">isCra</a></li><li><a href="global.html#isEca">isEca</a></li><li><a href="global.html#isEni">isEni</a></li><li><a href="global.html#isEnu">isEnu</a></li><li><a href="global.html#isFeca">isFeca</a></li><li><a href="global.html#isGroupLeader">isGroupLeader</a></li><li><a href="global.html#isIop">isIop</a></li><li><a href="global.html#isOsa">isOsa</a></li><li><a href="global.html#isPanda">isPanda</a></li><li><a href="global.html#isSacri">isSacri</a></li><li><a href="global.html#isSadi">isSadi</a></li><li><a href="global.html#isSram">isSram</a></li><li><a href="global.html#isXel">isXel</a></li><li><a href="global.html#joinSpouse">joinSpouse</a></li><li><a href="global.html#moveToCell">moveToCell</a></li><li><a href="global.html#myCell">myCell</a></li><li><a href="global.html#quickEquip">quickEquip</a></li><li><a href="global.html#rideMule">rideMule</a></li><li><a href="global.html#sameMap">sameMap</a></li><li><a href="global.html#someoneOnCell">someoneOnCell</a></li><li><a href="global.html#speakToNpc">speakToNpc</a></li><li><a href="global.html#spell">spell</a></li><li><a href="global.html#useObject">useObject</a></li><li><a href="global.html#waitGroup">waitGroup</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#abandon">abandon</a></li><li><a href="global.html#cell">cell</a></li><li><a href="global.html#distance">distance</a></li><li><a href="global.html#getMobs">getMobs</a></li><li><a href="global.html#isCellUsed">isCellUsed</a></li><li><a href="global.html#isCra">isCra</a></li><li><a href="global.html#isEca">isEca</a></li><li><a href="global.html#isEni">isEni</a></li><li><a href="global.html#isEnu">isEnu</a></li><li><a href="global.html#isFeca">isFeca</a></li><li><a href="global.html#isGroupLeader">isGroupLeader</a></li><li><a href="global.html#isIop">isIop</a></li><li><a href="global.html#isOsa">isOsa</a></li><li><a href="global.html#isPanda">isPanda</a></li><li><a href="global.html#isSacri">isSacri</a></li><li><a href="global.html#isSadi">isSadi</a></li><li><a href="global.html#isSram">isSram</a></li><li><a href="global.html#isXel">isXel</a></li><li><a href="global.html#joinSpouse">joinSpouse</a></li><li><a href="global.html#moveToCell">moveToCell</a></li><li><a href="global.html#myCell">myCell</a></li><li><a href="global.html#quickEquip">quickEquip</a></li><li><a href="global.html#rideMule">rideMule</a></li><li><a href="global.html#sameMap">sameMap</a></li><li><a href="global.html#someoneOnCell">someoneOnCell</a></li><li><a href="global.html#speakToNpc">speakToNpc</a></li><li><a href="global.html#spell">spell</a></li><li><a href="global.html#takeZaapi">takeZaapi</a></li><li><a href="global.html#useObject">useObject</a></li><li><a href="global.html#waitGroup">waitGroup</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Mon Jun 30 2025 22:28:52 GMT+0200 (heure d’été d’Europe centrale)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Sat Jul 26 2025 17:23:01 GMT+0200 (heure d’été d’Europe centrale)
 </footer>
 
 <script> prettyPrint(); </script>
