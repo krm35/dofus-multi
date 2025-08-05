@@ -671,6 +671,114 @@ const distances = await distance({cells: [123, 456, 789]});</code></pre>
     
 
     
+    <h4 class="name" id="getLowestLifeMob"><span class="type-signature"></span>getLowestLifeMob<span class="signature">()</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Return the mob with the lowest life
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Object</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Get the mob with the lowest life
+ const lowestLifeMob = getLowestLifeMob(); -> {id: '-1', cell: '300', life: '200'};
+ if (lowestLifeMob) await spell({id: 173, cell: lowestLifeMob.cell});</code></pre>
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="getMobs"><span class="type-signature"></span>getMobs<span class="signature">()</span><span class="type-signature"> &rarr; {Array.&lt;Object>}</span></h4>
     
 
@@ -881,6 +989,12 @@ mobs.forEach(mob => {
     
 
 
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Get your pods
+ getPods(); -> {pods: '10', maxPods: '1000', podsPc: 0.01}</code></pre>
 
 
 
@@ -4294,7 +4408,7 @@ await speakToNpc({
                 </td>
             
 
-            <td class="description last">Time to wait before casting the spell in milliseconds (optional)</td>
+            <td class="description last">Time to wait after casting the spell in milliseconds (optional) - Default 1000ms</td>
         </tr>
 
     
@@ -4436,7 +4550,7 @@ await spell({id: 123});</code></pre>
 await spell({id: 456, cell: 234});</code></pre>
 
     <pre class="prettyprint"><code>// Cast a spell with a delay (useful for timing in combat)
-await spell({id: 789, cell: 345, t: 1000}); // Wait 1 second before casting</code></pre>
+await spell({id: 789, cell: 345, t: 2000}); // Wait 1 second after casting</code></pre>
 
     <pre class="prettyprint"><code>// Cast a spell with retry on critical failure
 await spell({id: 111, cell: 222, retry: true});</code></pre>
@@ -4445,13 +4559,13 @@ await spell({id: 111, cell: 222, retry: true});</code></pre>
 await spell({
     id: 999,        // Spell ID
     cell: 567,      // Target cell
-    t: 500,         // 500ms delay
+    t: 1500,         // 500ms delay after the spell
     retry: true     // Retry on critical failure
 });</code></pre>
 
     <pre class="prettyprint"><code>// Common combat sequence with timing
-await spell({id: 123, cell: enemyCell, t: 200});
-await spell({id: 456, cell: allyCell, t: 300, retry: true});</code></pre>
+await spell({id: 123, cell: enemyCell, t: 2000});
+await spell({id: 456, cell: allyCell, t: 3000, retry: true});</code></pre>
 
 
 
@@ -5092,13 +5206,13 @@ await useObject({id: 528, max: true}); // Use all bread</code></pre>
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#abandon">abandon</a></li><li><a href="global.html#cell">cell</a></li><li><a href="global.html#distance">distance</a></li><li><a href="global.html#getMobs">getMobs</a></li><li><a href="global.html#getPods">getPods</a></li><li><a href="global.html#isCellUsed">isCellUsed</a></li><li><a href="global.html#isCra">isCra</a></li><li><a href="global.html#isEca">isEca</a></li><li><a href="global.html#isEni">isEni</a></li><li><a href="global.html#isEnu">isEnu</a></li><li><a href="global.html#isFeca">isFeca</a></li><li><a href="global.html#isGroupLeader">isGroupLeader</a></li><li><a href="global.html#isIop">isIop</a></li><li><a href="global.html#isOsa">isOsa</a></li><li><a href="global.html#isPanda">isPanda</a></li><li><a href="global.html#isSacri">isSacri</a></li><li><a href="global.html#isSadi">isSadi</a></li><li><a href="global.html#isSram">isSram</a></li><li><a href="global.html#isXel">isXel</a></li><li><a href="global.html#joinSpouse">joinSpouse</a></li><li><a href="global.html#moveToCell">moveToCell</a></li><li><a href="global.html#myCell">myCell</a></li><li><a href="global.html#passTurn">passTurn</a></li><li><a href="global.html#quickEquip">quickEquip</a></li><li><a href="global.html#ready">ready</a></li><li><a href="global.html#rideMule">rideMule</a></li><li><a href="global.html#sameMap">sameMap</a></li><li><a href="global.html#someoneOnCell">someoneOnCell</a></li><li><a href="global.html#speakToNpc">speakToNpc</a></li><li><a href="global.html#spell">spell</a></li><li><a href="global.html#takeZaapi">takeZaapi</a></li><li><a href="global.html#useObject">useObject</a></li><li><a href="global.html#waitGroup">waitGroup</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#abandon">abandon</a></li><li><a href="global.html#cell">cell</a></li><li><a href="global.html#distance">distance</a></li><li><a href="global.html#getLowestLifeMob">getLowestLifeMob</a></li><li><a href="global.html#getMobs">getMobs</a></li><li><a href="global.html#getPods">getPods</a></li><li><a href="global.html#isCellUsed">isCellUsed</a></li><li><a href="global.html#isCra">isCra</a></li><li><a href="global.html#isEca">isEca</a></li><li><a href="global.html#isEni">isEni</a></li><li><a href="global.html#isEnu">isEnu</a></li><li><a href="global.html#isFeca">isFeca</a></li><li><a href="global.html#isGroupLeader">isGroupLeader</a></li><li><a href="global.html#isIop">isIop</a></li><li><a href="global.html#isOsa">isOsa</a></li><li><a href="global.html#isPanda">isPanda</a></li><li><a href="global.html#isSacri">isSacri</a></li><li><a href="global.html#isSadi">isSadi</a></li><li><a href="global.html#isSram">isSram</a></li><li><a href="global.html#isXel">isXel</a></li><li><a href="global.html#joinSpouse">joinSpouse</a></li><li><a href="global.html#moveToCell">moveToCell</a></li><li><a href="global.html#myCell">myCell</a></li><li><a href="global.html#passTurn">passTurn</a></li><li><a href="global.html#quickEquip">quickEquip</a></li><li><a href="global.html#ready">ready</a></li><li><a href="global.html#rideMule">rideMule</a></li><li><a href="global.html#sameMap">sameMap</a></li><li><a href="global.html#someoneOnCell">someoneOnCell</a></li><li><a href="global.html#speakToNpc">speakToNpc</a></li><li><a href="global.html#spell">spell</a></li><li><a href="global.html#takeZaapi">takeZaapi</a></li><li><a href="global.html#useObject">useObject</a></li><li><a href="global.html#waitGroup">waitGroup</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Tue Aug 05 2025 15:48:33 GMT+0200 (heure d’été d’Europe centrale)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Tue Aug 05 2025 16:03:50 GMT+0200 (heure d’été d’Europe centrale)
 </footer>
 
 <script> prettyPrint(); </script>
