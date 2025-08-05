@@ -462,7 +462,7 @@ await moveToCell({cell: targetCell});</code></pre>
     
 
     
-    <h4 class="name" id="distance"><span class="type-signature">(async) </span>distance<span class="signature">(args)</span><span class="type-signature"> &rarr; {Promise.&lt;Array>}</span></h4>
+    <h4 class="name" id="distance"><span class="type-signature">(async) </span>distance<span class="signature">(args)</span><span class="type-signature"> &rarr; {Promise.&lt;String>}</span></h4>
     
 
     
@@ -636,7 +636,7 @@ await moveToCell({cell: targetCell});</code></pre>
 
         
 <div class="param-desc">
-    Promise that resolves to an array of distance calculations
+    Promise that resolves to a string of distance calculations: "cell1:distance:lineOfSight,cell2:distance:lineOfSight"
 </div>
 
 
@@ -647,7 +647,7 @@ await moveToCell({cell: targetCell});</code></pre>
     </dt>
     <dd>
         
-<span class="param-type">Promise.&lt;Array></span>
+<span class="param-type">Promise.&lt;String></span>
 
 
     </dd>
@@ -661,7 +661,7 @@ await moveToCell({cell: targetCell});</code></pre>
     <h5>Example</h5>
     
     <pre class="prettyprint"><code>// Get distances to specific cells
-const distances = await distance({cells: [123, 456, 789]});</code></pre>
+const distances = await distance({cells: [123, 456, 789]}); // 123:4:true,456:5:true,789:6:true,</code></pre>
 
 
 
@@ -768,7 +768,7 @@ const distances = await distance({cells: [123, 456, 789]});</code></pre>
     <h5>Example</h5>
     
     <pre class="prettyprint"><code>// Get the mob with the lowest life
- const lowestLifeMob = getLowestLifeMob(); -> {id: '-1', cell: '300', life: '200'};
+ const lowestLifeMob = getLowestLifeMob(); // {id: '-1', cell: '300', life: '200'};
  if (lowestLifeMob) await spell({id: 173, cell: lowestLifeMob.cell});</code></pre>
 
 
@@ -897,6 +897,114 @@ mobs.forEach(mob => {
     
 
     
+    <h4 class="name" id="getNearestMob"><span class="type-signature">(async) </span>getNearestMob<span class="signature">()</span><span class="type-signature"> &rarr; {Promise.&lt;Object>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Return the nearest mob
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;Object></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Get the nearest mob
+ const nearestMob = await getNearestMob(); // {id: '-1', cell: '300', life: '200'};
+ if (nearestMob) await spell({id: 173, cell: nearestMob.cell});</code></pre>
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="getPods"><span class="type-signature"></span>getPods<span class="signature">()</span><span class="type-signature"> &rarr; {Object}</span></h4>
     
 
@@ -994,7 +1102,7 @@ mobs.forEach(mob => {
     <h5>Example</h5>
     
     <pre class="prettyprint"><code>// Get your pods
- getPods(); -> {pods: '10', maxPods: '1000', podsPc: 0.01}</code></pre>
+ getPods(); // {pods: '10', maxPods: '1000', podsPc: 0.01}</code></pre>
 
 
 
@@ -2645,6 +2753,113 @@ if (isCellUsed({cell: gatherPoint})) {
     
 
 
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="mountDD"><span class="type-signature">(async) </span>mountDD<span class="signature">()</span><span class="type-signature"> &rarr; {Promise.&lt;void>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Mount your dd
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;void></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Mount your dd
+ await mountDD();</code></pre>
 
 
 
@@ -5206,13 +5421,13 @@ await useObject({id: 528, max: true}); // Use all bread</code></pre>
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#abandon">abandon</a></li><li><a href="global.html#cell">cell</a></li><li><a href="global.html#distance">distance</a></li><li><a href="global.html#getLowestLifeMob">getLowestLifeMob</a></li><li><a href="global.html#getMobs">getMobs</a></li><li><a href="global.html#getPods">getPods</a></li><li><a href="global.html#isCellUsed">isCellUsed</a></li><li><a href="global.html#isCra">isCra</a></li><li><a href="global.html#isEca">isEca</a></li><li><a href="global.html#isEni">isEni</a></li><li><a href="global.html#isEnu">isEnu</a></li><li><a href="global.html#isFeca">isFeca</a></li><li><a href="global.html#isGroupLeader">isGroupLeader</a></li><li><a href="global.html#isIop">isIop</a></li><li><a href="global.html#isOsa">isOsa</a></li><li><a href="global.html#isPanda">isPanda</a></li><li><a href="global.html#isSacri">isSacri</a></li><li><a href="global.html#isSadi">isSadi</a></li><li><a href="global.html#isSram">isSram</a></li><li><a href="global.html#isXel">isXel</a></li><li><a href="global.html#joinSpouse">joinSpouse</a></li><li><a href="global.html#moveToCell">moveToCell</a></li><li><a href="global.html#myCell">myCell</a></li><li><a href="global.html#passTurn">passTurn</a></li><li><a href="global.html#quickEquip">quickEquip</a></li><li><a href="global.html#ready">ready</a></li><li><a href="global.html#rideMule">rideMule</a></li><li><a href="global.html#sameMap">sameMap</a></li><li><a href="global.html#someoneOnCell">someoneOnCell</a></li><li><a href="global.html#speakToNpc">speakToNpc</a></li><li><a href="global.html#spell">spell</a></li><li><a href="global.html#takeZaapi">takeZaapi</a></li><li><a href="global.html#useObject">useObject</a></li><li><a href="global.html#waitGroup">waitGroup</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#abandon">abandon</a></li><li><a href="global.html#cell">cell</a></li><li><a href="global.html#distance">distance</a></li><li><a href="global.html#getLowestLifeMob">getLowestLifeMob</a></li><li><a href="global.html#getMobs">getMobs</a></li><li><a href="global.html#getNearestMob">getNearestMob</a></li><li><a href="global.html#getPods">getPods</a></li><li><a href="global.html#isCellUsed">isCellUsed</a></li><li><a href="global.html#isCra">isCra</a></li><li><a href="global.html#isEca">isEca</a></li><li><a href="global.html#isEni">isEni</a></li><li><a href="global.html#isEnu">isEnu</a></li><li><a href="global.html#isFeca">isFeca</a></li><li><a href="global.html#isGroupLeader">isGroupLeader</a></li><li><a href="global.html#isIop">isIop</a></li><li><a href="global.html#isOsa">isOsa</a></li><li><a href="global.html#isPanda">isPanda</a></li><li><a href="global.html#isSacri">isSacri</a></li><li><a href="global.html#isSadi">isSadi</a></li><li><a href="global.html#isSram">isSram</a></li><li><a href="global.html#isXel">isXel</a></li><li><a href="global.html#joinSpouse">joinSpouse</a></li><li><a href="global.html#mountDD">mountDD</a></li><li><a href="global.html#moveToCell">moveToCell</a></li><li><a href="global.html#myCell">myCell</a></li><li><a href="global.html#passTurn">passTurn</a></li><li><a href="global.html#quickEquip">quickEquip</a></li><li><a href="global.html#ready">ready</a></li><li><a href="global.html#rideMule">rideMule</a></li><li><a href="global.html#sameMap">sameMap</a></li><li><a href="global.html#someoneOnCell">someoneOnCell</a></li><li><a href="global.html#speakToNpc">speakToNpc</a></li><li><a href="global.html#spell">spell</a></li><li><a href="global.html#takeZaapi">takeZaapi</a></li><li><a href="global.html#useObject">useObject</a></li><li><a href="global.html#waitGroup">waitGroup</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Tue Aug 05 2025 16:03:50 GMT+0200 (heure d’été d’Europe centrale)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Tue Aug 05 2025 22:19:17 GMT+0200 (heure d’été d’Europe centrale)
 </footer>
 
 <script> prettyPrint(); </script>
