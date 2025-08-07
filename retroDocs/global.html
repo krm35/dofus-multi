@@ -435,24 +435,13 @@
 
     <h5>Examples</h5>
     
-    <pre class="prettyprint"><code>// Get your own character's cell position
-const myPosition = cell({});
-// or simply
-const myPosition = cell();</code></pre>
+    <pre class="prettyprint"><code>// Get your own character's cell positionconst myPosition = cell({});// or simplyconst myPosition = cell();</code></pre>
 
-    <pre class="prettyprint"><code>// Get another character's cell position
-const allyPosition = cell({id: 12345});</code></pre>
+    <pre class="prettyprint"><code>// Get another character's cell positionconst allyPosition = cell({id: 12345});</code></pre>
 
-    <pre class="prettyprint"><code>// Check if characters are on the same cell
-const myCell = cell({});
-const allyCell = cell({id: 67890});
-if (myCell === allyCell) {
-    console.log("We're on the same cell!");
-}</code></pre>
+    <pre class="prettyprint"><code>// Check if characters are on the same cellconst myCell = cell({});const allyCell = cell({id: 67890});if (myCell === allyCell) {    console.log("We're on the same cell!");}</code></pre>
 
-    <pre class="prettyprint"><code>// Use with other movement functions
-const targetCell = cell({id: 54321});
-await moveToCell({cell: targetCell});</code></pre>
+    <pre class="prettyprint"><code>// Use with other movement functionsconst targetCell = cell({id: 54321});await moveToCell({cell: targetCell});</code></pre>
 
 
 
@@ -660,8 +649,7 @@ await moveToCell({cell: targetCell});</code></pre>
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>// Get distances to specific cells
-const distances = await distance({cells: [123, 456, 789]}); // 123:4:true,456:5:true,789:6:true,</code></pre>
+    <pre class="prettyprint"><code>// Get distances to specific cellsconst distances = await distance({cells: [123, 456, 789]}); // 123:4:true,456:5:true,789:6:true,</code></pre>
 
 
 
@@ -767,9 +755,7 @@ const distances = await distance({cells: [123, 456, 789]}); // 123:4:true,456:5:
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>// Get the mob with the lowest life
- const lowestLifeMob = getLowestLifeMob(); // {id: '-1', cell: '300', life: '200'};
- if (lowestLifeMob) await spell({id: 173, cell: lowestLifeMob.cell});</code></pre>
+    <pre class="prettyprint"><code>// Get the mob with the lowest life const lowestLifeMob = getLowestLifeMob(); // {id: '-1', cell: '300', life: '200'}; if (lowestLifeMob) await spell({id: 173, cell: lowestLifeMob.cell});</code></pre>
 
 
 
@@ -879,15 +865,9 @@ const distances = await distance({cells: [123, 456, 789]}); // 123:4:true,456:5:
 
     <h5>Examples</h5>
     
-    <pre class="prettyprint"><code>// Get all mobs on the current map
-const mobs = getMobs();
-console.log(`Found ${mobs.length} mobs on the map`);</code></pre>
+    <pre class="prettyprint"><code>// Get all mobs on the current mapconst mobs = getMobs();console.log(`Found ${mobs.length} mobs on the map`);</code></pre>
 
-    <pre class="prettyprint"><code>// Access mob properties
-const mobs = getMobs();
-mobs.forEach(mob => {
-    console.log(`Mob at cell: ${mob.cell}`);
-});</code></pre>
+    <pre class="prettyprint"><code>// Access mob propertiesconst mobs = getMobs();mobs.forEach(mob => {    console.log(`Mob at cell: ${mob.cell}`);});</code></pre>
 
 
 
@@ -993,9 +973,7 @@ mobs.forEach(mob => {
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>// Get the nearest mob
- const nearestMob = await getNearestMob(); // {id: '-1', cell: '300', life: '200'};
- if (nearestMob) await spell({id: 173, cell: nearestMob.cell});</code></pre>
+    <pre class="prettyprint"><code>// Get the nearest mob const nearestMob = await getNearestMob(); // {id: '-1', cell: '300', life: '200'}; if (nearestMob) await spell({id: 173, cell: nearestMob.cell});</code></pre>
 
 
 
@@ -1101,8 +1079,7 @@ mobs.forEach(mob => {
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>// Get your pods
- getPods(); // {pods: '10', maxPods: '1000', podsPc: 0.01}</code></pre>
+    <pre class="prettyprint"><code>// Get your pods getPods(); // {pods: '10', maxPods: '1000', podsPc: 0.01}</code></pre>
 
 
 
@@ -1310,35 +1287,13 @@ mobs.forEach(mob => {
 
     <h5>Examples</h5>
     
-    <pre class="prettyprint"><code>// Check if a cell is occupied before moving there
-if (!isCellUsed({cell: 123})) {
-    await moveToCell({cell: 123});
-} else {
-    console.log("Cell 123 is occupied");
-}</code></pre>
+    <pre class="prettyprint"><code>// Check if a cell is occupied before moving thereif (!isCellUsed({cell: 123})) {    await moveToCell({cell: 123});} else {    console.log("Cell 123 is occupied");}</code></pre>
 
-    <pre class="prettyprint"><code>// Find an empty cell around your position
-const adjacentCells = [120, 121, 122, 123, 124];
-const emptyCells = adjacentCells.filter(cell => !isCellUsed({cell}));
-if (emptyCells.length > 0) {
-    await moveToCell({cell: emptyCells[0]});
-}</code></pre>
+    <pre class="prettyprint"><code>// Find an empty cell around your positionconst adjacentCells = [120, 121, 122, 123, 124];const emptyCells = adjacentCells.filter(cell => !isCellUsed({cell}));if (emptyCells.length > 0) {    await moveToCell({cell: emptyCells[0]});}</code></pre>
 
-    <pre class="prettyprint"><code>// Check before casting area spells to avoid friendly fire
-const targetCell = 456;
-if (isCellUsed({cell: targetCell})) {
-    console.log("Someone is on target cell, choosing different spell");
-    await spell({id: singleTargetSpellId, cell: targetCell});
-} else {
-    await spell({id: aoeSpellId, cell: targetCell});
-}</code></pre>
+    <pre class="prettyprint"><code>// Check before casting area spells to avoid friendly fireconst targetCell = 456;if (isCellUsed({cell: targetCell})) {    console.log("Someone is on target cell, choosing different spell");    await spell({id: singleTargetSpellId, cell: targetCell});} else {    await spell({id: aoeSpellId, cell: targetCell});}</code></pre>
 
-    <pre class="prettyprint"><code>// Validate positioning before group actions
-const gatherPoint = 789;
-if (isCellUsed({cell: gatherPoint})) {
-    console.log("Gather point is occupied, waiting...");
-    await new Promise(resolve => setTimeout(resolve, 1000));
-}</code></pre>
+    <pre class="prettyprint"><code>// Validate positioning before group actionsconst gatherPoint = 789;if (isCellUsed({cell: gatherPoint})) {    console.log("Gather point is occupied, waiting...");    await new Promise(resolve => setTimeout(resolve, 1000));}</code></pre>
 
 
 
@@ -2858,8 +2813,7 @@ if (isCellUsed({cell: gatherPoint})) {
 
     <h5>Example</h5>
     
-    <pre class="prettyprint"><code>// Mount your dd
- await mountDD();</code></pre>
+    <pre class="prettyprint"><code>// Mount your dd await mountDD();</code></pre>
 
 
 
@@ -3153,22 +3107,13 @@ if (isCellUsed({cell: gatherPoint})) {
 
     <h5>Examples</h5>
     
-    <pre class="prettyprint"><code>// Move to a specific cell
-const success = await moveToCell({cell: 123});
-if (success) console.log("Movement successful");</code></pre>
+    <pre class="prettyprint"><code>// Move to a specific cellconst success = await moveToCell({cell: 123});if (success) console.log("Movement successful");</code></pre>
 
-    <pre class="prettyprint"><code>// Move while avoiding mobs
-await moveToCell({cell: 456, escapeMobs: true});</code></pre>
+    <pre class="prettyprint"><code>// Move while avoiding mobsawait moveToCell({cell: 456, escapeMobs: true});</code></pre>
 
-    <pre class="prettyprint"><code>// Move to random cell (when not in fight)
-await moveToCell({}); // cell will be chosen randomly</code></pre>
+    <pre class="prettyprint"><code>// Move to random cell (when not in fight)await moveToCell({}); // cell will be chosen randomly</code></pre>
 
-    <pre class="prettyprint"><code>// Safe movement with error handling
-try {
-    await moveToCell({cell: 789, escapeMobs: true});
-} catch (error) {
-    console.error("Movement failed:", error.message);
-}</code></pre>
+    <pre class="prettyprint"><code>// Safe movement with error handlingtry {    await moveToCell({cell: 789, escapeMobs: true});} catch (error) {    console.error("Movement failed:", error.message);}</code></pre>
 
 
 
@@ -3533,25 +3478,15 @@ try {
 
     <h5>Examples</h5>
     
-    <pre class="prettyprint"><code>// Equip the first equipment set (Equipment 1)
-await quickEquip(0);</code></pre>
+    <pre class="prettyprint"><code>// Equip the first equipment set (Equipment 1)await quickEquip(0);</code></pre>
 
-    <pre class="prettyprint"><code>// Equip the second equipment set (Equipment 2)
-await quickEquip(1);</code></pre>
+    <pre class="prettyprint"><code>// Equip the second equipment set (Equipment 2)await quickEquip(1);</code></pre>
 
-    <pre class="prettyprint"><code>// Equip the third equipment set (Equipment 3)
-await quickEquip(2);</code></pre>
+    <pre class="prettyprint"><code>// Equip the third equipment set (Equipment 3)await quickEquip(2);</code></pre>
 
-    <pre class="prettyprint"><code>if (turn == 0) { // phase de préparation
-   await quickEquip(1);
-} else if (!mapIdFight) { // hors combat
-   await quickEquip(0);
- }</code></pre>
+    <pre class="prettyprint"><code>if (turn == 0) { // phase de préparation   await quickEquip(1);} else if (!mapIdFight) { // hors combat   await quickEquip(0); }</code></pre>
 
-    <pre class="prettyprint"><code>// Common usage - switching between combat and gathering gear
-await quickEquip(0); // Combat equipment (set 1)
-// ... do combat activities ...
-await quickEquip(1); // Gathering equipment (set 2)</code></pre>
+    <pre class="prettyprint"><code>// Common usage - switching between combat and gathering gearawait quickEquip(0); // Combat equipment (set 1)// ... do combat activities ...await quickEquip(1); // Gathering equipment (set 2)</code></pre>
 
 
 
@@ -4401,27 +4336,13 @@ await quickEquip(1); // Gathering equipment (set 2)</code></pre>
 
     <h5>Examples</h5>
     
-    <pre class="prettyprint"><code>// Speak to the first NPC on the map, selecting dialog options 1, 2, 1
-await speakToNpc({dialogs: [1, 2, 1]});</code></pre>
+    <pre class="prettyprint"><code>// Speak to the first NPC on the map, selecting dialog options 1, 2, 1await speakToNpc({dialogs: [1, 2, 1]});</code></pre>
 
-    <pre class="prettyprint"><code>// Speak to a specific NPC by ID
-await speakToNpc({
-    id: 42,
-    dialogs: [1, 1, 1]
-});</code></pre>
+    <pre class="prettyprint"><code>// Speak to a specific NPC by IDawait speakToNpc({    id: 42,    dialogs: [1, 1, 1]});</code></pre>
 
-    <pre class="prettyprint"><code>// Speak to NPC at a specific cell location
-await speakToNpc({
-    cell: 123,
-    dialogs: [2, 1, 3, 1]
-});</code></pre>
+    <pre class="prettyprint"><code>// Speak to NPC at a specific cell locationawait speakToNpc({    cell: 123,    dialogs: [2, 1, 3, 1]});</code></pre>
 
-    <pre class="prettyprint"><code>// Complete example with all parameters
-await speakToNpc({
-    id: 15,
-    cell: 456,
-    dialogs: [1, 1, 2, 1] // Navigate through 4 dialog choices
-});</code></pre>
+    <pre class="prettyprint"><code>// Complete example with all parametersawait speakToNpc({    id: 15,    cell: 456,    dialogs: [1, 1, 2, 1] // Navigate through 4 dialog choices});</code></pre>
 
 
 
@@ -4758,29 +4679,221 @@ await speakToNpc({
 
     <h5>Examples</h5>
     
-    <pre class="prettyprint"><code>// Cast a spell on your own position
-await spell({id: 123});</code></pre>
+    <pre class="prettyprint"><code>// Cast a spell on your own positionawait spell({id: 123});</code></pre>
 
-    <pre class="prettyprint"><code>// Cast a spell on a specific target cell
-await spell({id: 456, cell: 234});</code></pre>
+    <pre class="prettyprint"><code>// Cast a spell on a specific target cellawait spell({id: 456, cell: 234});</code></pre>
 
-    <pre class="prettyprint"><code>// Cast a spell with a delay (useful for timing in combat)
-await spell({id: 789, cell: 345, t: 2000}); // Wait 1 second after casting</code></pre>
+    <pre class="prettyprint"><code>// Cast a spell with a delay (useful for timing in combat)await spell({id: 789, cell: 345, t: 2000}); // Wait 1 second after casting</code></pre>
 
-    <pre class="prettyprint"><code>// Cast a spell with retry on critical failure
-await spell({id: 111, cell: 222, retry: true});</code></pre>
+    <pre class="prettyprint"><code>// Cast a spell with retry on critical failureawait spell({id: 111, cell: 222, retry: true});</code></pre>
 
-    <pre class="prettyprint"><code>// Complete example with all parameters
-await spell({
-    id: 999,        // Spell ID
-    cell: 567,      // Target cell
-    t: 1500,         // 500ms delay after the spell
-    retry: true     // Retry on critical failure
-});</code></pre>
+    <pre class="prettyprint"><code>// Complete example with all parametersawait spell({    id: 999,        // Spell ID    cell: 567,      // Target cell    t: 1500,         // 500ms delay after the spell    retry: true     // Retry on critical failure});</code></pre>
 
-    <pre class="prettyprint"><code>// Common combat sequence with timing
-await spell({id: 123, cell: enemyCell, t: 2000});
-await spell({id: 456, cell: allyCell, t: 3000, retry: true});</code></pre>
+    <pre class="prettyprint"><code>// Common combat sequence with timingawait spell({id: 123, cell: enemyCell, t: 2000});await spell({id: 456, cell: allyCell, t: 3000, retry: true});</code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="takeZaap"><span class="type-signature">(async) </span>takeZaap<span class="signature">(args)</span><span class="type-signature"> &rarr; {Promise.&lt;void>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Take a zaap
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>args</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The function arguments
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>mapId</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The map to go</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;void></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Go to craqueleur zaapawait takeZaap({mapId: 2191});</code></pre>
 
 
 
@@ -4984,11 +5097,9 @@ await spell({id: 456, cell: allyCell, t: 3000, retry: true});</code></pre>
 
     <h5>Examples</h5>
     
-    <pre class="prettyprint"><code>// Go to bonta arene
-await takeZaapi({mapId: 8478});</code></pre>
+    <pre class="prettyprint"><code>// Go to bonta areneawait takeZaapi({mapId: 8478});</code></pre>
 
-    <pre class="prettyprint"><code>// Go to bonta bank
-await takeZaapi({mapId: 4308});</code></pre>
+    <pre class="prettyprint"><code>// Go to bonta bankawait takeZaapi({mapId: 4308});</code></pre>
 
 
 
@@ -5288,19 +5399,13 @@ await takeZaapi({mapId: 4308});</code></pre>
 
     <h5>Examples</h5>
     
-    <pre class="prettyprint"><code>// Use 1 bread (Pain au Blé Complet)
-await useObject({id: 528});</code></pre>
+    <pre class="prettyprint"><code>// Use 1 bread (Pain au Blé Complet)await useObject({id: 528});</code></pre>
 
-    <pre class="prettyprint"><code>// Use 5 specific items (Brioche Dorée)
-await useObject({id: 743, quantity: 5});</code></pre>
+    <pre class="prettyprint"><code>// Use 5 specific items (Brioche Dorée)await useObject({id: 743, quantity: 5});</code></pre>
 
-    <pre class="prettyprint"><code>// Use all available items
-await useObject({id: 528, max: true});</code></pre>
+    <pre class="prettyprint"><code>// Use all available itemsawait useObject({id: 528, max: true});</code></pre>
 
-    <pre class="prettyprint"><code>// Common item IDs:
-// 528 - Pain au Blé Complet (Whole Wheat Bread)
-// 743 - Brioche Dorée
-await useObject({id: 528, max: true}); // Use all bread</code></pre>
+    <pre class="prettyprint"><code>// Common item IDs:// 528 - Pain au Blé Complet (Whole Wheat Bread)// 743 - Brioche Doréeawait useObject({id: 528, max: true}); // Use all bread</code></pre>
 
 
 
@@ -5421,13 +5526,13 @@ await useObject({id: 528, max: true}); // Use all bread</code></pre>
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#abandon">abandon</a></li><li><a href="global.html#cell">cell</a></li><li><a href="global.html#distance">distance</a></li><li><a href="global.html#getLowestLifeMob">getLowestLifeMob</a></li><li><a href="global.html#getMobs">getMobs</a></li><li><a href="global.html#getNearestMob">getNearestMob</a></li><li><a href="global.html#getPods">getPods</a></li><li><a href="global.html#isCellUsed">isCellUsed</a></li><li><a href="global.html#isCra">isCra</a></li><li><a href="global.html#isEca">isEca</a></li><li><a href="global.html#isEni">isEni</a></li><li><a href="global.html#isEnu">isEnu</a></li><li><a href="global.html#isFeca">isFeca</a></li><li><a href="global.html#isGroupLeader">isGroupLeader</a></li><li><a href="global.html#isIop">isIop</a></li><li><a href="global.html#isOsa">isOsa</a></li><li><a href="global.html#isPanda">isPanda</a></li><li><a href="global.html#isSacri">isSacri</a></li><li><a href="global.html#isSadi">isSadi</a></li><li><a href="global.html#isSram">isSram</a></li><li><a href="global.html#isXel">isXel</a></li><li><a href="global.html#joinSpouse">joinSpouse</a></li><li><a href="global.html#mountDD">mountDD</a></li><li><a href="global.html#moveToCell">moveToCell</a></li><li><a href="global.html#myCell">myCell</a></li><li><a href="global.html#passTurn">passTurn</a></li><li><a href="global.html#quickEquip">quickEquip</a></li><li><a href="global.html#ready">ready</a></li><li><a href="global.html#rideMule">rideMule</a></li><li><a href="global.html#sameMap">sameMap</a></li><li><a href="global.html#someoneOnCell">someoneOnCell</a></li><li><a href="global.html#speakToNpc">speakToNpc</a></li><li><a href="global.html#spell">spell</a></li><li><a href="global.html#takeZaapi">takeZaapi</a></li><li><a href="global.html#useObject">useObject</a></li><li><a href="global.html#waitGroup">waitGroup</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#abandon">abandon</a></li><li><a href="global.html#cell">cell</a></li><li><a href="global.html#distance">distance</a></li><li><a href="global.html#getLowestLifeMob">getLowestLifeMob</a></li><li><a href="global.html#getMobs">getMobs</a></li><li><a href="global.html#getNearestMob">getNearestMob</a></li><li><a href="global.html#getPods">getPods</a></li><li><a href="global.html#isCellUsed">isCellUsed</a></li><li><a href="global.html#isCra">isCra</a></li><li><a href="global.html#isEca">isEca</a></li><li><a href="global.html#isEni">isEni</a></li><li><a href="global.html#isEnu">isEnu</a></li><li><a href="global.html#isFeca">isFeca</a></li><li><a href="global.html#isGroupLeader">isGroupLeader</a></li><li><a href="global.html#isIop">isIop</a></li><li><a href="global.html#isOsa">isOsa</a></li><li><a href="global.html#isPanda">isPanda</a></li><li><a href="global.html#isSacri">isSacri</a></li><li><a href="global.html#isSadi">isSadi</a></li><li><a href="global.html#isSram">isSram</a></li><li><a href="global.html#isXel">isXel</a></li><li><a href="global.html#joinSpouse">joinSpouse</a></li><li><a href="global.html#mountDD">mountDD</a></li><li><a href="global.html#moveToCell">moveToCell</a></li><li><a href="global.html#myCell">myCell</a></li><li><a href="global.html#passTurn">passTurn</a></li><li><a href="global.html#quickEquip">quickEquip</a></li><li><a href="global.html#ready">ready</a></li><li><a href="global.html#rideMule">rideMule</a></li><li><a href="global.html#sameMap">sameMap</a></li><li><a href="global.html#someoneOnCell">someoneOnCell</a></li><li><a href="global.html#speakToNpc">speakToNpc</a></li><li><a href="global.html#spell">spell</a></li><li><a href="global.html#takeZaap">takeZaap</a></li><li><a href="global.html#takeZaapi">takeZaapi</a></li><li><a href="global.html#useObject">useObject</a></li><li><a href="global.html#waitGroup">waitGroup</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Wed Aug 06 2025 14:48:07 GMT+0200 (heure d’été d’Europe centrale)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Thu Aug 07 2025 14:57:20 GMT+0200 (heure d’été d’Europe centrale)
 </footer>
 
 <script> prettyPrint(); </script>
