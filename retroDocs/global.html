@@ -451,6 +451,151 @@
     
 
     
+    <h4 class="name" id="closeBank"><span class="type-signature">(async) </span>closeBank<span class="signature">()</span><span class="type-signature"> &rarr; {Promise.&lt;void>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Close the bank interface
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Throws:</h5>
+
+        
+
+<dl>
+    <dt>
+        <div class="param-desc">
+        Throws error if bank interface is not currently open
+        </div>
+    </dt>
+    <dd></dd>
+    <dt>
+        <dl>
+            <dt>
+                Type
+            </dt>
+            <dd>
+                
+<span class="param-type">Error</span>
+
+
+            </dd>
+        </dl>
+    </dt>
+    <dd></dd>
+</dl>
+
+
+    
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    Promise that resolves when the bank is closed
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;void></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+    <h5>Examples</h5>
+    
+    <pre class="prettyprint"><code>// Simple bank closureawait closeBank();</code></pre>
+
+    <pre class="prettyprint"><code>// Complete banking session// ... perform bank operations ...await transferInventoryToBank({skip: [528]});await transferFromBankToInventory({objects: {"468": 10}});await closeBank(); // Always close when done</code></pre>
+
+    <pre class="prettyprint"><code>// Safe bank closure with error handlingtry {    await closeBank();    console.log("Bank closed successfully");} catch (error) {    console.error("Failed to close bank:", error.message);}</code></pre>
+
+    <pre class="prettyprint"><code>// Automated banking routineasync function bankingSession() {    // Deposit items    await transferInventoryToBank({        skip: [528, 468, 234] // Keep essentials    });    // Withdraw supplies    await transferFromBankToInventory({        objects: {"789": 100} // Get ammunition    });    // Always close bank when finished    await closeBank();}</code></pre>
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="distance"><span class="type-signature">(async) </span>distance<span class="signature">(args)</span><span class="type-signature"> &rarr; {Promise.&lt;String>}</span></h4>
     
 
@@ -4565,13 +4710,13 @@
 
         <tr>
             
-                <td class="name"><code>dialogId</code></td>
+                <td class="name"><code>dialogIds</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">number</span>
+<span class="param-type">Array.&lt;number></span>
 
 
             
@@ -4595,7 +4740,7 @@
                 </td>
             
 
-            <td class="description last">The NPC must propose this dialogId at first (optional)</td>
+            <td class="description last">The NPC must propose the dialogIds (optional)</td>
         </tr>
 
     
@@ -5464,6 +5609,543 @@
     
 
     
+    <h4 class="name" id="transferFromBankToInventory"><span class="type-signature">(async) </span>transferFromBankToInventory<span class="signature">(args)</span><span class="type-signature"> &rarr; {Promise.&lt;void>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Transfer items from bank to your inventory
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>args</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The function arguments
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>objects</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object.&lt;string, number></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Dictionary mapping item IDs to quantities {"itemId": quantity}</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Throws:</h5>
+
+        
+
+<dl>
+    <dt>
+        <div class="param-desc">
+        Throws error if not currently at a bank
+        </div>
+    </dt>
+    <dd></dd>
+    <dt>
+        <dl>
+            <dt>
+                Type
+            </dt>
+            <dd>
+                
+<span class="param-type">Error</span>
+
+
+            </dd>
+        </dl>
+    </dt>
+    <dd></dd>
+</dl>
+
+
+    
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    Promise that resolves when all transfers are complete
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;void></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+    <h5>Examples</h5>
+    
+    <pre class="prettyprint"><code>// Transfer specific quantities of itemsawait transferFromBankToInventory({    objects: {        "528": 10,  // Transfer 10 Pain au Blé Complet (bread)        "289": 5,   // Transfer 5 of item ID 289        "156": 1    // Transfer 1 of item ID 156    }});</code></pre>
+
+    <pre class="prettyprint"><code>// Transfer single itemawait transferFromBankToInventory({    objects: {"528": 20} // Get 20 bread items});</code></pre>
+
+    <pre class="prettyprint"><code>// Transfer multiple consumables for adventureawait transferFromBankToInventory({    objects: {        "528": 50,   // Bread for health        "468": 10,   // Potions        "234": 5,    // Recall potions        "789": 100   // Ammunition    }});</code></pre>
+
+    <pre class="prettyprint"><code>// Safe transfer with error handlingtry {    await transferFromBankToInventory({        objects: {"528": 30, "289": 15}    });    console.log("Items transferred successfully");} catch (error) {    console.error("Transfer failed:", error.message);}</code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="transferInventoryToBank"><span class="type-signature">(async) </span>transferInventoryToBank<span class="signature">(args)</span><span class="type-signature"> &rarr; {Promise.&lt;void>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Transfer items from your inventory to the bank
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>args</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The function arguments
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>objects</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object.&lt;string, number></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Dictionary mapping item IDs to quantities {"itemId": quantity}. If provided, only transfers specified items. If omitted, transfers all eligible items</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>skip</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;number></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Array of item IDs to keep in inventory and not transfer (optional)</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Throws:</h5>
+
+        
+
+<dl>
+    <dt>
+        <div class="param-desc">
+        Throws error if not currently at a bank
+        </div>
+    </dt>
+    <dd></dd>
+    <dt>
+        <dl>
+            <dt>
+                Type
+            </dt>
+            <dd>
+                
+<span class="param-type">Error</span>
+
+
+            </dd>
+        </dl>
+    </dt>
+    <dd></dd>
+</dl>
+
+
+    
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    Promise that resolves when all transfers are complete
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;void></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+    <h5>Examples</h5>
+    
+    <pre class="prettyprint"><code>// Transfer all eligible items to bank (keeps quest items and equipped items)await transferInventoryToBank({});</code></pre>
+
+    <pre class="prettyprint"><code>// Transfer specific items and quantitiesawait transferInventoryToBank({    objects: {        "528": 20,  // Transfer 20 bread items        "289": 10,  // Transfer 10 of item ID 289        "156": 5    // Transfer 5 of item ID 156    }});</code></pre>
+
+    <pre class="prettyprint"><code>// Transfer all items except specific onesawait transferInventoryToBank({    skip: [528, 468, 234] // Keep bread, potions, and recall potions});</code></pre>
+
+    <pre class="prettyprint"><code>// Selective transfer with both objects and skipawait transferInventoryToBank({    objects: {        "789": 50,  // Transfer 50 ammunition        "456": 25   // Transfer 25 materials    },    skip: [528] // But keep bread even if it matches objects});</code></pre>
+
+    <pre class="prettyprint"><code>// Clean inventory after adventure (keep consumables)await transferInventoryToBank({    skip: [528, 468, 234, 156] // Keep food, potions, recalls, etc.});</code></pre>
+
+    <pre class="prettyprint"><code>// Safe transfer with error handlingtry {    await transferInventoryToBank({        skip: [528] // Keep some bread for travel    });    console.log("Inventory cleaned successfully");} catch (error) {    console.error("Transfer failed:", error.message);}</code></pre>
+
+    <pre class="prettyprint"><code>// Dump everything except essentialsconst essentialItems = [528, 468, 234]; // bread, potions, recallsawait transferInventoryToBank({    skip: essentialItems});</code></pre>
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="useObject"><span class="type-signature">(async) </span>useObject<span class="signature">(args)</span><span class="type-signature"> &rarr; {Promise.&lt;Boolean>}</span></h4>
     
 
@@ -5881,13 +6563,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#abandon">abandon</a></li><li><a href="global.html#cell">cell</a></li><li><a href="global.html#distance">distance</a></li><li><a href="global.html#getEnergy">getEnergy</a></li><li><a href="global.html#getLowestLifeMob">getLowestLifeMob</a></li><li><a href="global.html#getMobs">getMobs</a></li><li><a href="global.html#getNearestMob">getNearestMob</a></li><li><a href="global.html#getPods">getPods</a></li><li><a href="global.html#isCellUsed">isCellUsed</a></li><li><a href="global.html#isCra">isCra</a></li><li><a href="global.html#isEca">isEca</a></li><li><a href="global.html#isEni">isEni</a></li><li><a href="global.html#isEnu">isEnu</a></li><li><a href="global.html#isFeca">isFeca</a></li><li><a href="global.html#isGhost">isGhost</a></li><li><a href="global.html#isGroupLeader">isGroupLeader</a></li><li><a href="global.html#isInFight">isInFight</a></li><li><a href="global.html#isIop">isIop</a></li><li><a href="global.html#isOsa">isOsa</a></li><li><a href="global.html#isPanda">isPanda</a></li><li><a href="global.html#isSacri">isSacri</a></li><li><a href="global.html#isSadi">isSadi</a></li><li><a href="global.html#isSram">isSram</a></li><li><a href="global.html#isXel">isXel</a></li><li><a href="global.html#joinSpouse">joinSpouse</a></li><li><a href="global.html#mountDD">mountDD</a></li><li><a href="global.html#moveToCell">moveToCell</a></li><li><a href="global.html#myCell">myCell</a></li><li><a href="global.html#passTurn">passTurn</a></li><li><a href="global.html#quickEquip">quickEquip</a></li><li><a href="global.html#ready">ready</a></li><li><a href="global.html#rideMule">rideMule</a></li><li><a href="global.html#sameMap">sameMap</a></li><li><a href="global.html#someoneOnCell">someoneOnCell</a></li><li><a href="global.html#speakToNpc">speakToNpc</a></li><li><a href="global.html#spell">spell</a></li><li><a href="global.html#takeZaap">takeZaap</a></li><li><a href="global.html#takeZaapi">takeZaapi</a></li><li><a href="global.html#useObject">useObject</a></li><li><a href="global.html#waitGroup">waitGroup</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#abandon">abandon</a></li><li><a href="global.html#cell">cell</a></li><li><a href="global.html#closeBank">closeBank</a></li><li><a href="global.html#distance">distance</a></li><li><a href="global.html#getEnergy">getEnergy</a></li><li><a href="global.html#getLowestLifeMob">getLowestLifeMob</a></li><li><a href="global.html#getMobs">getMobs</a></li><li><a href="global.html#getNearestMob">getNearestMob</a></li><li><a href="global.html#getPods">getPods</a></li><li><a href="global.html#isCellUsed">isCellUsed</a></li><li><a href="global.html#isCra">isCra</a></li><li><a href="global.html#isEca">isEca</a></li><li><a href="global.html#isEni">isEni</a></li><li><a href="global.html#isEnu">isEnu</a></li><li><a href="global.html#isFeca">isFeca</a></li><li><a href="global.html#isGhost">isGhost</a></li><li><a href="global.html#isGroupLeader">isGroupLeader</a></li><li><a href="global.html#isInFight">isInFight</a></li><li><a href="global.html#isIop">isIop</a></li><li><a href="global.html#isOsa">isOsa</a></li><li><a href="global.html#isPanda">isPanda</a></li><li><a href="global.html#isSacri">isSacri</a></li><li><a href="global.html#isSadi">isSadi</a></li><li><a href="global.html#isSram">isSram</a></li><li><a href="global.html#isXel">isXel</a></li><li><a href="global.html#joinSpouse">joinSpouse</a></li><li><a href="global.html#mountDD">mountDD</a></li><li><a href="global.html#moveToCell">moveToCell</a></li><li><a href="global.html#myCell">myCell</a></li><li><a href="global.html#passTurn">passTurn</a></li><li><a href="global.html#quickEquip">quickEquip</a></li><li><a href="global.html#ready">ready</a></li><li><a href="global.html#rideMule">rideMule</a></li><li><a href="global.html#sameMap">sameMap</a></li><li><a href="global.html#someoneOnCell">someoneOnCell</a></li><li><a href="global.html#speakToNpc">speakToNpc</a></li><li><a href="global.html#spell">spell</a></li><li><a href="global.html#takeZaap">takeZaap</a></li><li><a href="global.html#takeZaapi">takeZaapi</a></li><li><a href="global.html#transferFromBankToInventory">transferFromBankToInventory</a></li><li><a href="global.html#transferInventoryToBank">transferInventoryToBank</a></li><li><a href="global.html#useObject">useObject</a></li><li><a href="global.html#waitGroup">waitGroup</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Thu Aug 07 2025 22:42:27 GMT+0200 (heure d’été d’Europe centrale)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Fri Aug 08 2025 14:05:05 GMT+0200 (heure d’été d’Europe centrale)
 </footer>
 
 <script> prettyPrint(); </script>
