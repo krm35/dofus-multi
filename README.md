@@ -14,7 +14,7 @@ _Start the back_ `cd back && npm install && npm run dev`
 
 _Start the front_ `cd front && npm install && npm run start`
 
-**Vous pouvez jouer à 4 comptes avec un téléphone qui a la 4G et qui est branché en mode routeur, 2 comptes doivent utiliser l'IP par défaut et 2 autres l'IP de votre téléphone :**
+**Vous pouvez jouer à 4 comptes avec un téléphone qui a la 4G et qui est branché en mode routeur, 2 comptes doivent utiliser l'IP par défaut et 2 autres l'IP de votre téléphone**
 
 # Windows Alerts
 
