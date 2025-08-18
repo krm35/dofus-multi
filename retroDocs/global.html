@@ -205,6 +205,309 @@
     
 
     
+    <h4 class="name" id="acceptExchange"><span class="type-signature">(async) </span>acceptExchange<span class="signature">()</span><span class="type-signature"> &rarr; {Promise.&lt;void>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Accept an exchange invitation
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;void></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="acceptGroupInvitation"><span class="type-signature">(async) </span>acceptGroupInvitation<span class="signature">()</span><span class="type-signature"> &rarr; {Promise.&lt;void>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Accept an invitation to join a group
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;void></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="acceptGuildInvitation"><span class="type-signature">(async) </span>acceptGuildInvitation<span class="signature">()</span><span class="type-signature"> &rarr; {Promise.&lt;void>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Accept an invitation to join a guild
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;void></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="cell"><span class="type-signature"></span>cell<span class="signature">(args<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {number}</span></h4>
     
 
@@ -1137,6 +1440,718 @@
     
 
     
+    <h4 class="name" id="getActionPoints"><span class="type-signature"></span>getActionPoints<span class="signature">(args<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {number}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Get the action points available for a character
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>args</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    {}
+                
+                </td>
+            
+
+            <td class="description last">The function arguments (optional)
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Character ID to get action points for. If not provided, uses your own character ID</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    The action points available (0 if character not found)
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">number</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+    <h5>Examples</h5>
+    
+    <pre class="prettyprint"><code>// Get your own action pointsconst myAP = getActionPoints();console.log(`I have ${myAP} action points`);</code></pre>
+
+    <pre class="prettyprint"><code>// Get another character's action pointsconst allyAP = getActionPoints({id: 12345});if (allyAP > 0) {    console.log(`Ally can still act`);}</code></pre>
+
+    <pre class="prettyprint"><code>// Check if you can cast a spell before attemptingconst spellCost = 4;if (getActionPoints() >= spellCost) {    await spell({id: 123, cell: enemyCell});} else {    console.log("Not enough action points for this spell");}</code></pre>
+
+    <pre class="prettyprint"><code>// Plan combat actions based on available APconst currentAP = getActionPoints();if (currentAP >= 6) {    // Can cast expensive spell    await spell({id: powerfulSpellId, cell: enemyCell});} else if (currentAP >= 3) {    // Use medium cost spell    await spell({id: mediumSpellId, cell: enemyCell});} else if (currentAP >= 1) {    // Use basic attack    await spell({id: basicAttackId, cell: enemyCell});} else {    // Pass turn if no AP left    await passTurn();}</code></pre>
+
+    <pre class="prettyprint"><code>// Optimize spell sequence based on APlet remainingAP = getActionPoints();const spells = [    {id: 123, cost: 4, priority: 'high'},    {id: 456, cost: 3, priority: 'medium'},    {id: 789, cost: 2, priority: 'low'}];for (const spell of spells) {    if (remainingAP >= spell.cost) {        await spell({id: spell.id, cell: enemyCell});        remainingAP -= spell.cost;    }}</code></pre>
+
+    <pre class="prettyprint"><code>// Check if you can use an item (items typically cost 1 AP)if (getActionPoints() >= 1) {    await useObject({id: 528}); // Use bread}</code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="getAdjacentCells"><span class="type-signature"></span>getAdjacentCells<span class="signature">(args<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Array.&lt;number>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Get the adjacent cells surrounding a specific cell
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>args</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    {}
+                
+                </td>
+            
+
+            <td class="description last">The function arguments (optional)
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>cell</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Cell to get adjacent cells for. If not provided, uses your current character's cell</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    Array of adjacent cell numbers
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Array.&lt;number></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+    <h5>Examples</h5>
+    
+    <pre class="prettyprint"><code>// Get adjacent cells around your current positionconst adjacentCells = getAdjacentCells({});// or simplyconst adjacentCells = getAdjacentCells();</code></pre>
+
+    <pre class="prettyprint"><code>// Get adjacent cells around a specific cellconst adjacentCells = getAdjacentCells({cell: 123});console.log(`Cell 123 has ${adjacentCells.length} adjacent cells`);</code></pre>
+
+    <pre class="prettyprint"><code>// Find empty adjacent cells for movementconst adjacentCells = getAdjacentCells({cell: myCell()});const emptyCells = adjacentCells.filter(cell => !someoneOnCell({cell}));if (emptyCells.length > 0) {    await moveToCell({cell: emptyCells[0]});}</code></pre>
+
+    <pre class="prettyprint"><code>// Check all adjacent cells for enemiesconst adjacentCells = getAdjacentCells({});const mobs = getMobs();const nearbyEnemies = mobs.filter(mob =>    adjacentCells.includes(parseInt(mob.cell)));console.log(`Found ${nearbyEnemies.length} enemies nearby`);</code></pre>
+
+    <pre class="prettyprint"><code>// Get adjacent cells around the nearest mob for tactical positioningconst nearestMob = await getNearestMob();if (nearestMob) {    const adjacentCells = getAdjacentCells({cell: parseInt(nearestMob.cell)});    console.log(`Adjacent cells around nearest mob:`, adjacentCells);    // Find the best position to attack from    const emptyCells = adjacentCells.filter(cell => !someoneOnCell({cell}));    if (emptyCells.length > 0) {        await moveToCell({cell: emptyCells[0]});        await spell({id: 123, cell: parseInt(nearestMob.cell)});    }}</code></pre>
+
+    <pre class="prettyprint"><code>// Get adjacent cells around a target for spell positioningconst targetCell = 456;const adjacentCells = getAdjacentCells({cell: targetCell});const bestPosition = adjacentCells.find(cell =>    !someoneOnCell({cell}) &amp;&amp; // Empty cell    distance({cells: [cell]}).then(d => parseInt(d.split(':')[1]) &lt;= 3) // Within range);</code></pre>
+
+    <pre class="prettyprint"><code>// Area of effect planningconst myPosition = myCell();const adjacentCells = getAdjacentCells({cell: myPosition});const affectedAllies = adjacentCells.filter(cell => {    // Check if any group members are in adjacent cells    return someoneOnCell({cell}) &amp;&amp; isAlly(cell);});</code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="getBreed"><span class="type-signature"></span>getBreed<span class="signature">()</span><span class="type-signature"> &rarr; {String}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Get your character breed
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - The class ("feca" | "osa" | "enu" | "sram" | "xel" | "eca" | "eni" | "iop" | "cra" | "sadi" | "sacri" | "panda" | "roub" | "zobal" | "steamer" | "elio" | "hupper" | "ougi" | "forge")
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">String</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="getClass"><span class="type-signature"></span>getClass<span class="signature">()</span><span class="type-signature"> &rarr; {String}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Get your character class
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - The class ("feca" | "osa" | "enu" | "sram" | "xel" | "eca" | "eni" | "iop" | "cra" | "sadi" | "sacri" | "panda")
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">String</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="getEnergy"><span class="type-signature"></span>getEnergy<span class="signature">()</span><span class="type-signature"> &rarr; {Number}</span></h4>
     
 
@@ -1455,7 +2470,7 @@
     
 
     
-    <h4 class="name" id="getLowestLifeMob"><span class="type-signature"></span>getLowestLifeMob<span class="signature">()</span><span class="type-signature"> &rarr; {Object}</span></h4>
+    <h4 class="name" id="getLowestLifeMob"><span class="type-signature"></span>getLowestLifeMob<span class="signature">(args)</span><span class="type-signature"> &rarr; {Object}</span></h4>
     
 
     
@@ -1472,6 +2487,116 @@
 
 
 
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>args</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The function arguments
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>targetInvocation</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Should also target the invocations, skip them by default</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -1673,6 +2798,254 @@
     
 
     
+    <h4 class="name" id="getMovementPoints"><span class="type-signature"></span>getMovementPoints<span class="signature">(args<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {number}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Get the movement points available for a character
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>args</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    {}
+                
+                </td>
+            
+
+            <td class="description last">The function arguments (optional)
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Character ID to get movement points for. If not provided, uses your own character ID</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    The movement points available (0 if character not found)
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">number</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+    <h5>Examples</h5>
+    
+    <pre class="prettyprint"><code>// Get your own movement pointsconst myMP = getMovementPoints();console.log(`I have ${myMP} movement points`);</code></pre>
+
+    <pre class="prettyprint"><code>// Get another character's movement pointsconst allyMP = getMovementPoints({id: 12345});if (allyMP > 0) {    console.log(`Ally can still move`);}</code></pre>
+
+    <pre class="prettyprint"><code>// Check if you can move before attempting movementif (getMovementPoints() >= 3) {    await moveToCell({cell: 123});} else {    console.log("Not enough movement points");}</code></pre>
+
+    <pre class="prettyprint"><code>// Plan movement strategy based on available MPconst currentMP = getMovementPoints();if (currentMP >= 6) {    // Can move far - go for strategic positioning    await moveToCell({cell: optimalCell, escapeMobs: true});} else if (currentMP >= 3) {    // Limited movement - move closer to enemies    const nearestMob = await getNearestMob();    const adjacentCells = getAdjacentCells({cell: parseInt(nearestMob.cell)});    await moveToCell({cell: adjacentCells[0]});} else {    // Stay put and use ranged attacks    await spell({id: rangedSpellId, cell: enemyCell});}</code></pre>
+
+    <pre class="prettyprint"><code>// Check group movement statusconst groupMembers = [12345, 67890, 54321];const canMove = groupMembers.filter(id => getMovementPoints({id}) > 0);console.log(`${canMove.length} group members can still move`);</code></pre>
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="getName"><span class="type-signature"></span>getName<span class="signature">()</span><span class="type-signature"> &rarr; {String}</span></h4>
     
 
@@ -1779,7 +3152,7 @@
     
 
     
-    <h4 class="name" id="getNearestMob"><span class="type-signature">(async) </span>getNearestMob<span class="signature">()</span><span class="type-signature"> &rarr; {Promise.&lt;Object>}</span></h4>
+    <h4 class="name" id="getNearestMob"><span class="type-signature">(async) </span>getNearestMob<span class="signature">(args)</span><span class="type-signature"> &rarr; {Promise.&lt;Object>}</span></h4>
     
 
     
@@ -1796,6 +3169,116 @@
 
 
 
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>args</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The function arguments
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>skipInvocation</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Should skip the invocations, keep them by default</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -1982,6 +3465,385 @@
     <h5>Example</h5>
     
     <pre class="prettyprint"><code>// Get your pods getPods(); // {pods: '10', maxPods: '1000', podsPc: 0.01}</code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="hasCooldown"><span class="type-signature"></span>hasCooldown<span class="signature">(args)</span><span class="type-signature"> &rarr; {boolean|undefined}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Check if a spell is available (not on cooldown) for casting
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>args</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The function arguments
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The spell ID to check cooldown for</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>delay</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The cooldown duration in turns for this spell</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Throws:</h5>
+
+        
+
+<dl>
+    <dt>
+        <div class="param-desc">
+        Throws error if spell ID doesn't exist or delay is not provided
+        </div>
+    </dt>
+    <dd></dd>
+    <dt>
+        <dl>
+            <dt>
+                Type
+            </dt>
+            <dd>
+                
+<span class="param-type">Error</span>
+
+
+            </dd>
+        </dl>
+    </dt>
+    <dd></dd>
+</dl>
+
+
+    
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    True if spell is available, false if on cooldown, undefined if not in combat
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">boolean</span>
+|
+
+<span class="param-type">undefined</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+    <h5>Examples</h5>
+    
+    <pre class="prettyprint"><code>// Check if a spell with 3-turn cooldown is availableif (hasCooldown({id: 123, delay: 3})) {    await spell({id: 123, cell: enemyCell});} else {    console.log("Spell 123 is still on cooldown");}</code></pre>
+
+    <pre class="prettyprint"><code>// Plan combat sequence with cooldown managementconst spellRotation = [    {id: 123, delay: 4}, // Powerful spell, 4-turn cooldown    {id: 456, delay: 2}, // Medium spell, 2-turn cooldown    {id: 789, delay: 1}  // Basic spell, 1-turn cooldown];for (const spellData of spellRotation) {    if (hasCooldown(spellData) &amp;&amp; getActionPoints() >= getSpellCost(spellData.id)) {        await spell({id: spellData.id, cell: enemyCell});        break; // Cast first available spell    }}</code></pre>
+
+    <pre class="prettyprint"><code>// Check multiple spells and choose the best availableconst availableSpells = [    {id: 111, delay: 5, damage: 'high'},    {id: 222, delay: 3, damage: 'medium'},    {id: 333, delay: 1, damage: 'low'}].filter(spell => hasCooldown(spell));if (availableSpells.length > 0) {    const bestSpell = availableSpells[0]; // Use highest damage available    await spell({id: bestSpell.id, cell: enemyCell});}</code></pre>
+
+    <pre class="prettyprint"><code>// Safe cooldown check with error handlingtry {    if (hasCooldown({id: 456, delay: 3})) {        await spell({id: 456, cell: targetCell});    } else {        // Use alternative spell        await spell({id: 789, cell: targetCell});    }} catch (error) {    console.error("Spell check failed:", error.message);}</code></pre>
+
+    <pre class="prettyprint"><code>// Conditional casting based on combat stateif (isInFight() &amp;&amp; c.turn > 0) {    const canCastHeal = hasCooldown({id: healSpellId, delay: 4});    const canCastAttack = hasCooldown({id: attackSpellId, delay: 2});    if (myHealth &lt; 50 &amp;&amp; canCastHeal) {        await spell({id: healSpellId, cell: myCell()});    } else if (canCastAttack) {        await spell({id: attackSpellId, cell: enemyCell});    }}</code></pre>
+
+    <pre class="prettyprint"><code>// Track cooldowns for strategic planningconst importantSpells = [    {id: 100, delay: 6, name: "Ultimate Attack"},    {id: 200, delay: 4, name: "Shield"},    {id: 300, delay: 3, name: "Heal"}];importantSpells.forEach(spell => {    const available = hasCooldown(spell);    console.log(`${spell.name}: ${available ? 'Available' : 'On Cooldown'}`);});</code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="isBusy"><span class="type-signature"></span>isBusy<span class="signature">()</span><span class="type-signature"> &rarr; {String}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Check if you are busy (exchange, popup, npc dialog)
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">String</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>if(isInFight()){     console.log("In fight"); } else {     console.log("Not in fight"); }</code></pre>
 
 
 
@@ -2196,511 +4058,6 @@
     <pre class="prettyprint"><code>// Check before casting area spells to avoid friendly fireconst targetCell = 456;if (isCellUsed({cell: targetCell})) {    console.log("Someone is on target cell, choosing different spell");    await spell({id: singleTargetSpellId, cell: targetCell});} else {    await spell({id: aoeSpellId, cell: targetCell});}</code></pre>
 
     <pre class="prettyprint"><code>// Validate positioning before group actionsconst gatherPoint = 789;if (isCellUsed({cell: gatherPoint})) {    console.log("Gather point is occupied, waiting...");    await new Promise(resolve => setTimeout(resolve, 1000));}</code></pre>
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="isCra"><span class="type-signature"></span>isCra<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Check if the character is a cra
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">boolean</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="isEca"><span class="type-signature"></span>isEca<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Check if the character is an eca
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">boolean</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="isEni"><span class="type-signature"></span>isEni<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Check if the character is an eni
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">boolean</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="isEnu"><span class="type-signature"></span>isEnu<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Check if the character is an enu
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">boolean</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="isFeca"><span class="type-signature"></span>isFeca<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Check if the character is a feca
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">boolean</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
 
 
 
@@ -3014,713 +4371,6 @@
     <h5>Example</h5>
     
     <pre class="prettyprint"><code>if(isInFight()){     console.log("In fight"); } else {     console.log("Not in fight"); }</code></pre>
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="isIop"><span class="type-signature"></span>isIop<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Check if the character is an iop
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">boolean</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="isOsa"><span class="type-signature"></span>isOsa<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Check if the character is an osa
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">boolean</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="isPanda"><span class="type-signature"></span>isPanda<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Check if the character is a panda
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">boolean</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="isSacri"><span class="type-signature"></span>isSacri<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Check if the character is a sacri
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">boolean</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="isSadi"><span class="type-signature"></span>isSadi<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Check if the character is a sadi
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">boolean</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="isSram"><span class="type-signature"></span>isSram<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Check if the character is a sram
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">boolean</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="isXel"><span class="type-signature"></span>isXel<span class="signature">()</span><span class="type-signature"> &rarr; {boolean}</span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Check if the character is a xel
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
-        
-
-
-<dl>
-    <dt>
-        Type
-    </dt>
-    <dd>
-        
-<span class="param-type">boolean</span>
-
-
-    </dd>
-</dl>
-
-    
-
-
 
 
 
@@ -4711,6 +5361,410 @@
     
 
     
+    <h4 class="name" id="refuseExchange"><span class="type-signature">(async) </span>refuseExchange<span class="signature">()</span><span class="type-signature"> &rarr; {Promise.&lt;void>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Refuse an exchange invitation
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;void></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="refuseFight"><span class="type-signature">(async) </span>refuseFight<span class="signature">()</span><span class="type-signature"> &rarr; {Promise.&lt;void>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Refuse a fight invitation
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;void></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="refuseGroupInvitation"><span class="type-signature">(async) </span>refuseGroupInvitation<span class="signature">()</span><span class="type-signature"> &rarr; {Promise.&lt;void>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Refuse an invitation to join a group
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;void></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="refuseGuildInvitation"><span class="type-signature">(async) </span>refuseGuildInvitation<span class="signature">()</span><span class="type-signature"> &rarr; {Promise.&lt;void>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Refuse an invitation to join a guild
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;void></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="rideMule"><span class="type-signature">(async) </span>rideMule<span class="signature">()</span><span class="type-signature"> &rarr; {Promise.&lt;void>}</span></h4>
     
 
@@ -4998,6 +6052,270 @@
     <dd>
         
 <span class="param-type">boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="sendPrivateMessage"><span class="type-signature">(async) </span>sendPrivateMessage<span class="signature">(args<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;void>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Send a private message
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>args</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    {}
+                
+                </td>
+            
+
+            <td class="description last">The function arguments (optional)
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">The receiver</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>message</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">The message to send</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;void></span>
 
 
     </dd>
@@ -5838,7 +7156,7 @@
 
     <pre class="prettyprint"><code>// Cast a spell with retry on critical failureawait spell({id: 111, cell: 222, retry: true});</code></pre>
 
-    <pre class="prettyprint"><code>// Complete example with all parametersawait spell({    id: 999,        // Spell ID    cell: 567,      // Target cell    t: 1500,         // 500ms delay after the spell    retry: true     // Retry on critical failure});</code></pre>
+    <pre class="prettyprint"><code>// Complete example with all parametersawait spell({    id: 999,        // Spell ID    cell: 567,      // Target cell    t: 1500,         // 1500ms delay after the spell    retry: true     // Retry on critical failure});</code></pre>
 
     <pre class="prettyprint"><code>// Common combat sequence with timingawait spell({id: 123, cell: enemyCell, t: 2000});await spell({id: 456, cell: allyCell, t: 3000, retry: true});</code></pre>
 
@@ -6797,6 +8115,300 @@
     
 
     
+    <h4 class="name" id="transferInventoryToExchange"><span class="type-signature">(async) </span>transferInventoryToExchange<span class="signature">(args)</span><span class="type-signature"> &rarr; {Promise.&lt;void>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Transfer items from your inventory to the exchange
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>args</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The function arguments
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>objects</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object.&lt;string, number></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Dictionary mapping item IDs to quantities {"itemId": quantity}. If provided, only transfers specified items. If omitted, transfers all eligible items</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>skip</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;number></span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Array of item IDs to keep in inventory and not transfer (optional)</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Throws:</h5>
+
+        
+
+<dl>
+    <dt>
+        <div class="param-desc">
+        Throws error if not currently in an exchange
+        </div>
+    </dt>
+    <dd></dd>
+    <dt>
+        <dl>
+            <dt>
+                Type
+            </dt>
+            <dd>
+                
+<span class="param-type">Error</span>
+
+
+            </dd>
+        </dl>
+    </dt>
+    <dd></dd>
+</dl>
+
+
+    
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    Promise that resolves when all transfers are complete
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;void></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+    <h5>Examples</h5>
+    
+    <pre class="prettyprint"><code>// Transfer all eligible items to ab exchange (keeps quest items and equipped items)await transferInventoryToExchange({});</code></pre>
+
+    <pre class="prettyprint"><code>// Transfer specific items and quantitiesawait transferInventoryToExchange({    objects: {        "528": 20,  // Transfer 20 bread items        "289": 10,  // Transfer 10 of item ID 289        "156": 5    // Transfer 5 of item ID 156    }});</code></pre>
+
+    <pre class="prettyprint"><code>// Transfer all items except specific onesawait transferInventoryToExchange({    skip: [528, 468, 234] // Keep bread, potions, and recall potions});</code></pre>
+
+    <pre class="prettyprint"><code>// Selective transfer with both objects and skipawait transferInventoryToExchange({    objects: {        "789": 50,  // Transfer 50 ammunition        "456": 25   // Transfer 25 materials    },    skip: [528] // But keep bread even if it matches objects});</code></pre>
+
+    <pre class="prettyprint"><code>// Clean inventory after adventure (keep consumables)await transferInventoryToExchange({    skip: [528, 468, 234, 156] // Keep food, potions, recalls, etc.});</code></pre>
+
+    <pre class="prettyprint"><code>// Safe transfer with error handlingtry {    await transferInventoryToExchange({        skip: [528] // Keep some bread for travel    });    console.log("Inventory cleaned successfully");} catch (error) {    console.error("Transfer failed:", error.message);}</code></pre>
+
+    <pre class="prettyprint"><code>// Dump everything except essentialsconst essentialItems = [528, 468, 234]; // bread, potions, recallsawait transferInventoryToExchange({    skip: essentialItems});</code></pre>
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="upgradeCharacteristic"><span class="type-signature">(async) </span>upgradeCharacteristic<span class="signature">(args)</span><span class="type-signature"> &rarr; {Promise.&lt;void>}</span></h4>
     
 
@@ -7568,6 +9180,107 @@
     
 
     
+    <h4 class="name" id="validateExchange"><span class="type-signature">(async) </span>validateExchange<span class="signature">()</span><span class="type-signature"> &rarr; {Promise.&lt;void>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Validate an exchange
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;void></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="waitGroup"><span class="type-signature">(async) </span>waitGroup<span class="signature">()</span><span class="type-signature"> &rarr; {Promise.&lt;void>}</span></h4>
     
 
@@ -7679,13 +9392,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#abandon">abandon</a></li><li><a href="global.html#cell">cell</a></li><li><a href="global.html#closeBank">closeBank</a></li><li><a href="global.html#closeDialog">closeDialog</a></li><li><a href="global.html#distance">distance</a></li><li><a href="global.html#equip">equip</a></li><li><a href="global.html#getEnergy">getEnergy</a></li><li><a href="global.html#getInventory">getInventory</a></li><li><a href="global.html#getLevel">getLevel</a></li><li><a href="global.html#getLowestLifeMob">getLowestLifeMob</a></li><li><a href="global.html#getMobs">getMobs</a></li><li><a href="global.html#getName">getName</a></li><li><a href="global.html#getNearestMob">getNearestMob</a></li><li><a href="global.html#getPods">getPods</a></li><li><a href="global.html#isCellUsed">isCellUsed</a></li><li><a href="global.html#isCra">isCra</a></li><li><a href="global.html#isEca">isEca</a></li><li><a href="global.html#isEni">isEni</a></li><li><a href="global.html#isEnu">isEnu</a></li><li><a href="global.html#isFeca">isFeca</a></li><li><a href="global.html#isGhost">isGhost</a></li><li><a href="global.html#isGroupLeader">isGroupLeader</a></li><li><a href="global.html#isInFight">isInFight</a></li><li><a href="global.html#isIop">isIop</a></li><li><a href="global.html#isOsa">isOsa</a></li><li><a href="global.html#isPanda">isPanda</a></li><li><a href="global.html#isSacri">isSacri</a></li><li><a href="global.html#isSadi">isSadi</a></li><li><a href="global.html#isSram">isSram</a></li><li><a href="global.html#isXel">isXel</a></li><li><a href="global.html#joinSpouse">joinSpouse</a></li><li><a href="global.html#mountDD">mountDD</a></li><li><a href="global.html#moveToCell">moveToCell</a></li><li><a href="global.html#myCell">myCell</a></li><li><a href="global.html#passTurn">passTurn</a></li><li><a href="global.html#quickEquip">quickEquip</a></li><li><a href="global.html#ready">ready</a></li><li><a href="global.html#rideMule">rideMule</a></li><li><a href="global.html#sameMap">sameMap</a></li><li><a href="global.html#someoneOnCell">someoneOnCell</a></li><li><a href="global.html#speakToNpc">speakToNpc</a></li><li><a href="global.html#spell">spell</a></li><li><a href="global.html#takeZaap">takeZaap</a></li><li><a href="global.html#takeZaapi">takeZaapi</a></li><li><a href="global.html#transferFromBankToInventory">transferFromBankToInventory</a></li><li><a href="global.html#transferInventoryToBank">transferInventoryToBank</a></li><li><a href="global.html#upgradeCharacteristic">upgradeCharacteristic</a></li><li><a href="global.html#upgradeSpell">upgradeSpell</a></li><li><a href="global.html#useObject">useObject</a></li><li><a href="global.html#waitGroup">waitGroup</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#abandon">abandon</a></li><li><a href="global.html#acceptExchange">acceptExchange</a></li><li><a href="global.html#acceptGroupInvitation">acceptGroupInvitation</a></li><li><a href="global.html#acceptGuildInvitation">acceptGuildInvitation</a></li><li><a href="global.html#cell">cell</a></li><li><a href="global.html#closeBank">closeBank</a></li><li><a href="global.html#closeDialog">closeDialog</a></li><li><a href="global.html#distance">distance</a></li><li><a href="global.html#equip">equip</a></li><li><a href="global.html#getActionPoints">getActionPoints</a></li><li><a href="global.html#getAdjacentCells">getAdjacentCells</a></li><li><a href="global.html#getBreed">getBreed</a></li><li><a href="global.html#getClass">getClass</a></li><li><a href="global.html#getEnergy">getEnergy</a></li><li><a href="global.html#getInventory">getInventory</a></li><li><a href="global.html#getLevel">getLevel</a></li><li><a href="global.html#getLowestLifeMob">getLowestLifeMob</a></li><li><a href="global.html#getMobs">getMobs</a></li><li><a href="global.html#getMovementPoints">getMovementPoints</a></li><li><a href="global.html#getName">getName</a></li><li><a href="global.html#getNearestMob">getNearestMob</a></li><li><a href="global.html#getPods">getPods</a></li><li><a href="global.html#hasCooldown">hasCooldown</a></li><li><a href="global.html#isBusy">isBusy</a></li><li><a href="global.html#isCellUsed">isCellUsed</a></li><li><a href="global.html#isGhost">isGhost</a></li><li><a href="global.html#isGroupLeader">isGroupLeader</a></li><li><a href="global.html#isInFight">isInFight</a></li><li><a href="global.html#joinSpouse">joinSpouse</a></li><li><a href="global.html#mountDD">mountDD</a></li><li><a href="global.html#moveToCell">moveToCell</a></li><li><a href="global.html#myCell">myCell</a></li><li><a href="global.html#passTurn">passTurn</a></li><li><a href="global.html#quickEquip">quickEquip</a></li><li><a href="global.html#ready">ready</a></li><li><a href="global.html#refuseExchange">refuseExchange</a></li><li><a href="global.html#refuseFight">refuseFight</a></li><li><a href="global.html#refuseGroupInvitation">refuseGroupInvitation</a></li><li><a href="global.html#refuseGuildInvitation">refuseGuildInvitation</a></li><li><a href="global.html#rideMule">rideMule</a></li><li><a href="global.html#sameMap">sameMap</a></li><li><a href="global.html#sendPrivateMessage">sendPrivateMessage</a></li><li><a href="global.html#someoneOnCell">someoneOnCell</a></li><li><a href="global.html#speakToNpc">speakToNpc</a></li><li><a href="global.html#spell">spell</a></li><li><a href="global.html#takeZaap">takeZaap</a></li><li><a href="global.html#takeZaapi">takeZaapi</a></li><li><a href="global.html#transferFromBankToInventory">transferFromBankToInventory</a></li><li><a href="global.html#transferInventoryToBank">transferInventoryToBank</a></li><li><a href="global.html#transferInventoryToExchange">transferInventoryToExchange</a></li><li><a href="global.html#upgradeCharacteristic">upgradeCharacteristic</a></li><li><a href="global.html#upgradeSpell">upgradeSpell</a></li><li><a href="global.html#useObject">useObject</a></li><li><a href="global.html#validateExchange">validateExchange</a></li><li><a href="global.html#waitGroup">waitGroup</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Mon Aug 11 2025 14:26:25 GMT+0200 (heure d’été d’Europe centrale)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Mon Aug 18 2025 15:31:51 GMT+0200 (heure d’été d’Europe centrale)
 </footer>
 
 <script> prettyPrint(); </script>
