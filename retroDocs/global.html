@@ -2018,7 +2018,7 @@
 
         
 <div class="param-desc">
-    - The class ("feca" | "osa" | "enu" | "sram" | "xel" | "eca" | "eni" | "iop" | "cra" | "sadi" | "sacri" | "panda" | "roub" | "zobal" | "steamer" | "elio" | "hupper" | "ougi" | "forge")
+    - The breed ("feca" | "osa" | "enu" | "sram" | "xel" | "eca" | "eni" | "iop" | "cra" | "sadi" | "sacri" | "panda" | "roub" | "zobal" | "steamer" | "elio" | "hupper" | "ougi" | "forge")
 </div>
 
 
@@ -2123,7 +2123,7 @@
 
         
 <div class="param-desc">
-    - The class ("feca" | "osa" | "enu" | "sram" | "xel" | "eca" | "eni" | "iop" | "cra" | "sadi" | "sacri" | "panda")
+    - The class ("feca" | "osa" | "enu" | "sram" | "xel" | "eca" | "eni" | "iop" | "cra" | "sadi" | "sacri" | "panda" | "roub" | "zobal" | "steamer" | "elio" | "hupper" | "ougi" | "forge")
 </div>
 
 
@@ -3583,7 +3583,7 @@
 
         <tr>
             
-                <td class="name"><code>delay</code></td>
+                <td class="name"><code>cooldown</code></td>
             
 
             <td class="type">
@@ -3672,7 +3672,7 @@
 <dl>
     <dt>
         <div class="param-desc">
-        Throws error if spell ID doesn't exist or delay is not provided
+        Throws error if spell ID doesn't exist or cooldown is not provided
         </div>
     </dt>
     <dd></dd>
@@ -3727,17 +3727,17 @@
 
     <h5>Examples</h5>
     
-    <pre class="prettyprint"><code>// Check if a spell with 3-turn cooldown is availableif (hasCooldown({id: 123, delay: 3})) {    await spell({id: 123, cell: enemyCell});} else {    console.log("Spell 123 is still on cooldown");}</code></pre>
+    <pre class="prettyprint"><code>// Check if a spell with 3-turn cooldown is availableif (hasCooldown({id: 123, cooldown: 3})) {    await spell({id: 123, cell: enemyCell});} else {    console.log("Spell 123 is still on cooldown");}</code></pre>
 
-    <pre class="prettyprint"><code>// Plan combat sequence with cooldown managementconst spellRotation = [    {id: 123, delay: 4}, // Powerful spell, 4-turn cooldown    {id: 456, delay: 2}, // Medium spell, 2-turn cooldown    {id: 789, delay: 1}  // Basic spell, 1-turn cooldown];for (const spellData of spellRotation) {    if (hasCooldown(spellData) &amp;&amp; getActionPoints() >= getSpellCost(spellData.id)) {        await spell({id: spellData.id, cell: enemyCell});        break; // Cast first available spell    }}</code></pre>
+    <pre class="prettyprint"><code>// Plan combat sequence with cooldown managementconst spellRotation = [    {id: 123, cooldown: 4}, // Powerful spell, 4-turn cooldown    {id: 456, cooldown: 2}, // Medium spell, 2-turn cooldown    {id: 789, cooldown: 1}  // Basic spell, 1-turn cooldown];for (const spellData of spellRotation) {    if (hasCooldown(spellData) &amp;&amp; getActionPoints() >= getSpellCost(spellData.id)) {        await spell({id: spellData.id, cell: enemyCell});        break; // Cast first available spell    }}</code></pre>
 
-    <pre class="prettyprint"><code>// Check multiple spells and choose the best availableconst availableSpells = [    {id: 111, delay: 5, damage: 'high'},    {id: 222, delay: 3, damage: 'medium'},    {id: 333, delay: 1, damage: 'low'}].filter(spell => hasCooldown(spell));if (availableSpells.length > 0) {    const bestSpell = availableSpells[0]; // Use highest damage available    await spell({id: bestSpell.id, cell: enemyCell});}</code></pre>
+    <pre class="prettyprint"><code>// Check multiple spells and choose the best availableconst availableSpells = [    {id: 111, cooldown: 5, damage: 'high'},    {id: 222, cooldown: 3, damage: 'medium'},    {id: 333, cooldown: 1, damage: 'low'}].filter(spell => hasCooldown(spell));if (availableSpells.length > 0) {    const bestSpell = availableSpells[0]; // Use highest damage available    await spell({id: bestSpell.id, cell: enemyCell});}</code></pre>
 
-    <pre class="prettyprint"><code>// Safe cooldown check with error handlingtry {    if (hasCooldown({id: 456, delay: 3})) {        await spell({id: 456, cell: targetCell});    } else {        // Use alternative spell        await spell({id: 789, cell: targetCell});    }} catch (error) {    console.error("Spell check failed:", error.message);}</code></pre>
+    <pre class="prettyprint"><code>// Safe cooldown check with error handlingtry {    if (hasCooldown({id: 456, cooldown: 3})) {        await spell({id: 456, cell: targetCell});    } else {        // Use alternative spell        await spell({id: 789, cell: targetCell});    }} catch (error) {    console.error("Spell check failed:", error.message);}</code></pre>
 
-    <pre class="prettyprint"><code>// Conditional casting based on combat stateif (isInFight() &amp;&amp; c.turn > 0) {    const canCastHeal = hasCooldown({id: healSpellId, delay: 4});    const canCastAttack = hasCooldown({id: attackSpellId, delay: 2});    if (myHealth &lt; 50 &amp;&amp; canCastHeal) {        await spell({id: healSpellId, cell: myCell()});    } else if (canCastAttack) {        await spell({id: attackSpellId, cell: enemyCell});    }}</code></pre>
+    <pre class="prettyprint"><code>// Conditional casting based on combat stateif (isInFight() &amp;&amp; c.turn > 0) {    const canCastHeal = hasCooldown({id: healSpellId, cooldown: 4});    const canCastAttack = hasCooldown({id: attackSpellId, cooldown: 2});    if (myHealth &lt; 50 &amp;&amp; canCastHeal) {        await spell({id: healSpellId, cell: myCell()});    } else if (canCastAttack) {        await spell({id: attackSpellId, cell: enemyCell});    }}</code></pre>
 
-    <pre class="prettyprint"><code>// Track cooldowns for strategic planningconst importantSpells = [    {id: 100, delay: 6, name: "Ultimate Attack"},    {id: 200, delay: 4, name: "Shield"},    {id: 300, delay: 3, name: "Heal"}];importantSpells.forEach(spell => {    const available = hasCooldown(spell);    console.log(`${spell.name}: ${available ? 'Available' : 'On Cooldown'}`);});</code></pre>
+    <pre class="prettyprint"><code>// Track cooldowns for strategic planningconst importantSpells = [    {id: 100, cooldown: 6, name: "Ultimate Attack"},    {id: 200, cooldown: 4, name: "Shield"},    {id: 300, cooldown: 3, name: "Heal"}];importantSpells.forEach(spell => {    const available = hasCooldown(spell);    console.log(`${spell.name}: ${available ? 'Available' : 'On Cooldown'}`);});</code></pre>
 
 
 
@@ -4182,6 +4182,107 @@
 
 <div class="description">
     Return true if your character is the group leader
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Boolean</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="isInExchange"><span class="type-signature">(async) </span>isInExchange<span class="signature">()</span><span class="type-signature"> &rarr; {Boolean}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Check if you are in exchange
 </div>
 
 
@@ -6069,7 +6170,7 @@
     
 
     
-    <h4 class="name" id="sendPrivateMessage"><span class="type-signature">(async) </span>sendPrivateMessage<span class="signature">(args<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;void>}</span></h4>
+    <h4 class="name" id="sendExchangeInvitation"><span class="type-signature">(async) </span>sendExchangeInvitation<span class="signature">(args<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;void>}</span></h4>
     
 
     
@@ -6077,7 +6178,7 @@
 
 
 <div class="description">
-    Send a private message
+    Send an invitation to exchange with someone else
 </div>
 
 
@@ -6149,7 +6250,7 @@
                 </td>
             
 
-            <td class="description last">The function arguments (optional)
+            <td class="description last">The function arguments
                 <h6>Properties</h6>
                 
 
@@ -6162,8 +6263,6 @@
 
         <th>Type</th>
 
-        
-        <th>Attributes</th>
         
 
         
@@ -6190,53 +6289,10 @@
             </td>
 
             
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
 
             
 
-            <td class="description last">The receiver</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>message</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-                <td class="attributes">
-                
-                    &lt;optional><br>
-                
-
-                
-
-                
-                </td>
-            
-
-            
-
-            <td class="description last">The message to send</td>
+            <td class="description last">The username of the invitation recipient</td>
         </tr>
 
     
@@ -6324,6 +6380,519 @@
     
 
 
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="sendGroupInvitation"><span class="type-signature">(async) </span>sendGroupInvitation<span class="signature">(args<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;void>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Send an invitation to join a group
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>args</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    {}
+                
+                </td>
+            
+
+            <td class="description last">The function arguments
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The username of the invitation recipient</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;void></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="sendPrivateMessage"><span class="type-signature">(async) </span>sendPrivateMessage<span class="signature">(args<span class="signature-attributes">opt</span>)</span><span class="type-signature"> &rarr; {Promise.&lt;void>}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Send a private message to another player
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+        <th>Default</th>
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>args</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    {}
+                
+                </td>
+            
+
+            <td class="description last">The function arguments (optional)
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The username of the message recipient</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>message</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The message content to send</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Throws:</h5>
+
+        
+
+<dl>
+    <dt>
+        <div class="param-desc">
+        Throws error if name or message is not provided
+        </div>
+    </dt>
+    <dd></dd>
+    <dt>
+        <dl>
+            <dt>
+                Type
+            </dt>
+            <dd>
+                
+<span class="param-type">Error</span>
+
+
+            </dd>
+        </dl>
+    </dt>
+    <dd></dd>
+</dl>
+
+
+    
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    Promise that resolves when the message is sent
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">Promise.&lt;void></span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+    <h5>Examples</h5>
+    
+    <pre class="prettyprint"><code>// Send a simple private messageawait sendPrivateMessage({    name: "PlayerName",    message: "Hello there!"});</code></pre>
+
+    <pre class="prettyprint"><code>// Send coordination message to group memberawait sendPrivateMessage({    name: "AllyPlayer",    message: "Ready for dungeon run?"});</code></pre>
+
+    <pre class="prettyprint"><code>// Send tactical information during combatif (isInFight()) {    const nearestMob = await getNearestMob();    await sendPrivateMessage({        name: "GroupLeader",        message: `Targeting mob at cell ${nearestMob.cell}`    });}</code></pre>
+
+    <pre class="prettyprint"><code>// Send status updateconst myAP = getActionPoints();const myMP = getMovementPoints();await sendPrivateMessage({    name: "Teammate",    message: `Status: ${myAP} AP, ${myMP} MP remaining`});</code></pre>
+
+    <pre class="prettyprint"><code>// Safe message sending with error handlingtry {    await sendPrivateMessage({        name: "Friend",        message: "Meet me at bank"    });    console.log("Message sent successfully");} catch (error) {    console.error("Failed to send message:", error.message);}</code></pre>
+
+    <pre class="prettyprint"><code>// Send automated notificationsasync function notifyGroupOfStatus() {    const groupMembers = ["Player1", "Player2", "Player3"];    const currentMap = c.mapId;    for (const member of groupMembers) {        await sendPrivateMessage({            name: member,            message: `Currently on map ${currentMap}, ready to proceed`        });    }}</code></pre>
+
+    <pre class="prettyprint"><code>// Send resource trading messageconst pods = getPods();if (pods.podsPc > 0.9) { // Over 90% capacity    await sendPrivateMessage({        name: "BankMule",        message: "Inventory almost full, need transfer"    });}</code></pre>
+
+    <pre class="prettyprint"><code>// Send combat coordinationconst mobs = getMobs();if (mobs.length > 0) {    await sendPrivateMessage({        name: "PartyLeader",        message: `Found ${mobs.length} mobs on map ${c.mapId}`    });}</code></pre>
 
 
 
@@ -7014,6 +7583,43 @@
             
 
             <td class="description last">Time to wait after casting the spell in milliseconds (optional) - Default 1000ms</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>cooldown</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                </td>
+            
+
+            <td class="description last">The cooldown of the spell to verify we can cast the spell (optional)</td>
         </tr>
 
     
@@ -8487,6 +9093,8 @@
         
 
         
+        <th>Default</th>
+        
 
         <th class="last">Description</th>
     </tr>
@@ -8503,7 +9111,7 @@
             <td class="type">
             
                 
-<span class="param-type">number</span>
+<span class="param-type">string</span>
 
 
             
@@ -8511,8 +9119,6 @@
 
             
                 <td class="attributes">
-                
-                    &lt;optional><br>
                 
 
                 
@@ -8522,8 +9128,12 @@
             
 
             
+                <td class="default">
+                
+                </td>
+            
 
-            <td class="description last">The characteristic ("life" | "wisdom" | "strength" | "agility" | "water" | "fire")</td>
+            <td class="description last">The characteristic to upgrade ("life" | "wisdom" | "strength" | "agility" | "water" | "fire")</td>
         </tr>
 
     
@@ -8555,8 +9165,14 @@
             
 
             
+                <td class="default">
+                
+                    1
+                
+                </td>
+            
 
-            <td class="description last">The points (optional, defaults to 1)</td>
+            <td class="description last">Number of points to invest (optional, defaults to 1)</td>
         </tr>
 
     
@@ -8622,11 +9238,44 @@
 
 
 
+<h5>Throws:</h5>
+
+        
+
+<dl>
+    <dt>
+        <div class="param-desc">
+        Throws error if characteristic is invalid or not provided
+        </div>
+    </dt>
+    <dd></dd>
+    <dt>
+        <dl>
+            <dt>
+                Type
+            </dt>
+            <dd>
+                
+<span class="param-type">Error</span>
+
+
+            </dd>
+        </dl>
+    </dt>
+    <dd></dd>
+</dl>
+
+
+    
 
 
 <h5>Returns:</h5>
 
         
+<div class="param-desc">
+    Promise that resolves when the upgrade is complete
+</div>
+
 
 
 <dl>
@@ -9289,7 +9938,7 @@
 
 
 <div class="description">
-    Wait my entire group to be on the map before doing anything
+    Wait for all group members to be present on the current map before proceeding
 </div>
 
 
@@ -9356,6 +10005,10 @@
 <h5>Returns:</h5>
 
         
+<div class="param-desc">
+    Promise that resolves when all group members are on the map
+</div>
+
 
 
 <dl>
@@ -9375,6 +10028,23 @@
 
 
 
+    <h5>Examples</h5>
+    
+    <pre class="prettyprint"><code>// Wait for group before starting dungeonawait waitGroup();console.log("All group members are ready!");await speakToNpc({dialogs: [1, 1, 1]}); // Start dungeon</code></pre>
+
+    <pre class="prettyprint"><code>// Group coordination for combatawait waitGroup();if (isGroupLeader()) {    console.log("Group assembled, initiating combat");    const mobs = getMobs();    // Start combat sequence}</code></pre>
+
+    <pre class="prettyprint"><code>// Wait for group before map transitionawait waitGroup();await takeZaap({mapId: 2191}); // Everyone moves together</code></pre>
+
+    <pre class="prettyprint"><code>// Group farming coordinationasync function groupFarmingSession() {    await waitGroup();    console.log("Group ready for farming");    // All members present, start farming activities    const mobs = getMobs();    if (mobs.length > 0) {        // Coordinate combat        if (isGroupLeader()) {            console.log(`Found ${mobs.length} mobs, engaging`);        }    }}</code></pre>
+
+    <pre class="prettyprint"><code>// Bank coordination - wait for group before bankingasync function groupBankingSession() {    await waitGroup();    console.log("Group assembled at bank");    // Perform banking operations in sequence    await transferInventoryToBank({skip: [528, 468]});    await transferFromBankToInventory({objects: {"789": 100}});}</code></pre>
+
+    <pre class="prettyprint"><code>// Resource gathering coordinationasync function coordinatedGathering() {    await waitGroup();    console.log("Group ready for resource gathering");    // Split up gathering areas or work together    if (isGroupLeader()) {        await sendPrivateMessage({            name: "GroupMember1",            message: "Start gathering on the left side"        });    }}</code></pre>
+
+    <pre class="prettyprint"><code>// Combat preparation with group syncasync function prepareCombat() {    await waitGroup();    // Everyone present, prepare for combat    await quickEquip(0); // Switch to combat gear    if (isGroupLeader()) {        const mobs = getMobs();        const nearestMob = await getNearestMob();        console.log(`Target acquired: mob at cell ${nearestMob.cell}`);    }}</code></pre>
+
+
 
         
     
@@ -9392,13 +10062,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#abandon">abandon</a></li><li><a href="global.html#acceptExchange">acceptExchange</a></li><li><a href="global.html#acceptGroupInvitation">acceptGroupInvitation</a></li><li><a href="global.html#acceptGuildInvitation">acceptGuildInvitation</a></li><li><a href="global.html#cell">cell</a></li><li><a href="global.html#closeBank">closeBank</a></li><li><a href="global.html#closeDialog">closeDialog</a></li><li><a href="global.html#distance">distance</a></li><li><a href="global.html#equip">equip</a></li><li><a href="global.html#getActionPoints">getActionPoints</a></li><li><a href="global.html#getAdjacentCells">getAdjacentCells</a></li><li><a href="global.html#getBreed">getBreed</a></li><li><a href="global.html#getClass">getClass</a></li><li><a href="global.html#getEnergy">getEnergy</a></li><li><a href="global.html#getInventory">getInventory</a></li><li><a href="global.html#getLevel">getLevel</a></li><li><a href="global.html#getLowestLifeMob">getLowestLifeMob</a></li><li><a href="global.html#getMobs">getMobs</a></li><li><a href="global.html#getMovementPoints">getMovementPoints</a></li><li><a href="global.html#getName">getName</a></li><li><a href="global.html#getNearestMob">getNearestMob</a></li><li><a href="global.html#getPods">getPods</a></li><li><a href="global.html#hasCooldown">hasCooldown</a></li><li><a href="global.html#isBusy">isBusy</a></li><li><a href="global.html#isCellUsed">isCellUsed</a></li><li><a href="global.html#isGhost">isGhost</a></li><li><a href="global.html#isGroupLeader">isGroupLeader</a></li><li><a href="global.html#isInFight">isInFight</a></li><li><a href="global.html#joinSpouse">joinSpouse</a></li><li><a href="global.html#mountDD">mountDD</a></li><li><a href="global.html#moveToCell">moveToCell</a></li><li><a href="global.html#myCell">myCell</a></li><li><a href="global.html#passTurn">passTurn</a></li><li><a href="global.html#quickEquip">quickEquip</a></li><li><a href="global.html#ready">ready</a></li><li><a href="global.html#refuseExchange">refuseExchange</a></li><li><a href="global.html#refuseFight">refuseFight</a></li><li><a href="global.html#refuseGroupInvitation">refuseGroupInvitation</a></li><li><a href="global.html#refuseGuildInvitation">refuseGuildInvitation</a></li><li><a href="global.html#rideMule">rideMule</a></li><li><a href="global.html#sameMap">sameMap</a></li><li><a href="global.html#sendPrivateMessage">sendPrivateMessage</a></li><li><a href="global.html#someoneOnCell">someoneOnCell</a></li><li><a href="global.html#speakToNpc">speakToNpc</a></li><li><a href="global.html#spell">spell</a></li><li><a href="global.html#takeZaap">takeZaap</a></li><li><a href="global.html#takeZaapi">takeZaapi</a></li><li><a href="global.html#transferFromBankToInventory">transferFromBankToInventory</a></li><li><a href="global.html#transferInventoryToBank">transferInventoryToBank</a></li><li><a href="global.html#transferInventoryToExchange">transferInventoryToExchange</a></li><li><a href="global.html#upgradeCharacteristic">upgradeCharacteristic</a></li><li><a href="global.html#upgradeSpell">upgradeSpell</a></li><li><a href="global.html#useObject">useObject</a></li><li><a href="global.html#validateExchange">validateExchange</a></li><li><a href="global.html#waitGroup">waitGroup</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#abandon">abandon</a></li><li><a href="global.html#acceptExchange">acceptExchange</a></li><li><a href="global.html#acceptGroupInvitation">acceptGroupInvitation</a></li><li><a href="global.html#acceptGuildInvitation">acceptGuildInvitation</a></li><li><a href="global.html#cell">cell</a></li><li><a href="global.html#closeBank">closeBank</a></li><li><a href="global.html#closeDialog">closeDialog</a></li><li><a href="global.html#distance">distance</a></li><li><a href="global.html#equip">equip</a></li><li><a href="global.html#getActionPoints">getActionPoints</a></li><li><a href="global.html#getAdjacentCells">getAdjacentCells</a></li><li><a href="global.html#getBreed">getBreed</a></li><li><a href="global.html#getClass">getClass</a></li><li><a href="global.html#getEnergy">getEnergy</a></li><li><a href="global.html#getInventory">getInventory</a></li><li><a href="global.html#getLevel">getLevel</a></li><li><a href="global.html#getLowestLifeMob">getLowestLifeMob</a></li><li><a href="global.html#getMobs">getMobs</a></li><li><a href="global.html#getMovementPoints">getMovementPoints</a></li><li><a href="global.html#getName">getName</a></li><li><a href="global.html#getNearestMob">getNearestMob</a></li><li><a href="global.html#getPods">getPods</a></li><li><a href="global.html#hasCooldown">hasCooldown</a></li><li><a href="global.html#isBusy">isBusy</a></li><li><a href="global.html#isCellUsed">isCellUsed</a></li><li><a href="global.html#isGhost">isGhost</a></li><li><a href="global.html#isGroupLeader">isGroupLeader</a></li><li><a href="global.html#isInExchange">isInExchange</a></li><li><a href="global.html#isInFight">isInFight</a></li><li><a href="global.html#joinSpouse">joinSpouse</a></li><li><a href="global.html#mountDD">mountDD</a></li><li><a href="global.html#moveToCell">moveToCell</a></li><li><a href="global.html#myCell">myCell</a></li><li><a href="global.html#passTurn">passTurn</a></li><li><a href="global.html#quickEquip">quickEquip</a></li><li><a href="global.html#ready">ready</a></li><li><a href="global.html#refuseExchange">refuseExchange</a></li><li><a href="global.html#refuseFight">refuseFight</a></li><li><a href="global.html#refuseGroupInvitation">refuseGroupInvitation</a></li><li><a href="global.html#refuseGuildInvitation">refuseGuildInvitation</a></li><li><a href="global.html#rideMule">rideMule</a></li><li><a href="global.html#sameMap">sameMap</a></li><li><a href="global.html#sendExchangeInvitation">sendExchangeInvitation</a></li><li><a href="global.html#sendGroupInvitation">sendGroupInvitation</a></li><li><a href="global.html#sendPrivateMessage">sendPrivateMessage</a></li><li><a href="global.html#someoneOnCell">someoneOnCell</a></li><li><a href="global.html#speakToNpc">speakToNpc</a></li><li><a href="global.html#spell">spell</a></li><li><a href="global.html#takeZaap">takeZaap</a></li><li><a href="global.html#takeZaapi">takeZaapi</a></li><li><a href="global.html#transferFromBankToInventory">transferFromBankToInventory</a></li><li><a href="global.html#transferInventoryToBank">transferInventoryToBank</a></li><li><a href="global.html#transferInventoryToExchange">transferInventoryToExchange</a></li><li><a href="global.html#upgradeCharacteristic">upgradeCharacteristic</a></li><li><a href="global.html#upgradeSpell">upgradeSpell</a></li><li><a href="global.html#useObject">useObject</a></li><li><a href="global.html#validateExchange">validateExchange</a></li><li><a href="global.html#waitGroup">waitGroup</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Mon Aug 18 2025 15:31:51 GMT+0200 (heure d’été d’Europe centrale)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Thu Aug 21 2025 19:53:10 GMT+0200 (heure d’été d’Europe centrale)
 </footer>
 
 <script> prettyPrint(); </script>
