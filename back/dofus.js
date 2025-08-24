@@ -214,23 +214,6 @@ function getSource(port, type, account) {
             }
         });
         
-        if(isWakfu){
-            const getMacAddrPtr = Module.getExportByName(null, 'Java_java_net_NetworkInterface_getMacAddr0');
-            const array =  ['pointer', 'pointer', 'pointer', 'pointer', 'pointer'];
-            const getMacAddr = new NativeFunction(getMacAddrPtr, 'pointer', array);
-            Interceptor.replace(getMacAddrPtr, new NativeCallback((_env, _class, _addrArray, _name, _index) => {
-              let result, good = 0;
-              for(let i = 0; i < 100; i++){
-                 result = getMacAddr(_env, _class, _addrArray, _name, ptr("0x"+i));
-                 if(result != 0x0){
-                    good++;
-                    if(good == ${account['wakfuInterface']}) break;
-                 }
-              }
-              return result;
-            }, 'pointer', array));
-        }
-
         if(isRetro || isWakfu){
         
             let pointer = {};

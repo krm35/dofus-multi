@@ -23,23 +23,3 @@ Pour ceux qui ont des notifications windows en boucle, vous pouvez désactiver l
 ![Alt Text](front/public/img/notif1.png)
 
 ![Alt Text](front/public/img/notif2.png)
-
-# Wakfu
-
-Pour wakfu, il faut installer virtualbox pour créer des cartes réseaux virtuelles :
-
-https://www.virtualbox.org/wiki/Downloads
-
-Ouvrir virtualbox avec les droits administrateur
-
-Ctrl + H 
-ou
-Fichier -> Outils -> Network Manager
-
-Il faut tout d'abord créer 10 interfaces réseau (spam ctrl + shift + c).
-
-Ensuite vous devez créer autant d'interfaces réseau que vous avez de comptes.
-
-**Il ne faut JAMAIS utiliser ces interfaces pour le choix de l'IP, ce n'est pas leur utilité**
-
-![Alt Text](front/public/img/virtualbox.png)
