@@ -1,0 +1,552 @@
+{
+    "7005": [
+        "48",
+        [
+            "Meule",
+            "Millstone",
+            "Muela",
+            "Mó",
+            "Mühlstein"
+        ]
+    ],
+    "7017": [
+        "111",
+        [
+            "Marmite",
+            "Cauldron",
+            "Marmita",
+            "Marmita",
+            "Kessel"
+        ]
+    ],
+    "7500": [
+        "6",
+        [
+            "Frêne",
+            "Ash",
+            "Fresno",
+            "Freixo",
+            "Esche"
+        ]
+    ],
+    "7501": [
+        "39",
+        [
+            "Châtaignier",
+            "Chestnut",
+            "Castaño",
+            "Castanheiro",
+            "Kastanie"
+        ]
+    ],
+    "7502": [
+        "40",
+        [
+            "Noyer",
+            "Walnut",
+            "Nogal",
+            "Nogueira",
+            "Walnussbaum"
+        ]
+    ],
+    "7503": [
+        "10",
+        [
+            "Chêne",
+            "Oak",
+            "Roble",
+            "Carvalho",
+            "Eiche"
+        ]
+    ],
+    "7504": [
+        "37",
+        [
+            "Érable",
+            "Maple",
+            "Arce",
+            "Bordo",
+            "Ahorn"
+        ]
+    ],
+    "7505": [
+        "33",
+        [
+            "If",
+            "Yew",
+            "Tejo",
+            "Teixo",
+            "Eibe"
+        ]
+    ],
+    "7506": [
+        "41",
+        [
+            "Cerisier sauvage",
+            "Wild Cherry",
+            "Cerezo silvestre",
+            "Cerejeira selvagem",
+            "Wildkirsche"
+        ]
+    ],
+    "7507": [
+        "34",
+        [
+            "Ébène",
+            "Ebony",
+            "Ébano",
+            "Ébano",
+            "Ebenholz"
+        ]
+    ],
+    "7508": [
+        "38",
+        [
+            "Charme",
+            "Hornbeam",
+            "Carpe",
+            "Carpino",
+            "Hainbuche"
+        ]
+    ],
+    "7509": [
+        "35",
+        [
+            "Orme",
+            "Elm",
+            "Olmo",
+            "Olmeiro",
+            "Ulme"
+        ]
+    ],
+    "7510": [
+        "42",
+        [
+            "Tas de pommes de terre",
+            "Potato Pile",
+            "Montón de patatas",
+            "Monte de batatas",
+            "Kartoffelhaufen"
+        ]
+    ],
+    "7511": [
+        "45",
+        [
+            "Blé",
+            "Wheat",
+            "Trigo",
+            "Trigo",
+            "Weizen"
+        ]
+    ],
+    "7512": [
+        "46",
+        [
+            "Houblon",
+            "Hops",
+            "Lúpulo",
+            "Lúpulo",
+            "Hopfen"
+        ]
+    ],
+    "7513": [
+        "68,50",
+        [
+            "Lin",
+            "Flax",
+            "Lino",
+            "Linho",
+            "Flachs"
+        ]
+    ],
+    "7514": [
+        "54,69",
+        [
+            "Chanvre",
+            "Hemp",
+            "Cáñamo",
+            "Cânhamo",
+            "Hanf"
+        ]
+    ],
+    "7515": [
+        "53",
+        [
+            "Orge",
+            "Barley",
+            "Cebada",
+            "Cevada",
+            "Gerste"
+        ]
+    ],
+    "7516": [
+        "52",
+        [
+            "Seigle",
+            "Rye",
+            "Centeno",
+            "Centeio",
+            "Roggen"
+        ]
+    ],
+    "7517": [
+        "57",
+        [
+            "Avoine",
+            "Oat",
+            "Avena",
+            "Aveia",
+            "Hafer"
+        ]
+    ],
+    "7518": [
+        "58",
+        [
+            "Malt",
+            "Malt",
+            "Malta",
+            "Malte",
+            "Malz"
+        ]
+    ],
+    "7520": [
+        "24",
+        [
+            "Fer",
+            "Iron",
+            "Hierro",
+            "Ferro",
+            "Eisen"
+        ]
+    ],
+    "7521": [
+        "55",
+        [
+            "Étain",
+            "Tin",
+            "Estaño",
+            "Estanho",
+            "Zinn"
+        ]
+    ],
+    "7522": [
+        "25",
+        [
+            "Pierre de cuivre",
+            "Copper Stone",
+            "Piedra de cobre",
+            "Pedra de cobre",
+            "Kupferstein"
+        ]
+    ],
+    "7523": [
+        "26",
+        [
+            "Bronze",
+            "Bronze",
+            "Bronce",
+            "Bronze",
+            "Bronze"
+        ]
+    ],
+    "7524": [
+        "56",
+        [
+            "Manganèse",
+            "Manganese",
+            "Manganeso",
+            "Manganês",
+            "Mangan"
+        ]
+    ],
+    "7525": [
+        "28",
+        [
+            "Pierre de cobalt",
+            "Cobalt Stone",
+            "Piedra de kobalto",
+            "Pedra de cobalto",
+            "Kobaltstein"
+        ]
+    ],
+    "7526": [
+        "29",
+        [
+            "Argent",
+            "Silver",
+            "Plata",
+            "Prata",
+            "Silber"
+        ]
+    ],
+    "7527": [
+        "30",
+        [
+            "Or",
+            "Gold",
+            "Oro",
+            "Ouro",
+            "Gold"
+        ]
+    ],
+    "7528": [
+        "31",
+        [
+            "Pierre de bauxite",
+            "Bauxite Stone",
+            "Piedra de bauxita",
+            "Pedra de bauxita",
+            "Bauxitstein"
+        ]
+    ],
+    "7529": [
+        "124",
+        [
+            "Petits poissons (rivière)",
+            "Little Fish (river)",
+            "Pescaditos (río)",
+            "Peixinhos (rio)",
+            "Kleine Fische (Fluss)"
+        ]
+    ],
+    "7530": [
+        "128",
+        [
+            "Petits poissons (mer)",
+            "Little Fish (sea)",
+            "Pescaditos (mar)",
+            "Peixinhos (mar)",
+            "Kleine Fische (Meer)"
+        ]
+    ],
+    "7531": [
+        "129",
+        [
+            "Poissons (mer)",
+            "Fish (sea)",
+            "Pescados (mar)",
+            "Peixes (mar)",
+            "Fische (Meer)"
+        ]
+    ],
+    "7532": [
+        "125",
+        [
+            "Poissons (rivière)",
+            "Fish (river)",
+            "Pescados (río)",
+            "Peixes (rio)",
+            "Fische (Fluss)"
+        ]
+    ],
+    "7533": [
+        "71",
+        [
+            "Trèfle à 5 feuilles",
+            "5-leaf Clover",
+            "Trébol de 5 hojas",
+            "Trevo de 5 folhas",
+            "5-blättriges Kleeblatt"
+        ]
+    ],
+    "7534": [
+        "72",
+        [
+            "Menthe sauvage",
+            "Wild Mint",
+            "Menta salvaje",
+            "Hortelã selvagem",
+            "Wilde Minze"
+        ]
+    ],
+    "7535": [
+        "73",
+        [
+            "Orchidée freyesque",
+            "Freyesque Orchid",
+            "Orquídea freyesca",
+            "Orquídea freyesca",
+            "Freyesische Orchidee"
+        ]
+    ],
+    "7536": [
+        "74",
+        [
+            "Edelweiss",
+            "Edelweiss",
+            "Edelweiss",
+            "Edelvais",
+            "Edelweiß"
+        ]
+    ],
+    "7537": [
+        "126",
+        [
+            "Gros poissons (rivière)",
+            "Big Fish (river)",
+            "Peces gordos (río)",
+            "Peixes gordos (rio)",
+            "Dicke Fische (Fluss)"
+        ]
+    ],
+    "7538": [
+        "130",
+        [
+            "Gros poissons (mer)",
+            "Big Fish (sea)",
+            "Peces gordos (mar)",
+            "Peixes gordos (mar)",
+            "Dicke Fische (Meer)"
+        ]
+    ],
+    "7539": [
+        "127",
+        [
+            "Poissons géants (rivière)",
+            "Giant Fish (river)",
+            "Pescados gigantes (río)",
+            "Peixes gigantes (rio)",
+            "Riesenfische (Fluss)"
+        ]
+    ],
+    "7540": [
+        "131",
+        [
+            "Poissons géants (mer)",
+            "Giant Fish (sea)",
+            "Pescados gigantes (mar)",
+            "Peixes gigantes (mar)",
+            "Riesenfische (Meer)"
+        ]
+    ],
+    "7541": [
+        "139",
+        [
+            "Bombou",
+            "Bombu",
+            "Bombú",
+            "Bombu",
+            "Bombu"
+        ]
+    ],
+    "7542": [
+        "141",
+        [
+            "Olivioleta",
+            "Olivioleta",
+            "Olivioleta",
+            "Olivioleta",
+            "Olivioleta"
+        ]
+    ],
+    "7544": [
+        "136",
+        [
+            "Pischi",
+            "Pischi",
+            "Pischi",
+            "Pischi",
+            "Pischi"
+        ]
+    ],
+    "7549": [
+        "152",
+        [
+            "Kuakuá",
+            "Kuakuá",
+            "Kuakuá",
+            "Kuakuá",
+            "Kuakuá"
+        ]
+    ],
+    "7550": [
+        "159",
+        [
+            "Riz",
+            "Rice",
+            "Arroz",
+            "Arroz",
+            "Reis"
+        ]
+    ],
+    "7551": [
+        "160",
+        [
+            "Pandoja",
+            "Pandoja",
+            "Pandoja",
+            "Pandoja",
+            "Pandoja"
+        ]
+    ],
+    "7552": [
+        "158",
+        [
+            "Bambou sacré",
+            "Sacred Bamboo",
+            "Bambú sagrado",
+            "Bambu sagrado",
+            "Heiliger Bambus"
+        ]
+    ],
+    "7553": [
+        "154",
+        [
+            "Bambou",
+            "Bamboo",
+            "Bambú",
+            "Bambu",
+            "Bambus"
+        ]
+    ],
+    "7554": [
+        "155",
+        [
+            "Bambou sombre",
+            "Dark Bamboo",
+            "Bambú oscuro",
+            "Bambu escuro",
+            "Dunkler Bambus"
+        ]
+    ],
+    "7555": [
+        "161",
+        [
+            "Dolomie",
+            "Dolomite",
+            "Dolomía",
+            "Dolomita",
+            "Dolomit"
+        ]
+    ],
+    "7556": [
+        "162",
+        [
+            "Silicate",
+            "Silicate",
+            "Silicato",
+            "Silicato",
+            "Silikat"
+        ]
+    ],
+    "7557": [
+        "174",
+        [
+            "Kalipto",
+            "Kalipto",
+            "Kalipto",
+            "Kalipto",
+            "Kalipto"
+        ]
+    ],
+    "7045,7044,7043,7042,7041": [
+        "179",
+        [
+            "Levier",
+            "Lever",
+            "Palanca",
+            "Alavanca",
+            "Hebel"
+        ]
+    ]
+}
