@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 49.25 45.023" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xlink="http://www.w3.org/1999/xlink">
+<metadata>
+<rdf:RDF>
+<cc:Work rdf:about="">
+<dc:format>image/svg+xml</dc:format>
+<dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+</cc:Work>
+</rdf:RDF>
+</metadata>
+<g transform="translate(-194.92 -128.78)">
+<use transform="translate(194.95,128.8)" width="49.200001" height="45" xlink:href="#a"/>
+</g>
+<defs>
+<g id="a" transform="translate(-43.65,-45.45)">
+<path d="m45.3 81.2 1-1.25 17.9 7.45 19-3.9q-0.4-3.5-0.35-9.8v-0.6l8.35-8.9 1.4 2.5 0.25 0.45-8.5 9 0.15 6.65 0.15 2.95 0.1 0.8-19.05 3.9-20.9-8.75 0.5-0.5" fill="#171717" fill-rule="evenodd"/>
+<path d="m84.5 82.8 0.25 2.95h-0.1l-0.15-2.95" fill="#c09501" fill-rule="evenodd"/>
+<path d="m82.35 48.75q2.1 3 10.5 17.6l-0.25 0.35-1.4-2.5-8.35 8.9v0.6q-0.05 6.3 0.35 9.8l-19 3.9-17.9-7.45-1 1.25-0.5-0.25q5.3-5.15-0.85-10.2l22 9.3 8.7-9.5 3.75-4.05 1.05-4.95 2.9-12.8m-1.95 33.35-0.25-5.2 0.55-4.55q-2.35 7.85-2.45 8.85l-11.15 3.05 13.3-2.15" fill="#7c7c7c" fill-rule="evenodd"/>
+<path d="m79.45 61.55-1.05 4.95-3.75 4.05-6-2.15 0.35-0.2-1.2-0.5-2.7-0.8 0.3-0.2-18.4-7.7q0.95-2.15 5.8-9.65l1.1 1.05 0.65-0.2 24.9 11.35m0.95 20.55-13.3 2.15 11.15-3.05q0.1-1 2.45-8.85l-0.55 4.55 0.25 5.2m-14.2-4.05-5.7-2.95 5.2 0.65 3.45-5.6q0.9 4.3-2.4 7.25l-0.55 0.65" fill="#eaeaea" fill-rule="evenodd"/>
+<path d="m74.65 70.55-8.7 9.5-22-9.3q0.2-1.4-0.1-7.8 0.7 0.4 0.8 0.25l2.35-4.2 18.4 7.7-0.3 0.2 2.7 0.8 1.2 0.5-0.35 0.2 6 2.15m-8.45 7.5 0.55-0.65q3.3-2.95 2.4-7.25l-3.45 5.6-5.2-0.65 5.7 2.95" fill="#868686" fill-rule="evenodd"/>
+<path d="m43.85 62.95-0.15-2.8-0.05-1.85q4.7-4.6 6.95-10.45l22.6-2.3q6.45-0.35 7.15 0.55l-17.05 2.6q-5.15 0.45-8.75 1.5l-0.65 0.2-1.1-1.05q-4.85 7.5-5.8 9.65l-2.35 4.2q-0.1 0.15-0.8-0.25" fill="#e0e0e0" fill-rule="evenodd"/>
+<path d="m82.35 48.75-2.9 12.8-24.9-11.35q3.6-1.05 8.75-1.5l17.05-2.6 2 2.65" fill="url(#b)" fill-rule="evenodd"/>
+<path d="m92.6 66.7 0.25-0.35q-8.4-14.6-10.5-17.6m-38.4 22q6.15 5.05 0.85 10.2l0.5 0.25m-1.45-18.25-0.15-2.8-0.05-1.85q4.7-4.6 6.95-10.45l22.6-2.3q6.45-0.35 7.15 0.55l2 2.65m-38.5 14.2q0.3 6.4 0.1 7.8" fill="none" stroke="#7c7c7c" stroke-linecap="round" stroke-linejoin="round" stroke-width=".05"/>
+</g>
+<linearGradient id="b" x1="-819.2" x2="819.2" gradientTransform="matrix(-.0048 .0096 -.0175 -.0088 59.85 67.6)" gradientUnits="userSpaceOnUse">
+<stop stop-color="#fff" offset="0"/>
+<stop stop-color="#666" offset="1"/>
+</linearGradient>
+</defs>
+</svg>

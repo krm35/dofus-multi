@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 103 118.55" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xlink="http://www.w3.org/1999/xlink">
+<metadata>
+<rdf:RDF>
+<cc:Work rdf:about="">
+<dc:format>image/svg+xml</dc:format>
+<dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+</cc:Work>
+</rdf:RDF>
+</metadata>
+<g transform="translate(-223.95,-141.2)">
+<use transform="translate(223.95,141.2)" width="103" height="54.849998" xlink:href="#b"/>
+<use transform="translate(242.95,195.05)" width="35.5" height="64.699997" xlink:href="#a"/>
+</g>
+<defs>
+<g id="b" transform="translate(51.5,59.25)">
+<path d="m17.5-55.95 33.5-2.8v3.55l-3.15 4.75h-30.35v-5.5m-65.35 5.5-3.15-5.2v-3.1l31.65 2.8v5.5h-28.5" fill="#92927e" fill-rule="evenodd"/>
+<path d="m17.5-50.45h30.35l-9.35 19-7.4 3h-13.6v-22m-52.1 22-3.9-1.5-9.35-20.5h28.5v22h-15.25" fill="#6c6c5b" fill-rule="evenodd"/>
+<path d="m17.5-55.95v5.5h-36.85v-5.5h36.85" fill="#80806c" fill-rule="evenodd"/>
+<path d="m31.1-28.45-13.6 5.55-8.55 3.45h-20.15l-8.15-3.1-15.25-5.9h15.25v5.9-5.9q18.45 6.4 36.85 0h13.6m-13.6 0v5.55-5.55" fill="#3e3d35" fill-rule="evenodd"/>
+<path d="m8.95-19.45h16.05v14.55h-52.5v-14.55h36.45m-28.3-9v-22h36.85v22q-18.4 6.4-36.85 0" fill="#555548" fill-rule="evenodd"/>
+<path d="m47.85-50.45 3.15-4.75v-3.55l-33.5 2.8v27.5m30.35-22-9.35 19-7.4 3-13.6 5.55-8.55 3.45h16.05v14.55h-52.5v-14.55h16.3l-8.15-3.1-15.25-5.9-3.9-1.5-9.35-20.5-3.15-5.2v-3.1l31.65 2.8h36.85m-36.85 5.5v-5.5m0 27.5v5.9m8.15 3.1h20.15m-28.3-9v-22m36.85 27.55v-5.55" fill="none" stroke="#3a3a32" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="m25.5-50.45h17m-70 0h-6.1" fill="none" stroke="#b5b4aa" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<g id="a" transform="translate(18,27.1)">
+<path d="m2.8-1.15h0.45v9.75h-1.75q-5-6 1.3-9.75m-2.7 20.25h3.15v9.75h-4.5q-7.7-4.85 1.35-9.75m-8.2-10.5h-9.4v-6.5h8.25v-3.25h3.9q4.5 5.35-2.75 9.75m-4.65 16.5h-4.75v-6h6.4q6.15 2.5-1.65 6" fill="#d58f1e" fill-rule="evenodd"/>
+<path d="m13 37.1v-52.05l-6-3.75v-8.4h10.5v64.2h-4.5" fill="#3a3a32" fill-rule="evenodd"/>
+<path d="m7-18.7 6 3.75v52.05h-6v-55.8m2.75 3.75v52.05-52.05" fill="#6c6c5b" fill-rule="evenodd"/>
+<path d="m1.5 8.6h-9.6q7.25-4.4 2.75-9.75h8.15q-6.3 3.75-1.3 9.75m-2.25 10.5h0.85q-9.05 4.9-1.35 9.75h-7v-3.75h-4.5q7.8-3.5 1.65-6h10.35" fill="#f3c55a" fill-rule="evenodd"/>
+<path d="m7 2.6v22.5h-3.75v-6h-4v-10.5h4v-6h3.75" fill="#8f6114" fill-rule="evenodd"/>
+<path d="m2.8-1.15h0.45v3.75h3.75m-3.75 22.5h3.75m-7.75-16.5v10.5m-0.5 9.75h4.5v-3.75m-11.35-16.5h-9.4v-6.5h8.25v-3.25h12.05m-15.55 26.25h-4.75v-6h16.75m0-10.5h-7.35m6.85 20.25h-7v-3.75h-4.5" fill="none" stroke="#5f3707" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="m9.75 37.1v-52.05" fill="none" stroke="#cfd3c2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</defs>
+</svg>
